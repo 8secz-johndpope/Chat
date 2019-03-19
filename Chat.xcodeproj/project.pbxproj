@@ -3,17 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		057845B35649202005699DF6 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE9240C32D8FCD51019154 /* Pods_Chat.framework */; };
 		DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03B6A0223AA0E100476C0C /* AppDelegate.swift */; };
-		DD03B6A3223AA0E100476C0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03B6A2223AA0E100476C0C /* ViewController.swift */; };
-		DD03B6A6223AA0E100476C0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A4223AA0E100476C0C /* Main.storyboard */; };
+		DD03B6A3223AA0E100476C0C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03B6A2223AA0E100476C0C /* SignInViewController.swift */; };
 		DD03B6A8223AA0E200476C0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A7223AA0E200476C0C /* Assets.xcassets */; };
 		DD03B6AB223AA0E200476C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */; };
 		DD03B6B3223AAFE100476C0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */; };
+		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
+		DDBC02092240C1FE0046C70E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02082240C1FE0046C70E /* R.generated.swift */; };
+		DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */; };
+		DDBC020D2240C3AD0046C70E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */; };
+		DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */; };
+		DDBC02112240EAE20046C70E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02102240EAE20046C70E /* User.swift */; };
+		DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D422400EEF00676A59 /* Coordinator.swift */; };
+		DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D622400EFA00676A59 /* AppCoordinator.swift */; };
+		DDCA01DA224024F700676A59 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D9224024F700676A59 /* SignInCoordinator.swift */; };
+		DDCA01DC2240250500676A59 /* ResetPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01DB2240250500676A59 /* ResetPasswordCoordinator.swift */; };
+		DDCA01DE2240251100676A59 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01DD2240251100676A59 /* SignUpCoordinator.swift */; };
+		DDCA01E02240317000676A59 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01DF2240317000676A59 /* SignInViewModel.swift */; };
+		DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB79F6223D7A6400F22817 /* UIButton+layer.swift */; };
+		DDCB79FB223D9D3A00F22817 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */; };
+		DDCB79FD223D9D4500F22817 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB79FC223D9D4500F22817 /* ResetPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +35,26 @@
 		DBFE9240C32D8FCD51019154 /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD03B69D223AA0E100476C0C /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD03B6A0223AA0E100476C0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DD03B6A2223AA0E100476C0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DD03B6A5223AA0E100476C0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DD03B6A2223AA0E100476C0C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DD03B6A7223AA0E200476C0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD03B6AA223AA0E200476C0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD03B6AC223AA0E200476C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		DDBC02082240C1FE0046C70E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
+		DDBC02102240EAE20046C70E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DDCA01D422400EEF00676A59 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DDCA01D622400EFA00676A59 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		DDCA01D9224024F700676A59 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		DDCA01DB2240250500676A59 /* ResetPasswordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCoordinator.swift; sourceTree = "<group>"; };
+		DDCA01DD2240251100676A59 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		DDCA01DF2240317000676A59 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		DDCB79F6223D7A6400F22817 /* UIButton+layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+layer.swift"; sourceTree = "<group>"; };
+		DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DDCB79FC223D9D4500F22817 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		E88350B0D5E1586307BC5C40 /* Pods-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,11 +111,14 @@
 				DD03B6A0223AA0E100476C0C /* AppDelegate.swift */,
 				DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */,
 				DD03B6AC223AA0E200476C0C /* Info.plist */,
+				DDBC02082240C1FE0046C70E /* R.generated.swift */,
 				DD03B6BA223AB1CA00476C0C /* Resources */,
+				DD03B6BB223AB1D900476C0C /* Storyboards */,
+				DDCB79F5223D7A4E00F22817 /* Extensions */,
+				DDCA01D322400ED500676A59 /* Coordinators */,
 				DD03B6B8223AB1B800476C0C /* Models */,
 				DD03B6B7223AB1B100476C0C /* ViewModels */,
 				DD03B6B6223AB1A900476C0C /* ViewControllers */,
-				DD03B6BB223AB1D900476C0C /* Storyboards */,
 				DD03B6B9223AB1C000476C0C /* Networking */,
 			);
 			path = Chat;
@@ -96,7 +127,9 @@
 		DD03B6B6223AB1A900476C0C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DD03B6A2223AA0E100476C0C /* ViewController.swift */,
+				DD03B6A2223AA0E100476C0C /* SignInViewController.swift */,
+				DDCB79FC223D9D4500F22817 /* ResetPasswordViewController.swift */,
+				DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -104,6 +137,9 @@
 		DD03B6B7223AB1B100476C0C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DDCA01DF2240317000676A59 /* SignInViewModel.swift */,
+				DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */,
+				DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -111,6 +147,7 @@
 		DD03B6B8223AB1B800476C0C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DDBC02102240EAE20046C70E /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,6 +155,7 @@
 		DD03B6B9223AB1C000476C0C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -134,9 +172,29 @@
 			isa = PBXGroup;
 			children = (
 				DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */,
-				DD03B6A4223AA0E100476C0C /* Main.storyboard */,
+				DD951519223BBA3200ED4D0F /* Auth.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DDCA01D322400ED500676A59 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				DDCA01D422400EEF00676A59 /* Coordinator.swift */,
+				DDCA01D622400EFA00676A59 /* AppCoordinator.swift */,
+				DDCA01D9224024F700676A59 /* SignInCoordinator.swift */,
+				DDCA01DB2240250500676A59 /* ResetPasswordCoordinator.swift */,
+				DDCA01DD2240251100676A59 /* SignUpCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		DDCB79F5223D7A4E00F22817 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DDCB79F6223D7A6400F22817 /* UIButton+layer.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +205,7 @@
 			buildConfigurationList = DD03B6AF223AA0E200476C0C /* Build configuration list for PBXNativeTarget "Chat" */;
 			buildPhases = (
 				7FCAF236BA59F640A9DB002B /* [CP] Check Pods Manifest.lock */,
+				DDCA01D822401C9F00676A59 /* ShellScript */,
 				DD03B699223AA0E100476C0C /* Sources */,
 				DD03B69A223AA0E100476C0C /* Frameworks */,
 				DD03B69B223AA0E100476C0C /* Resources */,
@@ -201,8 +260,8 @@
 			files = (
 				DD03B6AB223AA0E200476C0C /* LaunchScreen.storyboard in Resources */,
 				DD03B6B3223AAFE100476C0C /* GoogleService-Info.plist in Resources */,
+				DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */,
 				DD03B6A8223AA0E200476C0C /* Assets.xcassets in Resources */,
-				DD03B6A6223AA0E100476C0C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,20 +299,60 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/UnderLineTextField/UnderLineTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnderLineTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DDCA01D822401C9F00676A59 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"",
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -262,22 +361,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD03B6A3223AA0E100476C0C /* ViewController.swift in Sources */,
+				DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */,
+				DD03B6A3223AA0E100476C0C /* SignInViewController.swift in Sources */,
+				DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */,
+				DDCB79FD223D9D4500F22817 /* ResetPasswordViewController.swift in Sources */,
+				DDBC02112240EAE20046C70E /* User.swift in Sources */,
 				DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */,
+				DDCB79FB223D9D3A00F22817 /* SignUpViewController.swift in Sources */,
+				DDBC020D2240C3AD0046C70E /* SignUpViewModel.swift in Sources */,
+				DDCA01DE2240251100676A59 /* SignUpCoordinator.swift in Sources */,
+				DDCA01DA224024F700676A59 /* SignInCoordinator.swift in Sources */,
+				DDCA01E02240317000676A59 /* SignInViewModel.swift in Sources */,
+				DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */,
+				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,
+				DDCA01DC2240250500676A59 /* ResetPasswordCoordinator.swift in Sources */,
+				DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */,
+				DDBC02092240C1FE0046C70E /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DD03B6A4223AA0E100476C0C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD03B6A5223AA0E100476C0C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
