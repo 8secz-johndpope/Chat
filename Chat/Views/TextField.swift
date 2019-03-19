@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  TextField.swift
 //  Chat
 //
 //  Created by Vadim Koronchik on 3/19/19.
@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import UnderLineTextField
 
-class Userr {
+class TextField: UnderLineTextField {
     
 }

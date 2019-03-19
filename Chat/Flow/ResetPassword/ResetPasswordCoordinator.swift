@@ -15,11 +15,11 @@ class ResetPasswordCoordinator: Coordinator {
     //lazy var signInViewModel = ResetPasswordViewModel()
     private let disposeBag = DisposeBag()
     
-    func start(from viewController: UINavigationController) -> Observable<Void> {
+    func start(from navigationController: UINavigationController) -> Observable<Void> {
         let resetPasswordViewController = R.storyboard.auth.resetPasswordViewController()
         //signInViewController?.viewModel = signInViewModel
         
-        viewController.pushViewController(resetPasswordViewController!, animated: true)
+        navigationController.pushViewController(resetPasswordViewController!, animated: true)
         
 //        signInViewModel.doneAction.drive(onNext: { [unowned self] () in
 //            self.signInViewController?.dismiss(animated: true, completion: nil)

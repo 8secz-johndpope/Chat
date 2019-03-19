@@ -19,6 +19,11 @@
 		DDBC020D2240C3AD0046C70E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */; };
 		DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */; };
 		DDBC02112240EAE20046C70E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02102240EAE20046C70E /* User.swift */; };
+		DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02122240F0E00046C70E /* String+isValidEmail.swift */; };
+		DDBC021622411F4B0046C70E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC021522411F4B0046C70E /* TextField.swift */; };
+		DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC0218224131C30046C70E /* ViewModelProtocol.swift */; };
+		DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC021A2241320D0046C70E /* ControllerType.swift */; };
+		DDBC021D2241328A0046C70E /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC021C2241328A0046C70E /* LoginService.swift */; };
 		DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D422400EEF00676A59 /* Coordinator.swift */; };
 		DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D622400EFA00676A59 /* AppCoordinator.swift */; };
 		DDCA01DA224024F700676A59 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D9224024F700676A59 /* SignInCoordinator.swift */; };
@@ -46,6 +51,11 @@
 		DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		DDBC02102240EAE20046C70E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DDBC02122240F0E00046C70E /* String+isValidEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidEmail.swift"; sourceTree = "<group>"; };
+		DDBC021522411F4B0046C70E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		DDBC0218224131C30046C70E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		DDBC021A2241320D0046C70E /* ControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerType.swift; sourceTree = "<group>"; };
+		DDBC021C2241328A0046C70E /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		DDCA01D422400EEF00676A59 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DDCA01D622400EFA00676A59 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DDCA01D9224024F700676A59 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
@@ -109,39 +119,20 @@
 			isa = PBXGroup;
 			children = (
 				DD03B6A0223AA0E100476C0C /* AppDelegate.swift */,
+				DDCA01D622400EFA00676A59 /* AppCoordinator.swift */,
 				DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */,
 				DD03B6AC223AA0E200476C0C /* Info.plist */,
 				DDBC02082240C1FE0046C70E /* R.generated.swift */,
 				DD03B6BA223AB1CA00476C0C /* Resources */,
 				DD03B6BB223AB1D900476C0C /* Storyboards */,
 				DDCB79F5223D7A4E00F22817 /* Extensions */,
-				DDCA01D322400ED500676A59 /* Coordinators */,
+				DDBC0217224131AE0046C70E /* Helpers */,
+				DDBC021422411F310046C70E /* Views */,
 				DD03B6B8223AB1B800476C0C /* Models */,
-				DD03B6B7223AB1B100476C0C /* ViewModels */,
-				DD03B6B6223AB1A900476C0C /* ViewControllers */,
+				DDBC021E22413CF30046C70E /* Flow */,
 				DD03B6B9223AB1C000476C0C /* Networking */,
 			);
 			path = Chat;
-			sourceTree = "<group>";
-		};
-		DD03B6B6223AB1A900476C0C /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				DD03B6A2223AA0E100476C0C /* SignInViewController.swift */,
-				DDCB79FC223D9D4500F22817 /* ResetPasswordViewController.swift */,
-				DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		DD03B6B7223AB1B100476C0C /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				DDCA01DF2240317000676A59 /* SignInViewModel.swift */,
-				DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */,
-				DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DD03B6B8223AB1B800476C0C /* Models */ = {
@@ -156,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */,
+				DDBC021C2241328A0046C70E /* LoginService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -177,22 +169,77 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		DDCA01D322400ED500676A59 /* Coordinators */ = {
+		DDBC021422411F310046C70E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DDBC021522411F4B0046C70E /* TextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDBC0217224131AE0046C70E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DDBC0218224131C30046C70E /* ViewModelProtocol.swift */,
+				DDBC021A2241320D0046C70E /* ControllerType.swift */,
 				DDCA01D422400EEF00676A59 /* Coordinator.swift */,
-				DDCA01D622400EFA00676A59 /* AppCoordinator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DDBC021E22413CF30046C70E /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				DDBC021F22413CFF0046C70E /* Auth */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		DDBC021F22413CFF0046C70E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				DDBC022022413D080046C70E /* SignIn */,
+				DDBC022122413D660046C70E /* SignUp */,
+				DDBC022222413D7D0046C70E /* ResetPassword */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		DDBC022022413D080046C70E /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				DDCA01DF2240317000676A59 /* SignInViewModel.swift */,
+				DD03B6A2223AA0E100476C0C /* SignInViewController.swift */,
 				DDCA01D9224024F700676A59 /* SignInCoordinator.swift */,
-				DDCA01DB2240250500676A59 /* ResetPasswordCoordinator.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		DDBC022122413D660046C70E /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */,
+				DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */,
 				DDCA01DD2240251100676A59 /* SignUpCoordinator.swift */,
 			);
-			path = Coordinators;
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		DDBC022222413D7D0046C70E /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */,
+				DDCB79FC223D9D4500F22817 /* ResetPasswordViewController.swift */,
+				DDCA01DB2240250500676A59 /* ResetPasswordCoordinator.swift */,
+			);
+			path = ResetPassword;
 			sourceTree = "<group>";
 		};
 		DDCB79F5223D7A4E00F22817 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				DDCB79F6223D7A6400F22817 /* UIButton+layer.swift */,
+				DDBC02122240F0E00046C70E /* String+isValidEmail.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +347,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
@@ -317,6 +365,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
@@ -364,6 +413,7 @@
 				DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */,
 				DD03B6A3223AA0E100476C0C /* SignInViewController.swift in Sources */,
 				DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */,
+				DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */,
 				DDCB79FD223D9D4500F22817 /* ResetPasswordViewController.swift in Sources */,
 				DDBC02112240EAE20046C70E /* User.swift in Sources */,
 				DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */,
@@ -373,10 +423,14 @@
 				DDCA01DA224024F700676A59 /* SignInCoordinator.swift in Sources */,
 				DDCA01E02240317000676A59 /* SignInViewModel.swift in Sources */,
 				DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */,
+				DDBC021D2241328A0046C70E /* LoginService.swift in Sources */,
 				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,
 				DDCA01DC2240250500676A59 /* ResetPasswordCoordinator.swift in Sources */,
 				DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */,
+				DDBC021622411F4B0046C70E /* TextField.swift in Sources */,
+				DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */,
 				DDBC02092240C1FE0046C70E /* R.generated.swift in Sources */,
+				DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

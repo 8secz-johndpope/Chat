@@ -11,5 +11,5 @@ import RxSwift
 
 protocol Coordinator {
     func start(from viewController: UINavigationController) -> Observable<Void>
-    func coordinate(to coordinator: Coordinator, from viewController: UINavigationController) -> Observable<Void>
+    func coordinate(to coordinator: Coordinator, from navigationController: UINavigationController) -> Observable<Void>
 }
