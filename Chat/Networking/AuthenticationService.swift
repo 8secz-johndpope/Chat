@@ -1,29 +1,23 @@
 //
-//  LoginService.swift
+//  AuthenticationService.swift
 //  Chat
 //
-//  Created by Vadim Koronchik on 3/19/19.
+//  Created by Vadim Koronchik on 3/24/19.
 //  Copyright © 2019 Vadim Koronchik. All rights reserved.
 //
 
 import RxSwift
 import FirebaseAuth
 
-struct Credentials {
-    let username: String
-    let password: String
-}
-
 protocol AuthenticationServiceProtocol {
-    func createUser(with credentials: Credentials) -> Observable<User>
-    func signIn(with credentials: Credentials) -> Observable<User>
+    
 }
 
 class AuthenticationService: AuthenticationServiceProtocol {
-    
-    func createUser(with credentials: Credentials) -> Observable<User> {
+   
+    static func signIn(with email: String, password: String) -> Observable<User> {
         return Observable.create { observer in
-            Auth.auth().createUser(withEmail: credentials.username, password: credentials.password) { authResult, error in
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     observer.onError(error)
                 } else if let user = authResult?.user {
@@ -35,9 +29,9 @@ class AuthenticationService: AuthenticationServiceProtocol {
         }
     }
     
-    func signIn(with credentials: Credentials) -> Observable<User> {
+    static func signUp(with email: String, password: String) -> Observable<User> {
         return Observable.create { observer in
-            Auth.auth().createUser(withEmail: credentials.username, password: credentials.password) { authResult, error in
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     observer.onError(error)
                 } else if let user = authResult?.user {
@@ -47,5 +41,18 @@ class AuthenticationService: AuthenticationServiceProtocol {
             }
             return Disposables.create()
         }
+    }
+    
+    static func sendPasswordReset(with email: String) -> Observable<Any> {
+        return Observable.create({ observer in
+            Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
+                if let error = error {
+                    observer.onError(error)
+                } else {
+                    observer.onCompleted()
+                }
+            })
+            return Disposables.create()
+        })
     }
 }

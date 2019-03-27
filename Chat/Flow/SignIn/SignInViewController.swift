@@ -7,32 +7,37 @@
 //
 
 import UIKit
-import UnderLineTextField
+import MaterialComponents
 import RxSwift
 import RxCocoa
 import Rswift
 
-class SignInViewController: UIViewController, ControllerType {
-    
-    typealias ViewModelType = SignInViewModel
-    
-    //MARK: Properties
-    var viewModel: ViewModelType!
+class SignInViewController: UIViewController {
     
     //MARK: UI
-    @IBOutlet var usernameTextField: UnderLineTextField!
-    @IBOutlet var passwordTextField: UnderLineTextField!
+    @IBOutlet var usernameTextField: MDCTextField!
+    @IBOutlet var passwordTextField: MDCTextField!
     @IBOutlet var signInButton: UIButton!
-    @IBOutlet var signUpButton: UIButton!
     @IBOutlet var resetPasswordButton: UIButton!
     
-    let disposeBag = DisposeBag()
+    //MARK: Properties
+    var viewModel: SignInViewModel!
+    let displayCompletion = PublishSubject<Void>()
+    private var usernameTextFieldController: MDCTextInputControllerUnderline!
+    private var passwordTextFieldController: MDCTextInputControllerUnderline!
+    private let disposeBag = DisposeBag()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+        configureTextFields()
         configureViewModel()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMovingFromParent { displayCompletion.onCompleted() }
     }
     
     //MARK: Methods
@@ -49,25 +54,22 @@ class SignInViewController: UIViewController, ControllerType {
             .subscribe(viewModel.input.signInDidTap)
             .disposed(by: disposeBag)
         
-        signUpButton.rx.tap
-            .subscribe(viewModel.input.signUpDidTap)
-            .disposed(by: disposeBag)
-        
         resetPasswordButton.rx.tap
             .subscribe(viewModel.input.resetPasswordDidTap)
             .disposed(by: disposeBag)
         
         viewModel.output.resultObservable
-            .subscribe(onNext: { (user) in
-                print("Signed in")
+            .subscribe(onNext: { [weak self] (user) in
+                self?.showAlert(with: "Signed in")
             })
             .disposed(by: disposeBag)
         
         viewModel.output.errorsObservable
-            .subscribe(onNext: { (error) in
-                print("Error")
+            .subscribe(onNext: { [weak self] (error) in
+                self?.showAlert(with: "Error")
             })
             .disposed(by: disposeBag)
+
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -75,27 +77,25 @@ class SignInViewController: UIViewController, ControllerType {
         view.endEditing(true)
     }
     
-    @IBAction func textFieldDidBeginEditing(_ sender: UnderLineTextField) {
-        sender.contentStatus = .filled
-        sender.tintColor = sender.activeLineColor
-        sender.activePlaceholderTextColor = sender.activeLineColor
+    private func configureTextFields() {
+        usernameTextFieldController = MDCTextInputControllerUnderline(textInput: usernameTextField)
+        passwordTextFieldController = MDCTextInputControllerUnderline(textInput: passwordTextField)
     }
     
-    @IBAction func textFieldChanged(_ sender: UnderLineTextField) {
-        if sender.text?.count == 0 { sender.contentStatus = .filled }
-    }
-    
-    @IBAction func textFieldDidEndEditing(_ sender: UnderLineTextField) {
-        if sender.text?.count == 0 { sender.contentStatus = .empty }
+    private func showAlert(with message: String) {
+        let alertController = UIAlertController(title: "",
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
         
-        sender.activePlaceholderTextColor = sender.inactiveLineColor
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
 
 extension SignInViewController {
     
-    static func create(with viewModel: SignInViewModel) -> UIViewController {
+    static func create(with viewModel: SignInViewModel) -> SignInViewController {
         let viewController = R.storyboard.auth.signInViewController()!
         viewController.viewModel = viewModel
         

@@ -9,33 +9,32 @@
 import UIKit
 import RxSwift
 
-class SignInCoordinator: Coordinator {
+final class SignInCoordinator: BaseCoordinator<Void> {
     
-    lazy var viewModel = SignInViewModel()
-    lazy var viewController: UIViewController = SignInViewController.create(with: viewModel)
+    private let navigationController: UINavigationController
     
-    private let disposeBag = DisposeBag()
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
     
-    func start(from navigationController: UINavigationController) -> Observable<Void> {
+    override func start() -> Observable<Void> {
+        let viewModel = SignInViewModel()
+        let viewController = SignInViewController.create(with: viewModel)
+        
         navigationController.pushViewController(viewController, animated: true)
         
-        viewModel.output.signUpObservable
-            .drive(onNext: { _ in
-                let signUpCoordinator = SignUpCoordinator()
-                _ = self.coordinate(to: signUpCoordinator, from: navigationController)
-            }).disposed(by: disposeBag)
-        
-        viewModel.output.resetPasswordObservable
-            .drive(onNext: { _ in
-                let resetPasswordCoordinator = ResetPasswordCoordinator()
-                _ = self.coordinate(to: resetPasswordCoordinator, from: navigationController)
-            }).disposed(by: disposeBag)
+        viewModel.output.resetPasswordObservable.flatMap({ [weak self] _ -> Observable<Void> in
+            guard let self = self else { return Observable.empty() }
+            return self.showResetPassword(on: self.navigationController)
+        })
+        .subscribe()
+        .disposed(by: disposeBag)
         
         return Observable.never()
     }
     
-    func coordinate(to coordinator: Coordinator, from viewController: UINavigationController) -> Observable<Void> {
-        return coordinator.start(from: viewController)
+    private func showResetPassword(on navigationController: UINavigationController) -> Observable<Void> {
+        let resetPasswordCoordinator = ResetPasswordCoordinator(navigationController: navigationController)
+        return coordinate(to: resetPasswordCoordinator)
     }
-    
 }

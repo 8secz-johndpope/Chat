@@ -9,26 +9,21 @@
 import UIKit
 import RxSwift
 
-class SignUpCoordinator: Coordinator {
-
-    var signUpViewController: SignUpViewController?
-    //lazy var signInViewModel = ResetPasswordViewModel()
-    private let disposeBag = DisposeBag()
+final class SignUpCoordinator: BaseCoordinator<Void> {
     
-    func start(from navigationController: UINavigationController) -> Observable<Void> {
-        let signUpViewController = R.storyboard.auth.signUpViewController() 
-        //signInViewController?.viewModel = signInViewModel
+    private let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    override func start() -> Observable<Void> {
+        let viewModel = SignUpViewModel()
+        let viewController = SignUpViewController.create(with: viewModel)
         
-        navigationController.pushViewController(signUpViewController!, animated: true)
-        
-        //        signInViewModel.doneAction.drive(onNext: { [unowned self] () in
-        //            self.signInViewController?.dismiss(animated: true, completion: nil)
-        //        }).disposed(by: disposeBag)
-        
+        navigationController.pushViewController(viewController, animated: true)
+
         return Observable.never()
     }
-    
-    func coordinate(to coordinator: Coordinator, from viewController: UINavigationController) -> Observable<Void> {
-        return coordinator.start(from: viewController)
-    }
+
 }

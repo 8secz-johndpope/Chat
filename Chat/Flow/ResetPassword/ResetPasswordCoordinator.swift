@@ -9,27 +9,20 @@
 import UIKit
 import RxSwift
 
-class ResetPasswordCoordinator: Coordinator {
-
-    var resetPasswordViewController: ResetPasswordViewController?
-    //lazy var signInViewModel = ResetPasswordViewModel()
-    private let disposeBag = DisposeBag()
+final class ResetPasswordCoordinator: BaseCoordinator<Void> {
     
-    func start(from navigationController: UINavigationController) -> Observable<Void> {
-        let resetPasswordViewController = R.storyboard.auth.resetPasswordViewController()
-        //signInViewController?.viewModel = signInViewModel
+    private let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    override func start() -> Observable<Void> {
+        let viewModel = ResetPasswordViewModel()
+        let viewController = ResetPasswordViewController.create(with: viewModel)
         
-        navigationController.pushViewController(resetPasswordViewController!, animated: true)
-        
-//        signInViewModel.doneAction.drive(onNext: { [unowned self] () in
-//            self.signInViewController?.dismiss(animated: true, completion: nil)
-//        }).disposed(by: disposeBag)
-        
+        navigationController.pushViewController(viewController, animated: true)
+
         return Observable.never()
     }
-    
-    func coordinate(to coordinator: Coordinator, from viewController: UINavigationController) -> Observable<Void> {
-        return coordinator.start(from: viewController)
-    }
-    
 }
