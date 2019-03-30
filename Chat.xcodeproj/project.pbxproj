@@ -14,6 +14,7 @@
 		DD03B6AB223AA0E200476C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */; };
 		DD03B6B3223AAFE100476C0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */; };
 		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
+		DDB86135224B6120007082F6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB86134224B6120007082F6 /* Toast.swift */; };
 		DDBC02092240C1FE0046C70E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02082240C1FE0046C70E /* R.generated.swift */; };
 		DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */; };
 		DDBC020D2240C3AD0046C70E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */; };
@@ -49,6 +50,7 @@
 		DD03B6AC223AA0E200476C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		DDB86134224B6120007082F6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		DDBC02082240C1FE0046C70E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Chat/Resources/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				DDBC021522411F4B0046C70E /* TextField.swift */,
+				DDB86134224B6120007082F6 /* Toast.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,19 +381,19 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/UnderLineTextField/UnderLineTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -403,17 +406,17 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnderLineTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDCA01D822401C9F00676A59 /* ShellScript */ = {
@@ -443,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB86135224B6120007082F6 /* Toast.swift in Sources */,
 				DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */,
 				DD03B6A3223AA0E100476C0C /* SignInViewController.swift in Sources */,
 				DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import MaterialComponents
+import NVActivityIndicatorView
 import RxSwift
 import RxCocoa
 import Rswift
@@ -30,6 +31,7 @@ class SignInViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         configureTextFields()
         configureViewModel()
@@ -54,19 +56,28 @@ class SignInViewController: UIViewController {
             .subscribe(viewModel.input.signInDidTap)
             .disposed(by: disposeBag)
         
+        signInButton.rx.tap.asObservable().subscribe { [weak self] (_) in
+            guard let self = self else { return }
+            let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0,
+                                                                          y: 0,
+                                                                          width: 40,
+                                                                          height: 40),
+                                                            type: .circleStrokeSpin)
+            activityIndicator.startAnimating()
+            self.view.showToast(text: "loading...", view: activityIndicator)
+        }.disposed(by: disposeBag)
+        
         resetPasswordButton.rx.tap
             .subscribe(viewModel.input.resetPasswordDidTap)
             .disposed(by: disposeBag)
         
-        viewModel.output.resultObservable
-            .subscribe(onNext: { [weak self] (user) in
-                self?.showAlert(with: "Signed in")
-            })
-            .disposed(by: disposeBag)
-        
         viewModel.output.errorsObservable
             .subscribe(onNext: { [weak self] (error) in
-                self?.showAlert(with: "Error")
+                guard let self = self else { return }
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                imageView.image = UIImage(named: "error")
+                imageView.contentMode = .scaleAspectFit
+                self.view.showToast(text: "error", view: imageView, duration: 2)
             })
             .disposed(by: disposeBag)
 
@@ -80,15 +91,6 @@ class SignInViewController: UIViewController {
     private func configureTextFields() {
         usernameTextFieldController = MDCTextInputControllerUnderline(textInput: usernameTextField)
         passwordTextFieldController = MDCTextInputControllerUnderline(textInput: passwordTextField)
-    }
-    
-    private func showAlert(with message: String) {
-        let alertController = UIAlertController(title: "",
-                                                message: message,
-                                                preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-        
-        self.present(alertController, animated: true, completion: nil)
     }
     
 }

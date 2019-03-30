@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import UnderLineTextField
 
-class TextField: UnderLineTextField {
+class TextField {
     
 }

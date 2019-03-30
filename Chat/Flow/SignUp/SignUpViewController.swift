@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MaterialComponents.MaterialTextFields
+import NVActivityIndicatorView
 
 class SignUpViewController: UIViewController {
     
@@ -58,15 +59,24 @@ class SignUpViewController: UIViewController {
             .subscribe(viewModel.input.signUpDidTap)
             .disposed(by: disposeBag)
         
-        viewModel.output.resultObservable
-            .subscribe(onNext: { [unowned self] (user) in
-                self.showAlert(with: "Success")
-            })
-            .disposed(by: disposeBag)
+        signUpButton.rx.tap.asObservable().subscribe { [weak self] (_) in
+            guard let self = self else { return }
+            let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0,
+                                                                          y: 0,
+                                                                          width: 40,
+                                                                          height: 40),
+                                                            type: .circleStrokeSpin)
+            activityIndicator.startAnimating()
+            self.view.showToast(text: "loading...", view: activityIndicator)
+            }.disposed(by: disposeBag)
         
         viewModel.output.errorsObservable
-            .subscribe(onNext: { [unowned self] (error) in
-                self.showAlert(with: "Error")
+            .subscribe(onNext: { [weak self] (error) in
+                guard let self = self else { return }
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                imageView.image = UIImage(named: "error")
+                imageView.contentMode = .scaleAspectFit
+                self.view.showToast(text: "error", view: imageView, duration: 2)
             })
             .disposed(by: disposeBag)
     }
@@ -75,15 +85,6 @@ class SignUpViewController: UIViewController {
         usernameTextFieldController = MDCTextInputControllerUnderline(textInput: usernameTextField)
         emailTextFieldController = MDCTextInputControllerUnderline(textInput: emailTextField)
         passwordTextFieldController = MDCTextInputControllerUnderline(textInput: passwordTextField)
-    }
-    
-    private func showAlert(with message: String) {
-        let alertController = UIAlertController(title: "",
-                                                message: message,
-                                                preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-        
-        self.present(alertController, animated: true, completion: nil)
     }
 }
 

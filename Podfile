@@ -6,11 +6,11 @@ target 'Chat' do
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'MaterialComponents/TextFields'
-    pod 'UnderLineTextField'
     pod 'R.swift'
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'Moya'
+    pod 'NVActivityIndicatorView'
 end
 
 
