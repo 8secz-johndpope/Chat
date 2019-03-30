@@ -13,9 +13,9 @@
 		DD03B6A8223AA0E200476C0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A7223AA0E200476C0C /* Assets.xcassets */; };
 		DD03B6AB223AA0E200476C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */; };
 		DD03B6B3223AAFE100476C0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */; };
+		DD064E0B224FAEA100992AD4 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD064E0A224FAEA100992AD4 /* R.generated.swift */; };
 		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
 		DDB86135224B6120007082F6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB86134224B6120007082F6 /* Toast.swift */; };
-		DDBC02092240C1FE0046C70E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02082240C1FE0046C70E /* R.generated.swift */; };
 		DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */; };
 		DDBC020D2240C3AD0046C70E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */; };
 		DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */; };
@@ -49,9 +49,9 @@
 		DD03B6AA223AA0E200476C0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD03B6AC223AA0E200476C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD064E0A224FAEA100992AD4 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DDB86134224B6120007082F6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		DDBC02082240C1FE0046C70E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Chat/Resources/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		DD03B6BA223AB1CA00476C0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DDBC02082240C1FE0046C70E /* R.generated.swift */,
+				DD064E0A224FAEA100992AD4 /* R.generated.swift */,
 				DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */,
 				DD03B6A7223AA0E200476C0C /* Assets.xcassets */,
 			);
@@ -465,11 +465,11 @@
 				DDC7DCF72247C2AF007F905B /* AuthenticationService.swift in Sources */,
 				DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */,
 				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,
+				DD064E0B224FAEA100992AD4 /* R.generated.swift in Sources */,
 				DDCA01DC2240250500676A59 /* ResetPasswordCoordinator.swift in Sources */,
 				DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */,
 				DDBC021622411F4B0046C70E /* TextField.swift in Sources */,
 				DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */,
-				DDBC02092240C1FE0046C70E /* R.generated.swift in Sources */,
 				DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
