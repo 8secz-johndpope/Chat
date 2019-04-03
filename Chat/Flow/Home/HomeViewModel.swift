@@ -25,8 +25,8 @@ class HomeViewModel: ViewModelProtocol {
     let output: Output
     
     //MARK: Subjects
-    let signInSubject = PublishSubject<Void>()
-    let signUpSubject = PublishSubject<Void>()
+    private let signInSubject = PublishSubject<Void>()
+    private let signUpSubject = PublishSubject<Void>()
     
     //MARK: Init
     init() {

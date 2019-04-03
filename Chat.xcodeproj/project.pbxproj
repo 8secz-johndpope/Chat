@@ -14,6 +14,9 @@
 		DD03B6AB223AA0E200476C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */; };
 		DD03B6B3223AAFE100476C0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */; };
 		DD064E0B224FAEA100992AD4 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD064E0A224FAEA100992AD4 /* R.generated.swift */; };
+		DD064E0D224FAF4600992AD4 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD064E0C224FAF4600992AD4 /* MainTabBarCoordinator.swift */; };
+		DD064E0F224FAFF500992AD4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD064E0E224FAFF500992AD4 /* MainTabBarController.swift */; };
+		DD064E11224FB0B400992AD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD064E10224FB0B300992AD4 /* Main.storyboard */; };
 		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
 		DDB86135224B6120007082F6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB86134224B6120007082F6 /* Toast.swift */; };
 		DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */; };
@@ -50,6 +53,9 @@
 		DD03B6AC223AA0E200476C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD064E0A224FAEA100992AD4 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		DD064E0C224FAF4600992AD4 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
+		DD064E0E224FAFF500992AD4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		DD064E10224FB0B300992AD4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DDB86134224B6120007082F6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				DD951519223BBA3200ED4D0F /* Auth.storyboard */,
+				DD064E10224FB0B300992AD4 /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -267,6 +274,8 @@
 		DDC7DCFA2247C56B007F905B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DD064E0C224FAF4600992AD4 /* MainTabBarCoordinator.swift */,
+				DD064E0E224FAFF500992AD4 /* MainTabBarController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -342,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD03B6AB223AA0E200476C0C /* LaunchScreen.storyboard in Resources */,
+				DD064E11224FB0B400992AD4 /* Main.storyboard in Resources */,
 				DD03B6B3223AAFE100476C0C /* GoogleService-Info.plist in Resources */,
 				DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */,
 				DD03B6A8223AA0E200476C0C /* Assets.xcassets in Resources */,
@@ -466,9 +476,11 @@
 				DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */,
 				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,
 				DD064E0B224FAEA100992AD4 /* R.generated.swift in Sources */,
+				DD064E0F224FAFF500992AD4 /* MainTabBarController.swift in Sources */,
 				DDCA01DC2240250500676A59 /* ResetPasswordCoordinator.swift in Sources */,
 				DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */,
 				DDBC021622411F4B0046C70E /* TextField.swift in Sources */,
+				DD064E0D224FAF4600992AD4 /* MainTabBarCoordinator.swift in Sources */,
 				DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */,
 				DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */,
 			);

@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import FirebaseAuth
 
 final class AppCoordinator: BaseCoordinator<Void> {
     
@@ -21,12 +22,23 @@ final class AppCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
-        self.showHome(on: navigationController).subscribe().disposed(by: disposeBag)
+        self.showHome(on: navigationController)
+            .subscribe(onNext: { [weak self] (user) in
+                guard let self = self else { return }
+                self.showMainTabBar(on: self.navigationController)
+            })
+            .disposed(by: disposeBag)
+        
         return Observable.never()
     }
     
-    private func showHome(on navigationController: UINavigationController) -> Observable<Void> {
+    private func showHome(on navigationController: UINavigationController) -> Observable<User> {
         let homeCoordinator = HomeCoordinator(navigationController: navigationController)
         return coordinate(to: homeCoordinator)
+    }
+    
+    private func showMainTabBar(on navigationController: UINavigationController) {
+        let mainTabBarCoordinator = MainTabBarCoordinator(navigationController: navigationController)
+        coordinate(to: mainTabBarCoordinator).subscribe().disposed(by: disposeBag)
     }
 }

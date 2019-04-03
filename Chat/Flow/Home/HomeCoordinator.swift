@@ -8,8 +8,9 @@
 
 import UIKit
 import RxSwift
+import FirebaseAuth
 
-final class HomeCoordinator: BaseCoordinator<Void> {
+final class HomeCoordinator: BaseCoordinator<User> {
     
     private let navigationController: UINavigationController
     
@@ -17,18 +18,11 @@ final class HomeCoordinator: BaseCoordinator<Void> {
         self.navigationController = navigationController
     }
     
-    override func start() -> Observable<Void> {
+    override func start() -> Observable<User> {
         let viewModel = HomeViewModel()
         let viewController = HomeViewController.create(with: viewModel)
         
         navigationController.pushViewController(viewController, animated: true)
-        
-        viewModel.output.signInObservable.flatMap({ [weak self] _ -> Observable<Void> in
-            guard let self = self else { return Observable.empty() }
-            return self.showSignIn(on: self.navigationController)
-        })
-        .subscribe()
-        .disposed(by: disposeBag)
         
         viewModel.output.signUpObservable.flatMap({ [weak self] _ -> Observable<Void> in
             guard let self = self else { return Observable.empty() }
@@ -37,7 +31,13 @@ final class HomeCoordinator: BaseCoordinator<Void> {
         .subscribe()
         .disposed(by: disposeBag)
         
-        return Observable.never()
+        return viewModel.output.signInObservable
+            .flatMap({ [weak self] _ -> Observable<User> in
+                guard let self = self else { return Observable.empty() }
+                return self.showSignIn(on: self.navigationController)
+            }).do(onNext: { [weak self] (_) in
+                self?.navigationController.popViewController(animated: false)
+            })
     }
     
     private func showSignUp(on navigationController: UINavigationController) -> Observable<Void> {
@@ -45,7 +45,7 @@ final class HomeCoordinator: BaseCoordinator<Void> {
         return coordinate(to: signUpCoordinator)
     }
     
-    private func showSignIn(on navigationController: UINavigationController) -> Observable<Void> {
+    private func showSignIn(on navigationController: UINavigationController) -> Observable<User> {
         let signInCoordinator = SignInCoordinator(navigationController: navigationController)
         return coordinate(to: signInCoordinator)
     }

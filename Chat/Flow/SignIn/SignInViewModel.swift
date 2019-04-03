@@ -33,12 +33,12 @@ class SignInViewModel: ViewModelProtocol {
     let output: Output
     
     //MARK: Subjects
-    let signInSubject = PublishSubject<Void>()
-    let resetPasswordSubject = PublishSubject<Void>()
-    let resultSubject = PublishSubject<User>()
-    let errorsSubject = PublishSubject<Error>()
-    let usernameSubject = PublishSubject<String>()
-    let passwordSubject = PublishSubject<String>()
+    private let signInSubject = PublishSubject<Void>()
+    private let resetPasswordSubject = PublishSubject<Void>()
+    private let resultSubject = PublishSubject<User>()
+    private let errorsSubject = PublishSubject<Error>()
+    private let usernameSubject = PublishSubject<String>()
+    private let passwordSubject = PublishSubject<String>()
     
     private let disposeBag = DisposeBag()
     

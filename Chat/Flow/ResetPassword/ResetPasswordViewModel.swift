@@ -28,10 +28,10 @@ class ResetPasswordViewModel: ViewModelProtocol {
     let output: Output
 
     //MARK: Subjects
-    let emailSubject = PublishSubject<String>()
-    let resetSubject = PublishSubject<Void>()
-    let resultSubject = PublishSubject<Void>()
-    let errorSubject = PublishSubject<Error>()
+    private let emailSubject = PublishSubject<String>()
+    private let resetSubject = PublishSubject<Void>()
+    private let resultSubject = PublishSubject<Void>()
+    private let errorSubject = PublishSubject<Error>()
 
     private let disposeBag = DisposeBag()
 

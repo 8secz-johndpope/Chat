@@ -8,8 +8,9 @@
 
 import UIKit
 import RxSwift
+import FirebaseAuth
 
-final class SignInCoordinator: BaseCoordinator<Void> {
+final class SignInCoordinator: BaseCoordinator<User> {
     
     private let navigationController: UINavigationController
     
@@ -17,7 +18,7 @@ final class SignInCoordinator: BaseCoordinator<Void> {
         self.navigationController = navigationController
     }
     
-    override func start() -> Observable<Void> {
+    override func start() -> Observable<User> {
         let viewModel = SignInViewModel()
         let viewController = SignInViewController.create(with: viewModel)
         
@@ -30,11 +31,14 @@ final class SignInCoordinator: BaseCoordinator<Void> {
         .subscribe()
         .disposed(by: disposeBag)
         
-        return Observable.never()
+        return viewModel.output.resultObservable.take(1).do(onNext: { [weak self] (user) in
+            self?.navigationController.popViewController(animated: false)
+        })
     }
     
     private func showResetPassword(on navigationController: UINavigationController) -> Observable<Void> {
         let resetPasswordCoordinator = ResetPasswordCoordinator(navigationController: navigationController)
         return coordinate(to: resetPasswordCoordinator)
     }
+    
 }
