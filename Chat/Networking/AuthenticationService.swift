@@ -10,7 +10,9 @@ import RxSwift
 import FirebaseAuth
 
 protocol AuthenticationServiceProtocol {
-    
+    static func signIn(with email: String, password: String) -> Observable<User>
+    static func signUp(with email: String, password: String) -> Observable<User>
+    static func sendPasswordReset(with email: String) -> Observable<Any>
 }
 
 class AuthenticationService: AuthenticationServiceProtocol {

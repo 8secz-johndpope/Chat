@@ -30,15 +30,44 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 1 images.
+  /// This `R.image` struct is generated, and contains static references to 4 images.
   struct image {
+    /// Image `contacts`.
+    static let contacts = Rswift.ImageResource(bundle: R.hostingBundle, name: "contacts")
     /// Image `error`.
     static let error = Rswift.ImageResource(bundle: R.hostingBundle, name: "error")
+    /// Image `messages`.
+    static let messages = Rswift.ImageResource(bundle: R.hostingBundle, name: "messages")
+    /// Image `settings`.
+    static let settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "settings")
+    
+    /// `UIImage(named: "contacts", bundle: ..., traitCollection: ...)`
+    static func contacts(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.contacts, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "error", bundle: ..., traitCollection: ...)`
     static func error(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.error, compatibleWith: traitCollection)
     }
+    
+    /// `UIImage(named: "messages", bundle: ..., traitCollection: ...)`
+    static func messages(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.messages, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "settings", bundle: ..., traitCollection: ...)`
+    static func settings(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.settings, compatibleWith: traitCollection)
+    }
+    
+    fileprivate init() {}
+  }
+  
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  struct reuseIdentifier {
+    /// Reuse identifier `MessageCell`.
+    static let messageCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "MessageCell")
     
     fileprivate init() {}
   }
@@ -149,17 +178,38 @@ struct _R: Rswift.Validatable {
     
     struct main: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
+      let contactsViewController = StoryboardViewControllerResource<ContactsViewController>(identifier: "ContactsViewController")
       let mainTabBarController = StoryboardViewControllerResource<MainTabBarController>(identifier: "MainTabBarController")
+      let messagesTableViewController = StoryboardViewControllerResource<MessagesTableViewController>(identifier: "MessagesTableViewController")
       let name = "Main"
+      let settingsViewController = StoryboardViewControllerResource<SettingsViewController>(identifier: "SettingsViewController")
+      
+      func contactsViewController(_: Void = ()) -> ContactsViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: contactsViewController)
+      }
       
       func mainTabBarController(_: Void = ()) -> MainTabBarController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: mainTabBarController)
       }
       
+      func messagesTableViewController(_: Void = ()) -> MessagesTableViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: messagesTableViewController)
+      }
+      
+      func settingsViewController(_: Void = ()) -> SettingsViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsViewController)
+      }
+      
       static func validate() throws {
+        if UIKit.UIImage(named: "contacts", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contacts' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "messages", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'messages' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "settings", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'settings' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.main().contactsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'contactsViewController' could not be loaded from storyboard 'Main' as 'ContactsViewController'.") }
         if _R.storyboard.main().mainTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainTabBarController' could not be loaded from storyboard 'Main' as 'MainTabBarController'.") }
+        if _R.storyboard.main().messagesTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'messagesTableViewController' could not be loaded from storyboard 'Main' as 'MessagesTableViewController'.") }
+        if _R.storyboard.main().settingsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsViewController' could not be loaded from storyboard 'Main' as 'SettingsViewController'.") }
       }
       
       fileprivate init() {}

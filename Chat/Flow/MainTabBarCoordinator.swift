@@ -21,6 +21,19 @@ final class MainTabBarCoordinator: BaseCoordinator<Void> {
         let tabBarController = MainTabBarController.create()
         navigationController.present(tabBarController, animated: true)
         
-        return Observable.never()
+        let contactsNavigationController = UINavigationController()
+        let messagesNavigationController = UINavigationController()
+        let settingsNavigationController = UINavigationController()
+        
+        tabBarController.setViewControllers([contactsNavigationController, messagesNavigationController, settingsNavigationController], animated: false)
+        
+        let contactsCoordinator = ContactsCoordinator(navigationController: contactsNavigationController)
+        let messagesCoordinator = MessagesCoordinator(navigationController: messagesNavigationController)
+        let settingsCoordinator = SettingsCoordinator(navigationController: settingsNavigationController)
+        
+        return coordinate(to: contactsCoordinator)
+            .concat(coordinate(to: messagesCoordinator))
+            .concat(coordinate(to: settingsCoordinator))
     }
+
 }

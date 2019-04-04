@@ -5,6 +5,7 @@ inhibit_all_warnings!
 target 'Chat' do
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
+    pod 'Firebase/Database'
     pod 'MaterialComponents/TextFields'
     pod 'R.swift'
     pod 'RxSwift'
