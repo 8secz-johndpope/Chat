@@ -24,7 +24,8 @@ class SignUpViewModel: ViewModelProtocol {
         let usernameObservable: Observable<String>
         let emailObservable: Observable<String>
         let passwordObservable: Observable<String>
-        let resultObservable: Observable<User>
+        let resultObservable: Observable<AuthDataResult>
+        let emailConfirmedObservable: Observable<Bool>
         let errorsObservable: Observable<Error>
     }
     
@@ -36,7 +37,8 @@ class SignUpViewModel: ViewModelProtocol {
     private let emailSubject = PublishSubject<String>()
     private let passwordSubject = PublishSubject<String>()
     private let signUpSubject = PublishSubject<Void>()
-    private let resultSubject = PublishSubject<User>()
+    private let resultSubject = PublishSubject<AuthDataResult>()
+    private let emailConfirmedSubject = PublishSubject<Bool>()
     private let errorsSubject = PublishSubject<Error>()
     
     private let disposeBag = DisposeBag()
@@ -58,11 +60,12 @@ class SignUpViewModel: ViewModelProtocol {
                              emailObservable: emailSubject.asObservable(),
                              passwordObservable: passwordSubject.asObservable(),
                              resultObservable: resultSubject.asObservable(),
+                             emailConfirmedObservable: emailConfirmedSubject.asObservable(),
                              errorsObservable: errorsSubject.asObservable())
         
         signUpSubject.withLatestFrom(credentialsObservable)
             .flatMapLatest { (email, password) in
-                return AuthenticationService.signUp(with: email, password: password).materialize()
+                return Auth.auth().rx.createUser(withEmail: email, password: password).materialize()
             }.subscribe(onNext: { [weak self] (event) in
                 switch event {
                 case .next(let user):

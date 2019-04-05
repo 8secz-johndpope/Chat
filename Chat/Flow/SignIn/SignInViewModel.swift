@@ -24,7 +24,7 @@ class SignInViewModel: ViewModelProtocol {
     struct Output {
         let usernameObservable: Observable<String>
         let passwordObservable: Observable<String>
-        let resultObservable: Observable<User>
+        let resultObservable: Observable<AuthDataResult>
         let errorsObservable: Observable<Error>
         let resetPasswordObservable: Observable<Void>
     }
@@ -35,7 +35,7 @@ class SignInViewModel: ViewModelProtocol {
     //MARK: Subjects
     private let signInSubject = PublishSubject<Void>()
     private let resetPasswordSubject = PublishSubject<Void>()
-    private let resultSubject = PublishSubject<User>()
+    private let resultSubject = PublishSubject<AuthDataResult>()
     private let errorsSubject = PublishSubject<Error>()
     private let usernameSubject = PublishSubject<String>()
     private let passwordSubject = PublishSubject<String>()
@@ -63,7 +63,7 @@ class SignInViewModel: ViewModelProtocol {
         
         signInSubject.withLatestFrom(credentialsObservable)
             .flatMapLatest { (email, password) in
-                return AuthenticationService.signIn(with: email, password: password).materialize()
+                return Auth.auth().rx.signIn(withEmail: email, password: password).materialize()
             }.subscribe(onNext: { [weak self] (event) in
                 switch event {
                 case .next(let user):

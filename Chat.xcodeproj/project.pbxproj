@@ -39,7 +39,6 @@
 		DDC7DCF022477974007F905B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7DCEF22477974007F905B /* HomeViewController.swift */; };
 		DDC7DCF322477B82007F905B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7DCF222477B82007F905B /* HomeViewModel.swift */; };
 		DDC7DCF522477B8D007F905B /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7DCF422477B8D007F905B /* HomeCoordinator.swift */; };
-		DDC7DCF72247C2AF007F905B /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7DCF62247C2AF007F905B /* AuthenticationService.swift */; };
 		DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D422400EEF00676A59 /* Coordinator.swift */; };
 		DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D622400EFA00676A59 /* AppCoordinator.swift */; };
 		DDCA01DA224024F700676A59 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D9224024F700676A59 /* SignInCoordinator.swift */; };
@@ -87,7 +86,6 @@
 		DDC7DCEF22477974007F905B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DDC7DCF222477B82007F905B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DDC7DCF422477B8D007F905B /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		DDC7DCF62247C2AF007F905B /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		DDCA01D422400EEF00676A59 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DDCA01D622400EFA00676A59 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DDCA01D9224024F700676A59 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */,
-				DDC7DCF62247C2AF007F905B /* AuthenticationService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -496,7 +493,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -529,7 +526,6 @@
 				DDCA01DA224024F700676A59 /* SignInCoordinator.swift in Sources */,
 				DD19A947225552CE00CC14BB /* SettingsViewModel.swift in Sources */,
 				DDCA01E02240317000676A59 /* SignInViewModel.swift in Sources */,
-				DDC7DCF72247C2AF007F905B /* AuthenticationService.swift in Sources */,
 				DD19A94B2255530E00CC14BB /* ContactsCoordinator.swift in Sources */,
 				DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */,
 				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,

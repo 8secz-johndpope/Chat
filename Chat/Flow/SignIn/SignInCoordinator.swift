@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import FirebaseAuth
 
-final class SignInCoordinator: BaseCoordinator<User> {
+final class SignInCoordinator: BaseCoordinator<AuthDataResult> {
     
     private let navigationController: UINavigationController
     
@@ -18,7 +18,7 @@ final class SignInCoordinator: BaseCoordinator<User> {
         self.navigationController = navigationController
     }
     
-    override func start() -> Observable<User> {
+    override func start() -> Observable<AuthDataResult> {
         let viewModel = SignInViewModel()
         let viewController = SignInViewController.create(with: viewModel)
         

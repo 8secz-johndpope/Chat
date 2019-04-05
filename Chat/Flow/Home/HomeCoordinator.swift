@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import FirebaseAuth
 
-final class HomeCoordinator: BaseCoordinator<User> {
+final class HomeCoordinator: BaseCoordinator<AuthDataResult> {
     
     private let navigationController: UINavigationController
     
@@ -18,7 +18,7 @@ final class HomeCoordinator: BaseCoordinator<User> {
         self.navigationController = navigationController
     }
     
-    override func start() -> Observable<User> {
+    override func start() -> Observable<AuthDataResult> {
         let viewModel = HomeViewModel()
         let viewController = HomeViewController.create(with: viewModel)
         
@@ -32,7 +32,7 @@ final class HomeCoordinator: BaseCoordinator<User> {
         .disposed(by: disposeBag)
         
         return viewModel.output.signInObservable
-            .flatMap({ [weak self] _ -> Observable<User> in
+            .flatMap({ [weak self] _ -> Observable<AuthDataResult> in
                 guard let self = self else { return Observable.empty() }
                 return self.showSignIn(on: self.navigationController)
             }).do(onNext: { [weak self] (_) in
@@ -45,7 +45,7 @@ final class HomeCoordinator: BaseCoordinator<User> {
         return coordinate(to: signUpCoordinator)
     }
     
-    private func showSignIn(on navigationController: UINavigationController) -> Observable<User> {
+    private func showSignIn(on navigationController: UINavigationController) -> Observable<AuthDataResult> {
         let signInCoordinator = SignInCoordinator(navigationController: navigationController)
         return coordinate(to: signInCoordinator)
     }

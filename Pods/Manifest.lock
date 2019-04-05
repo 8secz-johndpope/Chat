@@ -1,16 +1,10 @@
 PODS:
   - Alamofire (4.8.1)
-  - Firebase/Auth (5.19.0):
-    - Firebase/CoreOnly
-    - FirebaseAuth (= 5.4.1)
   - Firebase/Core (5.19.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
   - Firebase/CoreOnly (5.19.0):
     - FirebaseCore (= 5.4.0)
-  - Firebase/Database (5.19.0):
-    - Firebase/CoreOnly
-    - FirebaseDatabase (= 5.1.1)
   - FirebaseAnalytics (5.8.0):
     - FirebaseCore (~> 5.4)
     - FirebaseInstanceID (~> 3.8)
@@ -37,6 +31,10 @@ PODS:
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
+  - FirebaseStorage (3.1.1):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -97,18 +95,38 @@ PODS:
   - RxAtomic (4.4.2)
   - RxCocoa (4.4.2):
     - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxFirebase/Auth (0.3.4):
+    - RxFirebaseAuthentication (~> 0.3)
+  - RxFirebase/Database (0.3.4):
+    - RxFirebaseDatabase (~> 0.3)
+  - RxFirebase/Storage (0.3.4):
+    - RxFirebaseStorage (~> 0.3)
+  - RxFirebaseAuthentication (0.3.4):
+    - FirebaseAuth (~> 5)
+    - FirebaseCore (~> 5)
+    - RxCocoa (~> 4)
+    - RxSwift (~> 4)
+  - RxFirebaseDatabase (0.3.4):
+    - FirebaseDatabase (~> 5)
+    - RxCocoa (~> 4)
+    - RxSwift (~> 4)
+  - RxFirebaseStorage (0.3.4):
+    - FirebaseStorage (~> 3)
+    - RxCocoa (~> 4)
+    - RxSwift (~> 4)
   - RxSwift (4.4.2):
     - RxAtomic (>= 4.4.2, ~> 4.4)
 
 DEPENDENCIES:
-  - Firebase/Auth
   - Firebase/Core
-  - Firebase/Database
   - MaterialComponents/TextFields
   - Moya
   - NVActivityIndicatorView
   - R.swift
   - RxCocoa
+  - RxFirebase/Auth
+  - RxFirebase/Database
+  - RxFirebase/Storage
   - RxSwift
 
 SPEC REPOS:
@@ -121,6 +139,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
@@ -135,6 +154,10 @@ SPEC REPOS:
     - Result
     - RxAtomic
     - RxCocoa
+    - RxFirebase
+    - RxFirebaseAuthentication
+    - RxFirebaseDatabase
+    - RxFirebaseStorage
     - RxSwift
 
 SPEC CHECKSUMS:
@@ -146,6 +169,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
   FirebaseDatabase: 2c15b0ea6f2c6eb5e57413f9d6340f1e50b81ae3
   FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
+  FirebaseStorage: 6162ef4322502b818d9de0ec552f5226d283de43
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
@@ -160,8 +184,12 @@ SPEC CHECKSUMS:
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
   RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
+  RxFirebase: 77493b62bfafe7d4dbb404bd06874756f29465ab
+  RxFirebaseAuthentication: 9dc412659765fe6a873b996cfd042b745cb643b4
+  RxFirebaseDatabase: c75bd954c983fdf134f13f8f46d75058e83eb822
+  RxFirebaseStorage: fe6ec6aa4a2e4bc985f0dcd9fc4ea9ade4b8edf2
   RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
 
-PODFILE CHECKSUM: 5feb44f81b4b49c447f1768ba9940cf6ae1a79b0
+PODFILE CHECKSUM: 45d77baf541b9a60ada4019e6400067daa2ccc05
 
 COCOAPODS: 1.6.1

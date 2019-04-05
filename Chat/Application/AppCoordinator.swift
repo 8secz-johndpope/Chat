@@ -32,7 +32,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
         return Observable.never()
     }
     
-    private func showHome(on navigationController: UINavigationController) -> Observable<User> {
+    private func showHome(on navigationController: UINavigationController) -> Observable<AuthDataResult> {
         let homeCoordinator = HomeCoordinator(navigationController: navigationController)
         return coordinate(to: homeCoordinator)
     }
