@@ -249,6 +249,80 @@
             </objects>
             <point key="canvasLocation" x="-473" y="1129"/>
         </scene>
+        <!--Verification View Controller-->
+        <scene sceneID="oQM-A4-nAN">
+            <objects>
+                <viewController storyboardIdentifier="VerificationViewController" id="LYW-eQ-iI4" customClass="VerificationViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pgw-s5-f1t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YH3-Kc-Xoo">
+                                <rect key="frame" x="82.5" y="258.5" width="210" height="170"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgW-be-G6e">
+                                        <rect key="frame" x="79.5" y="141" width="51" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="nar-5v-khB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcD-1z-djh">
+                                        <rect key="frame" x="34" y="4" width="142.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBO-YD-4D6">
+                                        <rect key="frame" x="56" y="28.5" width="98" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gBO-YD-4D6" firstAttribute="centerX" secondItem="YH3-Kc-Xoo" secondAttribute="centerX" id="4Ov-SK-h1R"/>
+                                    <constraint firstItem="gBO-YD-4D6" firstAttribute="top" secondItem="FcD-1z-djh" secondAttribute="bottom" constant="4" id="Cu7-Fy-W0M"/>
+                                    <constraint firstItem="FcD-1z-djh" firstAttribute="top" secondItem="YH3-Kc-Xoo" secondAttribute="top" constant="4" id="JOa-u5-mmc"/>
+                                    <constraint firstAttribute="bottom" secondItem="MgW-be-G6e" secondAttribute="bottom" constant="4" id="Pi4-hk-Dxq"/>
+                                    <constraint firstItem="FcD-1z-djh" firstAttribute="centerX" secondItem="YH3-Kc-Xoo" secondAttribute="centerX" id="XvO-Zo-HtK"/>
+                                    <constraint firstItem="MgW-be-G6e" firstAttribute="centerX" secondItem="YH3-Kc-Xoo" secondAttribute="centerX" id="g1W-Ze-dZ4"/>
+                                    <constraint firstAttribute="height" constant="170" id="hpE-bk-ogT"/>
+                                    <constraint firstAttribute="width" constant="210" id="i8W-iP-9zS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-Hh-oGU">
+                                <rect key="frame" x="145.5" y="311.5" width="84" height="84"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jPQ-Hh-oGU" secondAttribute="height" multiplier="1:1" id="Tbi-W2-VTo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="YH3-Kc-Xoo" firstAttribute="centerX" secondItem="t2Z-x9-qnl" secondAttribute="centerX" id="8iJ-DH-oOj"/>
+                            <constraint firstItem="MgW-be-G6e" firstAttribute="top" secondItem="jPQ-Hh-oGU" secondAttribute="bottom" constant="4" id="Ebf-39-TCr"/>
+                            <constraint firstItem="jPQ-Hh-oGU" firstAttribute="width" secondItem="YH3-Kc-Xoo" secondAttribute="width" multiplier="0.4" id="J78-OX-eB0"/>
+                            <constraint firstItem="YH3-Kc-Xoo" firstAttribute="centerY" secondItem="t2Z-x9-qnl" secondAttribute="centerY" id="MVq-HC-K0a"/>
+                            <constraint firstItem="jPQ-Hh-oGU" firstAttribute="centerX" secondItem="YH3-Kc-Xoo" secondAttribute="centerX" id="riZ-Z6-K2x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t2Z-x9-qnl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5bi-n1-8Sw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384.80000000000001" y="1127.5862068965519"/>
+        </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="sWg-eW-0La">
             <objects>

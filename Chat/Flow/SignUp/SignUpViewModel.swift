@@ -14,18 +14,14 @@ class SignUpViewModel: ViewModelProtocol {
     
     //MARK: Input-Output
     struct Input {
-        let username: AnyObserver<String>
-        let email: AnyObserver<String>
-        let password: AnyObserver<String>
+        let email = BehaviorSubject(value: "")
+        let username = BehaviorSubject(value: "")
+        let password = BehaviorSubject(value: "")
         let signUpDidTap: AnyObserver<Void>
     }
     
     struct Output {
-        let usernameObservable: Observable<String>
-        let emailObservable: Observable<String>
-        let passwordObservable: Observable<String>
         let resultObservable: Observable<AuthDataResult>
-        let emailConfirmedObservable: Observable<Bool>
         let errorsObservable: Observable<Error>
     }
     
@@ -33,34 +29,23 @@ class SignUpViewModel: ViewModelProtocol {
     let output: Output
     
     //MARK: Subjects
-    private let usernameSubject = PublishSubject<String>()
-    private let emailSubject = PublishSubject<String>()
-    private let passwordSubject = PublishSubject<String>()
     private let signUpSubject = PublishSubject<Void>()
     private let resultSubject = PublishSubject<AuthDataResult>()
-    private let emailConfirmedSubject = PublishSubject<Bool>()
     private let errorsSubject = PublishSubject<Error>()
     
     private let disposeBag = DisposeBag()
     
     private var credentialsObservable: Observable<(String, String)> {
-        return Observable.combineLatest(output.emailObservable, output.passwordObservable) { (username, password) in
+        return Observable.combineLatest(input.email, input.password) { (username, password) in
             return (username, password)
         }
     }
     
     //MARK: Init
     init() {
-        self.input = Input(username: usernameSubject.asObserver(),
-                           email: emailSubject.asObserver(),
-                           password: passwordSubject.asObserver(),
-                           signUpDidTap: signUpSubject.asObserver())
+        self.input = Input(signUpDidTap: signUpSubject.asObserver())
         
-        self.output = Output(usernameObservable: usernameSubject.asObservable(),
-                             emailObservable: emailSubject.asObservable(),
-                             passwordObservable: passwordSubject.asObservable(),
-                             resultObservable: resultSubject.asObservable(),
-                             emailConfirmedObservable: emailConfirmedSubject.asObservable(),
+        self.output = Output(resultObservable: resultSubject.asObservable(),
                              errorsObservable: errorsSubject.asObservable())
         
         signUpSubject.withLatestFrom(credentialsObservable)
@@ -69,8 +54,8 @@ class SignUpViewModel: ViewModelProtocol {
             }.subscribe(onNext: { [weak self] (event) in
                 switch event {
                 case .next(let user):
+                    Auth.auth().currentUser?.sendEmailVerification()
                     self?.resultSubject.onNext(user)
-                    self?.resultSubject.onCompleted()
                 case .error(let error):
                     self?.errorsSubject.onNext(error)
                 default:
@@ -79,6 +64,5 @@ class SignUpViewModel: ViewModelProtocol {
             })
             .disposed(by: disposeBag)
     }
-    
     
 }

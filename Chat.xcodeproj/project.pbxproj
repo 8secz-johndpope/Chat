@@ -26,6 +26,11 @@
 		DD19A94B2255530E00CC14BB /* ContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94A2255530E00CC14BB /* ContactsCoordinator.swift */; };
 		DD19A94D2255533400CC14BB /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */; };
 		DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */; };
+		DD76F59B225A0A21007C9A30 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59A225A0A21007C9A30 /* VerificationViewController.swift */; };
+		DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59D225A197B007C9A30 /* PopUpView.swift */; };
+		DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59F225A33DE007C9A30 /* SystemColor.swift */; };
+		DD76F5A2225A54DC007C9A30 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F5A1225A54DC007C9A30 /* VerificationViewModel.swift */; };
+		DD76F5A4225A54EB007C9A30 /* VerificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F5A3225A54EB007C9A30 /* VerificationCoordinator.swift */; };
 		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
 		DDB86135224B6120007082F6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB86134224B6120007082F6 /* Toast.swift */; };
 		DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */; };
@@ -33,7 +38,6 @@
 		DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */; };
 		DDBC02112240EAE20046C70E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02102240EAE20046C70E /* User.swift */; };
 		DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02122240F0E00046C70E /* String+isValidEmail.swift */; };
-		DDBC021622411F4B0046C70E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC021522411F4B0046C70E /* TextField.swift */; };
 		DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC0218224131C30046C70E /* ViewModelProtocol.swift */; };
 		DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC021A2241320D0046C70E /* ControllerType.swift */; };
 		DDC7DCF022477974007F905B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7DCEF22477974007F905B /* HomeViewController.swift */; };
@@ -73,6 +77,11 @@
 		DD19A94A2255530E00CC14BB /* ContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCoordinator.swift; sourceTree = "<group>"; };
 		DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		DD76F59A225A0A21007C9A30 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		DD76F59D225A197B007C9A30 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		DD76F59F225A33DE007C9A30 /* SystemColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemColor.swift; sourceTree = "<group>"; };
+		DD76F5A1225A54DC007C9A30 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
+		DD76F5A3225A54EB007C9A30 /* VerificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCoordinator.swift; sourceTree = "<group>"; };
 		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DDB86134224B6120007082F6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -80,7 +89,6 @@
 		DDBC020E2240E89F0046C70E /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		DDBC02102240EAE20046C70E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DDBC02122240F0E00046C70E /* String+isValidEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidEmail.swift"; sourceTree = "<group>"; };
-		DDBC021522411F4B0046C70E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		DDBC0218224131C30046C70E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		DDBC021A2241320D0046C70E /* ControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerType.swift; sourceTree = "<group>"; };
 		DDC7DCEF22477974007F905B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -183,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				DD064E0A224FAEA100992AD4 /* R.generated.swift */,
-				DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */,
 				DD03B6A7223AA0E200476C0C /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -194,6 +201,7 @@
 			children = (
 				DD951519223BBA3200ED4D0F /* Auth.storyboard */,
 				DD064E10224FB0B300992AD4 /* Main.storyboard */,
+				DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -228,11 +236,21 @@
 			path = Contacts;
 			sourceTree = "<group>";
 		};
+		DD76F59C225A1371007C9A30 /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				DD76F5A1225A54DC007C9A30 /* VerificationViewModel.swift */,
+				DD76F59A225A0A21007C9A30 /* VerificationViewController.swift */,
+				DD76F5A3225A54EB007C9A30 /* VerificationCoordinator.swift */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
 		DDBC021422411F310046C70E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DDBC021522411F4B0046C70E /* TextField.swift */,
 				DDB86134224B6120007082F6 /* Toast.swift */,
+				DD76F59D225A197B007C9A30 /* PopUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				DDBC0218224131C30046C70E /* ViewModelProtocol.swift */,
+				DD76F59F225A33DE007C9A30 /* SystemColor.swift */,
 				DDBC021A2241320D0046C70E /* ControllerType.swift */,
 				DDCA01D422400EEF00676A59 /* Coordinator.swift */,
 			);
@@ -280,6 +299,7 @@
 		DDBC022122413D660046C70E /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				DD76F59C225A1371007C9A30 /* PopUp */,
 				DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */,
 				DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */,
 				DDCA01DD2240251100676A59 /* SignUpCoordinator.swift */,
@@ -515,7 +535,9 @@
 				DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */,
 				DDCB79FD223D9D4500F22817 /* ResetPasswordViewController.swift in Sources */,
 				DDC7DCF522477B8D007F905B /* HomeCoordinator.swift in Sources */,
+				DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */,
 				DDC7DCF322477B82007F905B /* HomeViewModel.swift in Sources */,
+				DD76F5A2225A54DC007C9A30 /* VerificationViewModel.swift in Sources */,
 				DDBC02112240EAE20046C70E /* User.swift in Sources */,
 				DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */,
 				DDC7DCF022477974007F905B /* HomeViewController.swift in Sources */,
@@ -527,6 +549,7 @@
 				DD19A947225552CE00CC14BB /* SettingsViewModel.swift in Sources */,
 				DDCA01E02240317000676A59 /* SignInViewModel.swift in Sources */,
 				DD19A94B2255530E00CC14BB /* ContactsCoordinator.swift in Sources */,
+				DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */,
 				DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */,
 				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,
 				DD064E0B224FAEA100992AD4 /* R.generated.swift in Sources */,
@@ -536,7 +559,8 @@
 				DD19A93C225540AE00CC14BB /* MessagesViewController.swift in Sources */,
 				DD19A941225547DD00CC14BB /* SettingsViewController.swift in Sources */,
 				DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */,
-				DDBC021622411F4B0046C70E /* TextField.swift in Sources */,
+				DD76F5A4225A54EB007C9A30 /* VerificationCoordinator.swift in Sources */,
+				DD76F59B225A0A21007C9A30 /* VerificationViewController.swift in Sources */,
 				DD064E0D224FAF4600992AD4 /* MainTabBarCoordinator.swift in Sources */,
 				DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */,
 				DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */,

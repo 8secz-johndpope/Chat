@@ -24,12 +24,13 @@ final class SignInCoordinator: BaseCoordinator<AuthDataResult> {
         
         navigationController.pushViewController(viewController, animated: true)
         
-        viewModel.output.resetPasswordObservable.flatMap({ [weak self] _ -> Observable<Void> in
-            guard let self = self else { return Observable.empty() }
-            return self.showResetPassword(on: self.navigationController)
-        })
-        .subscribe()
-        .disposed(by: disposeBag)
+        viewModel.output.resetPasswordObservable
+            .flatMap({ [weak self] _ -> Observable<Void> in
+                guard let self = self else { return Observable.empty() }
+                return self.showResetPassword(on: self.navigationController)
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
         
         return viewModel.output.resultObservable.take(1).do(onNext: { [weak self] (user) in
             self?.navigationController.popViewController(animated: false)

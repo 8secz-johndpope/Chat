@@ -30,7 +30,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 4 images.
+  /// This `R.image` struct is generated, and contains static references to 5 images.
   struct image {
     /// Image `contacts`.
     static let contacts = Rswift.ImageResource(bundle: R.hostingBundle, name: "contacts")
@@ -40,6 +40,8 @@ struct R: Rswift.Validatable {
     static let messages = Rswift.ImageResource(bundle: R.hostingBundle, name: "messages")
     /// Image `settings`.
     static let settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "settings")
+    /// Image `success`.
+    static let success = Rswift.ImageResource(bundle: R.hostingBundle, name: "success")
     
     /// `UIImage(named: "contacts", bundle: ..., traitCollection: ...)`
     static func contacts(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -59,6 +61,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "settings", bundle: ..., traitCollection: ...)`
     static func settings(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.settings, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "success", bundle: ..., traitCollection: ...)`
+    static func success(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.success, compatibleWith: traitCollection)
     }
     
     fileprivate init() {}
@@ -133,6 +140,7 @@ struct _R: Rswift.Validatable {
       let resetPasswordViewController = StoryboardViewControllerResource<ResetPasswordViewController>(identifier: "ResetPasswordViewController")
       let signInViewController = StoryboardViewControllerResource<SignInViewController>(identifier: "SignInViewController")
       let signUpViewController = StoryboardViewControllerResource<SignUpViewController>(identifier: "SignUpViewController")
+      let verificationViewController = StoryboardViewControllerResource<VerificationViewController>(identifier: "VerificationViewController")
       
       func homeViewController(_: Void = ()) -> HomeViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: homeViewController)
@@ -150,6 +158,10 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: signUpViewController)
       }
       
+      func verificationViewController(_: Void = ()) -> VerificationViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: verificationViewController)
+      }
+      
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
@@ -157,6 +169,7 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.auth().resetPasswordViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'resetPasswordViewController' could not be loaded from storyboard 'Auth' as 'ResetPasswordViewController'.") }
         if _R.storyboard.auth().signInViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signInViewController' could not be loaded from storyboard 'Auth' as 'SignInViewController'.") }
         if _R.storyboard.auth().signUpViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signUpViewController' could not be loaded from storyboard 'Auth' as 'SignUpViewController'.") }
+        if _R.storyboard.auth().verificationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'verificationViewController' could not be loaded from storyboard 'Auth' as 'VerificationViewController'.") }
       }
       
       fileprivate init() {}

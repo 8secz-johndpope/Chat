@@ -24,23 +24,28 @@ final class HomeCoordinator: BaseCoordinator<AuthDataResult> {
         
         navigationController.pushViewController(viewController, animated: true)
         
-        viewModel.output.signUpObservable.flatMap({ [weak self] _ -> Observable<Void> in
-            guard let self = self else { return Observable.empty() }
-            return self.showSignUp(on: self.navigationController)
-        })
-        .subscribe()
-        .disposed(by: disposeBag)
+        let signUpResult = viewModel.output.signUpObservable
+            .flatMap({ [weak self] _ -> Observable<AuthDataResult> in
+                guard let self = self else { return Observable.empty() }
+                return self.showSignUp(on: self.navigationController)
+            })
+            .map { $0 }
         
-        return viewModel.output.signInObservable
+        let signInResult = viewModel.output.signInObservable
             .flatMap({ [weak self] _ -> Observable<AuthDataResult> in
                 guard let self = self else { return Observable.empty() }
                 return self.showSignIn(on: self.navigationController)
-            }).do(onNext: { [weak self] (_) in
+            })
+            .map { $0 }
+        
+        return Observable.merge(signInResult, signUpResult)
+            .take(1)
+            .do(onNext: { [weak self] (_) in
                 self?.navigationController.popViewController(animated: false)
             })
     }
     
-    private func showSignUp(on navigationController: UINavigationController) -> Observable<Void> {
+    private func showSignUp(on navigationController: UINavigationController) -> Observable<AuthDataResult> {
         let signUpCoordinator = SignUpCoordinator(navigationController: navigationController)
         return coordinate(to: signUpCoordinator)
     }
