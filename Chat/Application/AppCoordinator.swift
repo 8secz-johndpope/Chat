@@ -22,12 +22,14 @@ final class AppCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
-        self.showHome(on: navigationController)
-            .subscribe(onNext: { [weak self] (user) in
-                guard let self = self else { return }
-                self.showMainTabBar(on: self.navigationController)
-            })
-            .disposed(by: disposeBag)
+//        self.showHome(on: navigationController)
+//            .subscribe(onNext: { [weak self] (user) in
+//                guard let self = self else { return }
+//                self.showMainTabBar(on: self.navigationController)
+//            })
+//            .disposed(by: disposeBag)
+        
+        self.showMainTabBar(on: navigationController)
         
         return Observable.never()
     }
@@ -37,6 +39,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
         return coordinate(to: homeCoordinator)
     }
     
+    //FIX return value
     private func showMainTabBar(on navigationController: UINavigationController) {
         let mainTabBarCoordinator = MainTabBarCoordinator(navigationController: navigationController)
         coordinate(to: mainTabBarCoordinator).subscribe().disposed(by: disposeBag)

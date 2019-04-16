@@ -17,15 +17,18 @@
 		DD064E0D224FAF4600992AD4 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD064E0C224FAF4600992AD4 /* MainTabBarCoordinator.swift */; };
 		DD064E0F224FAFF500992AD4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD064E0E224FAFF500992AD4 /* MainTabBarController.swift */; };
 		DD064E11224FB0B400992AD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD064E10224FB0B300992AD4 /* Main.storyboard */; };
-		DD19A93C225540AE00CC14BB /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A93B225540AE00CC14BB /* MessagesViewController.swift */; };
+		DD19A93C225540AE00CC14BB /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A93B225540AE00CC14BB /* MessagesTableViewController.swift */; };
 		DD19A941225547DD00CC14BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A940225547DD00CC14BB /* SettingsViewController.swift */; };
-		DD19A943225547F600CC14BB /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A942225547F600CC14BB /* ContactsViewController.swift */; };
+		DD19A943225547F600CC14BB /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A942225547F600CC14BB /* ContactsTableViewController.swift */; };
 		DD19A945225552BD00CC14BB /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A944225552BD00CC14BB /* ContactsViewModel.swift */; };
 		DD19A947225552CE00CC14BB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A946225552CE00CC14BB /* SettingsViewModel.swift */; };
 		DD19A949225552E200CC14BB /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A948225552E200CC14BB /* MessagesViewModel.swift */; };
 		DD19A94B2255530E00CC14BB /* ContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94A2255530E00CC14BB /* ContactsCoordinator.swift */; };
 		DD19A94D2255533400CC14BB /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */; };
 		DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */; };
+		DD338F212265A1F400DDE6DE /* SearchContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F202265A1F400DDE6DE /* SearchContactsViewController.swift */; };
+		DD338F232265A7F400DDE6DE /* SearchContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F222265A7F400DDE6DE /* SearchContactsViewModel.swift */; };
+		DD338F252265A86400DDE6DE /* SearchContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F242265A86400DDE6DE /* SearchContactsCoordinator.swift */; };
 		DD76F59B225A0A21007C9A30 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59A225A0A21007C9A30 /* VerificationViewController.swift */; };
 		DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59D225A197B007C9A30 /* PopUpView.swift */; };
 		DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59F225A33DE007C9A30 /* SystemColor.swift */; };
@@ -68,15 +71,18 @@
 		DD064E0C224FAF4600992AD4 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		DD064E0E224FAFF500992AD4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD064E10224FB0B300992AD4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		DD19A93B225540AE00CC14BB /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		DD19A93B225540AE00CC14BB /* MessagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		DD19A940225547DD00CC14BB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		DD19A942225547F600CC14BB /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		DD19A942225547F600CC14BB /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		DD19A944225552BD00CC14BB /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		DD19A946225552CE00CC14BB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		DD19A948225552E200CC14BB /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		DD19A94A2255530E00CC14BB /* ContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCoordinator.swift; sourceTree = "<group>"; };
 		DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		DD338F202265A1F400DDE6DE /* SearchContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContactsViewController.swift; sourceTree = "<group>"; };
+		DD338F222265A7F400DDE6DE /* SearchContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContactsViewModel.swift; sourceTree = "<group>"; };
+		DD338F242265A86400DDE6DE /* SearchContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContactsCoordinator.swift; sourceTree = "<group>"; };
 		DD76F59A225A0A21007C9A30 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		DD76F59D225A197B007C9A30 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		DD76F59F225A33DE007C9A30 /* SystemColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemColor.swift; sourceTree = "<group>"; };
@@ -209,9 +215,9 @@
 		DD19A93D225540B200CC14BB /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				DD19A93B225540AE00CC14BB /* MessagesViewController.swift */,
-				DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */,
+				DD19A93B225540AE00CC14BB /* MessagesTableViewController.swift */,
 				DD19A948225552E200CC14BB /* MessagesViewModel.swift */,
+				DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -229,11 +235,21 @@
 		DD19A93F225540C200CC14BB /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				DD19A942225547F600CC14BB /* ContactsViewController.swift */,
+				DD19A942225547F600CC14BB /* ContactsTableViewController.swift */,
 				DD19A944225552BD00CC14BB /* ContactsViewModel.swift */,
 				DD19A94A2255530E00CC14BB /* ContactsCoordinator.swift */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		DD338F1F2265A18D00DDE6DE /* SearchContacts */ = {
+			isa = PBXGroup;
+			children = (
+				DD338F202265A1F400DDE6DE /* SearchContactsViewController.swift */,
+				DD338F222265A7F400DDE6DE /* SearchContactsViewModel.swift */,
+				DD338F242265A86400DDE6DE /* SearchContactsCoordinator.swift */,
+			);
+			path = SearchContacts;
 			sourceTree = "<group>";
 		};
 		DD76F59C225A1371007C9A30 /* PopUp */ = {
@@ -341,6 +357,7 @@
 			children = (
 				DD064E0C224FAF4600992AD4 /* MainTabBarCoordinator.swift */,
 				DD064E0E224FAFF500992AD4 /* MainTabBarController.swift */,
+				DD338F1F2265A18D00DDE6DE /* SearchContacts */,
 				DD19A93F225540C200CC14BB /* Contacts */,
 				DD19A93D225540B200CC14BB /* Messages */,
 				DD19A93E225540BB00CC14BB /* Settings */,
@@ -528,6 +545,7 @@
 			files = (
 				DD19A94D2255533400CC14BB /* MessagesCoordinator.swift in Sources */,
 				DD19A949225552E200CC14BB /* MessagesViewModel.swift in Sources */,
+				DD338F232265A7F400DDE6DE /* SearchContactsViewModel.swift in Sources */,
 				DDB86135224B6120007082F6 /* Toast.swift in Sources */,
 				DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */,
 				DD03B6A3223AA0E100476C0C /* SignInViewController.swift in Sources */,
@@ -539,6 +557,7 @@
 				DDC7DCF322477B82007F905B /* HomeViewModel.swift in Sources */,
 				DD76F5A2225A54DC007C9A30 /* VerificationViewModel.swift in Sources */,
 				DDBC02112240EAE20046C70E /* User.swift in Sources */,
+				DD338F212265A1F400DDE6DE /* SearchContactsViewController.swift in Sources */,
 				DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */,
 				DDC7DCF022477974007F905B /* HomeViewController.swift in Sources */,
 				DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */,
@@ -556,7 +575,7 @@
 				DD064E0F224FAFF500992AD4 /* MainTabBarController.swift in Sources */,
 				DD19A945225552BD00CC14BB /* ContactsViewModel.swift in Sources */,
 				DDCA01DC2240250500676A59 /* ResetPasswordCoordinator.swift in Sources */,
-				DD19A93C225540AE00CC14BB /* MessagesViewController.swift in Sources */,
+				DD19A93C225540AE00CC14BB /* MessagesTableViewController.swift in Sources */,
 				DD19A941225547DD00CC14BB /* SettingsViewController.swift in Sources */,
 				DDBC020F2240E89F0046C70E /* FirebaseAPI.swift in Sources */,
 				DD76F5A4225A54EB007C9A30 /* VerificationCoordinator.swift in Sources */,
@@ -564,7 +583,8 @@
 				DD064E0D224FAF4600992AD4 /* MainTabBarCoordinator.swift in Sources */,
 				DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */,
 				DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */,
-				DD19A943225547F600CC14BB /* ContactsViewController.swift in Sources */,
+				DD19A943225547F600CC14BB /* ContactsTableViewController.swift in Sources */,
+				DD338F252265A86400DDE6DE /* SearchContactsCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +726,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B6KRZX2358;
 				INFOPLIST_FILE = Chat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -725,6 +746,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B6KRZX2358;
 				INFOPLIST_FILE = Chat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

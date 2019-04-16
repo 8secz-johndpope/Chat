@@ -18,9 +18,22 @@ class ContactsCoordinator: BaseCoordinator<Void> {
     
     override func start() -> Observable<Void> {
         let contactsViewModel = ContactsViewModel()
-        let contactsViewController = ContactsViewController.create(with: contactsViewModel)
+        let contactsViewController = ContactsTableViewController.create(with: contactsViewModel)
         navigationController.setViewControllers([contactsViewController], animated: false)
         
+        contactsViewModel.output.addContactButtonObservable
+            .flatMap({ [weak self] _ -> Observable<Void> in
+                guard let self = self else { return Observable.empty() }
+                return self.showSearchContacts(on: self.navigationController)
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
+        
         return Observable.never()
+    }
+    
+    private func showSearchContacts(on navigationController: UINavigationController) -> Observable<Void> {
+        let showSearchContactsCoordinator = SearchContactsCoordinator(navigationController: navigationController)
+        return coordinate(to: showSearchContactsCoordinator)
     }
 }
