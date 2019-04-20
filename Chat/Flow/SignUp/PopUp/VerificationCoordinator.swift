@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import FirebaseAuth
 
+//FIXME: Error handler
 enum SignUpResult {
     case verified(AuthDataResult)
     case canceled

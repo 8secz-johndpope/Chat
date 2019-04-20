@@ -12,6 +12,10 @@ target 'Chat' do
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'Moya'
+    pod 'Kingfisher'
+    pod 'Alamofire'
+    pod 'MessageKit'
+    pod 'MessageInputBar'
     pod 'NVActivityIndicatorView'
 end
 

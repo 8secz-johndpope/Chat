@@ -145,4 +145,10 @@ extension UIView {
         self.isUserInteractionEnabled = true
         self.toast?.removeFromSuperview()
     }
+    
+//    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//        
+//        if toast != nil { toast?.removeFromSuperview() }
+//    }
 }

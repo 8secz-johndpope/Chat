@@ -200,12 +200,17 @@ struct _R: Rswift.Validatable {
     
     struct main: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
+      let chatViewController = StoryboardViewControllerResource<ChatViewController>(identifier: "ChatViewController")
       let contactsTableViewController = StoryboardViewControllerResource<ContactsTableViewController>(identifier: "ContactsTableViewController")
       let mainTabBarController = StoryboardViewControllerResource<MainTabBarController>(identifier: "MainTabBarController")
       let messagesTableViewController = StoryboardViewControllerResource<MessagesTableViewController>(identifier: "MessagesTableViewController")
       let name = "Main"
       let searchContactsViewController = StoryboardViewControllerResource<SearchContactsViewController>(identifier: "SearchContactsViewController")
       let settingsViewController = StoryboardViewControllerResource<SettingsViewController>(identifier: "SettingsViewController")
+      
+      func chatViewController(_: Void = ()) -> ChatViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: chatViewController)
+      }
       
       func contactsTableViewController(_: Void = ()) -> ContactsTableViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: contactsTableViewController)
@@ -234,6 +239,7 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "settings", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'settings' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.main().chatViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'chatViewController' could not be loaded from storyboard 'Main' as 'ChatViewController'.") }
         if _R.storyboard.main().contactsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'contactsTableViewController' could not be loaded from storyboard 'Main' as 'ContactsTableViewController'.") }
         if _R.storyboard.main().mainTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainTabBarController' could not be loaded from storyboard 'Main' as 'MainTabBarController'.") }
         if _R.storyboard.main().messagesTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'messagesTableViewController' could not be loaded from storyboard 'Main' as 'MessagesTableViewController'.") }

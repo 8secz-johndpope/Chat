@@ -7,10 +7,25 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import Kingfisher
 
 class SearchContactsViewController: UITableViewController {
 
+    let searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "Search"
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        return searchController
+    }()
+    
+    var searchBar: UISearchBar { return searchController.searchBar }
+    
     var viewModel: SearchContactsViewModel!
+    private var disposeBag = DisposeBag()
+    private let cellIdentifier = R.reuseIdentifier.contactCell.identifier
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,21 +35,31 @@ class SearchContactsViewController: UITableViewController {
     }
 
     private func configureUI() {
-        let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-        self.navigationItem.searchController = search
-        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.delegate = nil
+        tableView.dataSource = nil
     }
     
     private func configureViewModel() {
+        viewModel.output.usersInfoObservable
+            .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: UITableViewCell.self)) { (element, userInfo, cell) in
+                cell.textLabel?.text = userInfo.username
+                cell.imageView?.kf.setImage(with: URL(string: userInfo.imageUrl)!,
+                                            placeholder: R.image.profile())
+        }.disposed(by: disposeBag)
         
+        searchBar.rx.text.orEmpty
+            .subscribe(viewModel.input.searchBarText)
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(UserInfo.self)
+            .bind(to: viewModel.input.selection)
+            .disposed(by: disposeBag)
     }
-    
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        tableView.reloadData()
-        refreshControl.endRefreshing()
-    }
+
 }
 
 extension SearchContactsViewController {
@@ -45,12 +70,4 @@ extension SearchContactsViewController {
         
         return viewController
     }
-}
-
-extension SearchContactsViewController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
 }

@@ -22,6 +22,7 @@ class VerificatiobViewModel: ViewModelProtocol {
         let changeViewObservable: Observable<Void>
         let removeUserObservable: Observable<AuthDataResult>
         let verifiedUserObservable: Observable<AuthDataResult>
+        let errorObservable: Observable<Error>
     }
     
     let input: Input
@@ -32,9 +33,12 @@ class VerificatiobViewModel: ViewModelProtocol {
     private let changeViewSubject = PublishSubject<Void>()
     private let removeUserSubject = PublishSubject<AuthDataResult>()
     private let verifiedUserSubject = PublishSubject<AuthDataResult>()
+    private let errorSubject = PublishSubject<Error>()
     
     private let authResult: AuthDataResult
+    private let firDatabase = FIRDatabaseManager()
     private let disposeBag = DisposeBag()
+    private let isUpdating = Variable(true)
     
     //MARK: Init
     init(authResult: AuthDataResult) {
@@ -42,13 +46,18 @@ class VerificatiobViewModel: ViewModelProtocol {
         self.input = Input(buttonDidTap: buttonSubject.asObserver())
         self.output = Output(changeViewObservable: changeViewSubject.asObservable(),
                              removeUserObservable: removeUserSubject.asObservable(),
-                             verifiedUserObservable: verifiedUserSubject.asObservable())
+                             verifiedUserObservable: verifiedUserSubject.asObservable(),
+                             errorObservable: errorSubject.asObservable())
         
-        Observable<Int>.interval(3.0, scheduler: MainScheduler.instance)
+        isUpdating.asObservable()
+            .flatMapLatest { (isUpdating) in
+                isUpdating ? Observable<Int>.interval(3.0, scheduler: MainScheduler.instance) : .empty()
+            }
+            .flatMap { (index) in Observable.just(index) }
             .subscribe(onNext: { [weak self] (_) in
                 if let value = Auth.auth().currentUser?.isEmailVerified, value {
-                    self?.changeViewSubject.onNext(())
-                    self?.changeViewSubject.onCompleted()
+                    self?.isUpdating.value = false
+                    self?.uploadUser()
                 } else {
                     Auth.auth().currentUser?.reload()
                 }
@@ -66,6 +75,25 @@ class VerificatiobViewModel: ViewModelProtocol {
         })
         .disposed(by: disposeBag)
 
+    }
+    
+    func uploadUser() {
+        let firUser = authResult.user
+        let email = firUser.email ?? ""
+        let userId = firUser.uid
+        let username = firUser.displayName ?? ""
+        let imageUrl = Constants.Firebase.Storage.profilePlaceholder
+        
+        let user = UserInfo(email: email, imageUrl: imageUrl, userId: userId, username: username)
+        firDatabase.uploadUser(user) { (error) in
+            if let error = error {
+                self.errorSubject.onNext(error)
+                self.errorSubject.onCompleted()
+            } else {
+                self.changeViewSubject.onNext(())
+                self.changeViewSubject.onCompleted()
+            }
+        }
     }
     
     func removeUser() {

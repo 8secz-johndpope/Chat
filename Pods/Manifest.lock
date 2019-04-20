@@ -60,6 +60,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - Kingfisher (5.2.0)
   - leveldb-library (1.20)
   - MaterialComponents/AnimationTiming (79.3.0)
   - MaterialComponents/Palettes (79.3.0)
@@ -75,6 +76,11 @@ PODS:
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
+  - MessageInputBar (0.4.1):
+    - MessageInputBar/Core (= 0.4.1)
+  - MessageInputBar/Core (0.4.1)
+  - MessageKit (2.0.0):
+    - MessageInputBar/Core
   - Moya (12.0.1):
     - Moya/Core (= 12.0.1)
   - Moya/Core (12.0.1):
@@ -118,8 +124,12 @@ PODS:
     - RxAtomic (>= 4.4.2, ~> 4.4)
 
 DEPENDENCIES:
+  - Alamofire
   - Firebase/Core
+  - Kingfisher
   - MaterialComponents/TextFields
+  - MessageInputBar
+  - MessageKit
   - Moya
   - NVActivityIndicatorView
   - R.swift
@@ -143,9 +153,12 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
+    - Kingfisher
     - leveldb-library
     - MaterialComponents
     - MDFInternationalization
+    - MessageInputBar
+    - MessageKit
     - Moya
     - nanopb
     - NVActivityIndicatorView
@@ -173,9 +186,12 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MaterialComponents: b5069f73fccb7c71e1be8b54fd791cc99320f467
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
@@ -190,6 +206,6 @@ SPEC CHECKSUMS:
   RxFirebaseStorage: fe6ec6aa4a2e4bc985f0dcd9fc4ea9ade4b8edf2
   RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
 
-PODFILE CHECKSUM: 45d77baf541b9a60ada4019e6400067daa2ccc05
+PODFILE CHECKSUM: b2e80c23d7d151fd2a9e30008bf1b1c550cb7510
 
 COCOAPODS: 1.6.1

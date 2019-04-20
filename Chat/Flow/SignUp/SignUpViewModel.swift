@@ -15,7 +15,7 @@ class SignUpViewModel: ViewModelProtocol {
     //MARK: Input-Output
     struct Input {
         let email = BehaviorSubject(value: "")
-        let username = BehaviorSubject(value: "")
+        let username = BehaviorRelay(value: "")
         let password = BehaviorSubject(value: "")
         let signUpDidTap: AnyObserver<Void>
     }
@@ -50,12 +50,16 @@ class SignUpViewModel: ViewModelProtocol {
         
         signUpSubject.withLatestFrom(credentialsObservable)
             .flatMapLatest { (email, password) in
-                return Auth.auth().rx.createUser(withEmail: email, password: password).materialize()
-            }.subscribe(onNext: { [weak self] (event) in
+                return Auth.auth().rx.createUser(withEmail: email, password: password)
+            }.flatMapLatest { [weak self] (authResult) -> Observable<Event<AuthDataResult>> in
+                guard let self = self else { return Observable.empty() }
+                return self.profileChangeRequest(authResult: authResult).materialize()
+            }
+            .subscribe(onNext: { [weak self] (event) in
                 switch event {
-                case .next(let user):
+                case .next(let authResult):
                     Auth.auth().currentUser?.sendEmailVerification()
-                    self?.resultSubject.onNext(user)
+                    self?.resultSubject.onNext(authResult)
                 case .error(let error):
                     self?.errorsSubject.onNext(error)
                 default:
@@ -63,6 +67,22 @@ class SignUpViewModel: ViewModelProtocol {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func profileChangeRequest(authResult: AuthDataResult) -> Observable<AuthDataResult> {
+        return Observable.create({ (observer) -> Disposable in
+            let changeRequest = authResult.user.createProfileChangeRequest()
+            changeRequest.displayName = self.input.username.value
+            changeRequest.commitChanges(completion: { (error) in
+                if let error = error {
+                    observer.onError(error)
+                } else {
+                    observer.onNext(authResult)
+                    observer.onCompleted()
+                }
+            })
+            return Disposables.create()
+        })
     }
     
 }
