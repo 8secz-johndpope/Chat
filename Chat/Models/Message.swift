@@ -8,6 +8,7 @@
 
 import MessageKit
 import CoreLocation
+import FirebaseDatabase
 
 private struct CoordinateItem: LocationItem {
     
@@ -36,50 +37,91 @@ private struct ImageMediaItem: MediaItem {
     
 }
 
-internal struct Message: MessageType {
+struct Message: MessageType {
     
     var sender: Sender
     var messageId: String
     var sentDate: Date
     var kind: MessageKind
+    var text: String
     
-    var text: String?
-    
-    private init(kind: MessageKind, sender: Sender, messageId: String, date: Date) {
+    private init(kind: MessageKind, text: String, sender: Sender, messageId: String, date: Date) {
         self.kind = kind
         self.sender = sender
         self.messageId = messageId
         self.sentDate = date
+        self.text = text
     }
     
-    init(custom: Any?, sender: Sender, messageId: String, date: Date) {
-        self.init(kind: .custom(custom), sender: sender, messageId: messageId, date: date)
-    }
+//    init(custom: Any?, sender: Sender, messageId: String, date: Date) {
+//        self.init(kind: .custom(custom), sender: sender, messageId: messageId, date: date)
+//    }
     
     init(text: String, sender: Sender, messageId: String, date: Date) {
-        self.init(kind: .text(text), sender: sender, messageId: messageId, date: date)
+        self.init(kind: .text(text), text: text, sender: sender, messageId: messageId, date: date)
     }
     
-    init(attributedText: NSAttributedString, sender: Sender, messageId: String, date: Date) {
-        self.init(kind: .attributedText(attributedText), sender: sender, messageId: messageId, date: date)
+    init?(data: Any, id: String) {
+        guard let value = data as? [String: Any],
+            let senderId = value["senderId"] as? String,
+            let senderUsername = value["senderUsername"] as? String,
+            let text = value["text"] as? String,
+            let dateStr = value["date"] as? String,
+            let dateSince1970 = TimeInterval(dateStr) else {
+                return nil
+        }
+        
+        self.sender = Sender(id: senderId, displayName: senderUsername)
+        self.text = text
+        self.kind = .text(text)
+        self.sentDate = Date(timeIntervalSince1970: dateSince1970)
+        self.messageId = id
     }
     
-    init(image: UIImage, sender: Sender, messageId: String, date: Date) {
-        let mediaItem = ImageMediaItem(image: image)
-        self.init(kind: .photo(mediaItem), sender: sender, messageId: messageId, date: date)
+//    init(attributedText: NSAttributedString, sender: Sender, messageId: String, date: Date) {
+//        self.init(kind: .attributedText(attributedText), sender: sender, messageId: messageId, date: date)
+//    }
+//
+//    init(image: UIImage, sender: Sender, messageId: String, date: Date) {
+//        let mediaItem = ImageMediaItem(image: image)
+//        self.init(kind: .photo(mediaItem), sender: sender, messageId: messageId, date: date)
+//    }
+//
+//    init(thumbnail: UIImage, sender: Sender, messageId: String, date: Date) {
+//        let mediaItem = ImageMediaItem(image: thumbnail)
+//        self.init(kind: .video(mediaItem), sender: sender, messageId: messageId, date: date)
+//    }
+//
+//    init(location: CLLocation, sender: Sender, messageId: String, date: Date) {
+//        let locationItem = CoordinateItem(location: location)
+//        self.init(kind: .location(locationItem), sender: sender, messageId: messageId, date: date)
+//    }
+//
+//    init(emoji: String, sender: Sender, messageId: String, date: Date) {
+//        self.init(kind: .emoji(emoji), sender: sender, messageId: messageId, date: date)
+//    }
+    
+    func toAny() -> Any {
+        return [
+            "date": String(sentDate.timeIntervalSince1970),
+            "text": text,
+            "senderId": sender.id,
+            "senderUsername": sender.displayName
+        ]
+    }
+}
+
+extension Message: Comparable {
+    
+    static func ==(lhs: Message, rhs: Message) -> Bool {
+        return lhs.messageId == rhs.messageId
     }
     
-    init(thumbnail: UIImage, sender: Sender, messageId: String, date: Date) {
-        let mediaItem = ImageMediaItem(image: thumbnail)
-        self.init(kind: .video(mediaItem), sender: sender, messageId: messageId, date: date)
+    static func <(lhs: Message, rhs: Message) -> Bool {
+        return lhs.sentDate < rhs.sentDate
     }
     
-    init(location: CLLocation, sender: Sender, messageId: String, date: Date) {
-        let locationItem = CoordinateItem(location: location)
-        self.init(kind: .location(locationItem), sender: sender, messageId: messageId, date: date)
-    }
-    
-    init(emoji: String, sender: Sender, messageId: String, date: Date) {
-        self.init(kind: .emoji(emoji), sender: sender, messageId: messageId, date: date)
+    static func >(lhs: Message, rhs: Message) -> Bool {
+        return lhs.sentDate < rhs.sentDate
     }
 }

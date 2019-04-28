@@ -34,7 +34,7 @@ class SearchContactsCoordinator: BaseCoordinator<Void> {
     
     private func showMessages(on navigationController: UINavigationController, with user: UserInfo) -> Observable<Void> {
         let chatCoordinator = ChatCoordinator(navigationController: navigationController,
-                                              recipient: user)
+                                              companion: user)
         return coordinate(to: chatCoordinator)
     }
 }

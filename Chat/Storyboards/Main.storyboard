@@ -11,23 +11,68 @@
     </dependencies>
     <scenes>
         <!--Settings-->
-        <scene sceneID="fFO-IZ-qac">
+        <scene sceneID="i3f-qd-45m">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="uke-Bn-ioa" customClass="SettingsViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4BT-bW-33S">
+                <tableViewController storyboardIdentifier="SettingsTableViewController" id="rr8-s8-tD5" customClass="SettingsTableViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LmE-c0-4zE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="4Xg-ma-PhX"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="579-hJ-DbY"/>
-                    <navigationItem key="navigationItem" title="Settings" id="Bu2-24-SP9"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="4th-Gn-lSf">
+                            <rect key="frame" x="0.0" y="72" width="375" height="61"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3j-0Z-ZJ6">
+                                    <rect key="frame" x="40" y="12" width="295" height="37"/>
+                                    <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="Logout">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="h3j-0Z-ZJ6" firstAttribute="top" secondItem="4th-Gn-lSf" secondAttribute="top" constant="12" id="2Aa-0G-EsR"/>
+                                <constraint firstItem="h3j-0Z-ZJ6" firstAttribute="leading" secondItem="4th-Gn-lSf" secondAttribute="leading" constant="40" id="3eY-l7-SqP"/>
+                                <constraint firstAttribute="trailing" secondItem="h3j-0Z-ZJ6" secondAttribute="trailing" constant="40" id="Ivd-1s-6FT"/>
+                                <constraint firstAttribute="bottom" secondItem="h3j-0Z-ZJ6" secondAttribute="bottom" constant="12" id="dda-Dw-cZF"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="RqW-XN-Shq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RqW-XN-Shq" id="ShU-Hl-uVU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rr8-s8-tD5" id="MIn-y8-F2u"/>
+                            <outlet property="delegate" destination="rr8-s8-tD5" id="Gxn-hi-mc9"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="tC4-JR-bMq"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Zij-Cy-zQ1"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oEh-SB-ttE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="h3j-0Z-ZJ6" id="rTx-aY-Sh9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YKu-uq-BPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="597"/>
+            <point key="canvasLocation" x="-26.399999999999999" y="596.85157421289364"/>
         </scene>
         <!--Messages-->
         <scene sceneID="SfG-bX-ogz">
@@ -38,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" rowHeight="68" id="ttl-X2-e1B">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" rowHeight="68" id="ttl-X2-e1B">
                                 <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ttl-X2-e1B" id="jWM-s4-zzS">
@@ -170,6 +215,13 @@
                     <view key="view" contentMode="scaleToFill" id="oOG-qo-ujP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QcY-zq-a0f">
+                                <rect key="frame" x="127" y="22" width="112" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qwv-8j-XVg"/>
                     </view>
@@ -177,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Bj-Kk-duf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-716" y="1333.5832083958021"/>
+            <point key="canvasLocation" x="-718.125" y="1330.9859154929577"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="rw0-O0-CW6">

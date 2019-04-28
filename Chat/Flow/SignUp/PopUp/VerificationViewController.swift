@@ -74,7 +74,7 @@ extension VerificationViewController {
 
 extension VerificationViewController: PopUpViewDelegate {
     
-    func buttonPressed() {
+    func buttonPressed(_ view: PopUpView) {
         viewModel.input.buttonDidTap.onNext(())
         viewModel.input.buttonDidTap.onCompleted()
     }

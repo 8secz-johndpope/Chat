@@ -6,8 +6,31 @@
 //  Copyright © 2019 Vadim Koronchik. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+import RxCocoa
 
-class SettingsViewModel {
+class SettingsViewModel: ViewModelProtocol {
     
+    struct Input {
+        let logoutButtonDidTap: AnyObserver<Void>
+    }
+    
+    struct Output {
+        let logoutObservable: Observable<Void>
+    }
+    
+    let input: Input
+    let output: Output
+    
+    private let logoutSubject = PublishSubject<Void>()
+    private let disposeBag = DisposeBag()
+    
+    init() {
+        self.input = Input(logoutButtonDidTap: logoutSubject.asObserver())
+        self.output = Output(logoutObservable: logoutSubject.asObservable())
+        
+        output.logoutObservable.subscribe(onNext: { (_) in
+            AuthenticationManager.shared.logout()
+        }).disposed(by: disposeBag)
+    }
 }

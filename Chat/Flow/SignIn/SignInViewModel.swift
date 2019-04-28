@@ -43,7 +43,8 @@ class SignInViewModel: ViewModelProtocol {
     private let disposeBag = DisposeBag()
     
     private var credentialsObservable: Observable<(String, String)> {
-        return Observable.combineLatest(output.usernameObservable, output.passwordObservable) { (username, password) in
+        return Observable.combineLatest(output.usernameObservable,
+                                        output.passwordObservable) { (username, password) in
             return (username, password)
         }
     }
@@ -63,7 +64,7 @@ class SignInViewModel: ViewModelProtocol {
         
         signInSubject.withLatestFrom(credentialsObservable)
             .flatMapLatest { (email, password) in
-                return Auth.auth().rx.signIn(withEmail: email, password: password).materialize()
+                return AuthenticationManager.shared.signIn(withEmail: email, password: password)
             }.subscribe(onNext: { [weak self] (event) in
                 switch event {
                 case .next(let user):

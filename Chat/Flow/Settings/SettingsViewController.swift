@@ -7,22 +7,38 @@
 //
 
 import UIKit
+import RxSwift
 
-class SettingsViewController: UIViewController {
+class SettingsTableViewController: UITableViewController {
 
+    @IBOutlet var logoutButton: UIButton!
+    
     var viewModel: SettingsViewModel!
+    
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureUI()
+        configureViewModel()
+    }
+    
+    private func configureUI() {
+
     }
 
+    private func configureViewModel() {
+        logoutButton.rx.tap
+            .subscribe(viewModel.input.logoutButtonDidTap)
+            .disposed(by: disposeBag)
+    }
 }
 
-extension SettingsViewController {
+extension SettingsTableViewController {
     
-    static func create(with viewModel: SettingsViewModel) -> SettingsViewController {
-        let viewController = R.storyboard.main.settingsViewController()!
+    static func create(with viewModel: SettingsViewModel) -> SettingsTableViewController {
+        let viewController = R.storyboard.main.settingsTableViewController()!
         viewController.viewModel = viewModel
         
         return viewController

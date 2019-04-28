@@ -55,7 +55,7 @@ class VerificatiobViewModel: ViewModelProtocol {
             }
             .flatMap { (index) in Observable.just(index) }
             .subscribe(onNext: { [weak self] (_) in
-                if let value = Auth.auth().currentUser?.isEmailVerified, value {
+                if let value = AuthenticationManager.shared.user?.isEmailVerified, value {
                     self?.isUpdating.value = false
                     self?.uploadUser()
                 } else {
@@ -65,7 +65,7 @@ class VerificatiobViewModel: ViewModelProtocol {
             .disposed(by: disposeBag)
         
         buttonSubject.asObservable().subscribe(onNext: { [weak self] (_) in
-            if Auth.auth().currentUser?.isEmailVerified ?? false {
+            if AuthenticationManager.shared.user?.isEmailVerified ?? false {
                 self?.verifiedUserSubject.onNext((authResult))
                 self?.verifiedUserSubject.onCompleted()
             } else {

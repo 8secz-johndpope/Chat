@@ -11,16 +11,16 @@ import RxSwift
 
 class ChatCoordinator: BaseCoordinator<Void> {
     
-    private let recipient: UserInfo
+    private let companion: UserInfo
     private let navigationController: UINavigationController
     
-    init(navigationController: UINavigationController, recipient: UserInfo) {
-        self.recipient = recipient
+    init(navigationController: UINavigationController, companion: UserInfo) {
+        self.companion = companion
         self.navigationController = navigationController
     }
     
     override func start() -> Observable<Void> {
-        let chatViewModel = ChatViewModel(recipient: recipient)
+        let chatViewModel = ChatViewModel(companion: companion)
         let chatViewController = ChatViewController.create(with: chatViewModel)
         navigationController.pushViewController(chatViewController, animated: true)
         

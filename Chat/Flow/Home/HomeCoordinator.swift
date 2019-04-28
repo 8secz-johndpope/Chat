@@ -12,36 +12,37 @@ import FirebaseAuth
 
 final class HomeCoordinator: BaseCoordinator<AuthDataResult> {
     
-    private let navigationController: UINavigationController
+    private let window: UIWindow
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(window: UIWindow) {
+        self.window = window
     }
     
     override func start() -> Observable<AuthDataResult> {
         let viewModel = HomeViewModel()
         let viewController = HomeViewController.create(with: viewModel)
+        let navigationController = UINavigationController(rootViewController: viewController)
         
-        navigationController.pushViewController(viewController, animated: true)
+        window.rootViewController = navigationController
         
         let signUpResult = viewModel.output.signUpObservable
             .flatMap({ [weak self] _ -> Observable<AuthDataResult> in
                 guard let self = self else { return Observable.empty() }
-                return self.showSignUp(on: self.navigationController)
+                return self.showSignUp(on: navigationController)
             })
             .map { $0 }
         
         let signInResult = viewModel.output.signInObservable
             .flatMap({ [weak self] _ -> Observable<AuthDataResult> in
                 guard let self = self else { return Observable.empty() }
-                return self.showSignIn(on: self.navigationController)
+                return self.showSignIn(on: navigationController)
             })
             .map { $0 }
         
         return Observable.merge(signInResult, signUpResult)
             .take(1)
-            .do(onNext: { [weak self] (_) in
-                self?.navigationController.popViewController(animated: false)
+            .do(onNext: { (_) in
+                navigationController.popViewController(animated: false)
             })
     }
     

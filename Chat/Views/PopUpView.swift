@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PopUpViewDelegate: class {
-    func buttonPressed()
+    func buttonPressed(_ view: PopUpView)
 }
 
 class PopUpView: UIView {
@@ -100,6 +100,6 @@ class PopUpView: UIView {
     }
     
     @objc func buttonPressed() {
-        delegate?.buttonPressed()
+        delegate?.buttonPressed(self)
     }
 }

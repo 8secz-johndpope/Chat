@@ -18,9 +18,9 @@ class SettingsCoordinator: BaseCoordinator<Void> {
     
     override func start() -> Observable<Void> {
         let settingsViewModel = SettingsViewModel()
-        let settingsViewController = SettingsViewController.create(with: settingsViewModel)
+        let settingsViewController = SettingsTableViewController.create(with: settingsViewModel)
         navigationController.setViewControllers([settingsViewController], animated: false)
         
-        return Observable.never()
+        return settingsViewModel.output.logoutObservable.take(1)
     }
 }

@@ -30,8 +30,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 7 images.
   struct image {
+    /// Image `chat`.
+    static let chat = Rswift.ImageResource(bundle: R.hostingBundle, name: "chat")
     /// Image `contacts`.
     static let contacts = Rswift.ImageResource(bundle: R.hostingBundle, name: "contacts")
     /// Image `error`.
@@ -44,6 +46,11 @@ struct R: Rswift.Validatable {
     static let settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "settings")
     /// Image `success`.
     static let success = Rswift.ImageResource(bundle: R.hostingBundle, name: "success")
+    
+    /// `UIImage(named: "chat", bundle: ..., traitCollection: ...)`
+    static func chat(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.chat, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "contacts", bundle: ..., traitCollection: ...)`
     static func contacts(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -78,10 +85,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `MessageCell`.
     static let messageCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "MessageCell")
+    /// Reuse identifier `cell`.
+    static let cell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "cell")
     /// Reuse identifier `contactCell`.
     static let contactCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "contactCell")
     
@@ -140,15 +149,14 @@ struct _R: Rswift.Validatable {
       try main.validate()
     }
     
-    struct auth: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = HomeViewController
-      
+    struct auth: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let homeViewController = StoryboardViewControllerResource<HomeViewController>(identifier: "HomeViewController")
       let name = "Auth"
       let resetPasswordViewController = StoryboardViewControllerResource<ResetPasswordViewController>(identifier: "ResetPasswordViewController")
       let signInViewController = StoryboardViewControllerResource<SignInViewController>(identifier: "SignInViewController")
       let signUpViewController = StoryboardViewControllerResource<SignUpViewController>(identifier: "SignUpViewController")
+      let startViewController = StoryboardViewControllerResource<StartViewController>(identifier: "StartViewController")
       let verificationViewController = StoryboardViewControllerResource<VerificationViewController>(identifier: "VerificationViewController")
       
       func homeViewController(_: Void = ()) -> HomeViewController? {
@@ -167,17 +175,23 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: signUpViewController)
       }
       
+      func startViewController(_: Void = ()) -> StartViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: startViewController)
+      }
+      
       func verificationViewController(_: Void = ()) -> VerificationViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: verificationViewController)
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "chat", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'chat' is used in storyboard 'Auth', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.auth().homeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Auth' as 'HomeViewController'.") }
         if _R.storyboard.auth().resetPasswordViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'resetPasswordViewController' could not be loaded from storyboard 'Auth' as 'ResetPasswordViewController'.") }
         if _R.storyboard.auth().signInViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signInViewController' could not be loaded from storyboard 'Auth' as 'SignInViewController'.") }
         if _R.storyboard.auth().signUpViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signUpViewController' could not be loaded from storyboard 'Auth' as 'SignUpViewController'.") }
+        if _R.storyboard.auth().startViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'startViewController' could not be loaded from storyboard 'Auth' as 'StartViewController'.") }
         if _R.storyboard.auth().verificationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'verificationViewController' could not be loaded from storyboard 'Auth' as 'VerificationViewController'.") }
       }
       
@@ -191,6 +205,7 @@ struct _R: Rswift.Validatable {
       let name = "LaunchScreen"
       
       static func validate() throws {
+        if UIKit.UIImage(named: "chat", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'chat' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -206,7 +221,7 @@ struct _R: Rswift.Validatable {
       let messagesTableViewController = StoryboardViewControllerResource<MessagesTableViewController>(identifier: "MessagesTableViewController")
       let name = "Main"
       let searchContactsViewController = StoryboardViewControllerResource<SearchContactsViewController>(identifier: "SearchContactsViewController")
-      let settingsViewController = StoryboardViewControllerResource<SettingsViewController>(identifier: "SettingsViewController")
+      let settingsTableViewController = StoryboardViewControllerResource<SettingsTableViewController>(identifier: "SettingsTableViewController")
       
       func chatViewController(_: Void = ()) -> ChatViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: chatViewController)
@@ -228,8 +243,8 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchContactsViewController)
       }
       
-      func settingsViewController(_: Void = ()) -> SettingsViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsViewController)
+      func settingsTableViewController(_: Void = ()) -> SettingsTableViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsTableViewController)
       }
       
       static func validate() throws {
@@ -238,13 +253,14 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "profile", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'profile' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "settings", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'settings' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
+          if UIKit.UIColor(named: "systemRedColor", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'systemRedColor' is used in storyboard 'Main', but couldn't be loaded.") }
         }
         if _R.storyboard.main().chatViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'chatViewController' could not be loaded from storyboard 'Main' as 'ChatViewController'.") }
         if _R.storyboard.main().contactsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'contactsTableViewController' could not be loaded from storyboard 'Main' as 'ContactsTableViewController'.") }
         if _R.storyboard.main().mainTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainTabBarController' could not be loaded from storyboard 'Main' as 'MainTabBarController'.") }
         if _R.storyboard.main().messagesTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'messagesTableViewController' could not be loaded from storyboard 'Main' as 'MessagesTableViewController'.") }
         if _R.storyboard.main().searchContactsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchContactsViewController' could not be loaded from storyboard 'Main' as 'SearchContactsViewController'.") }
-        if _R.storyboard.main().settingsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsViewController' could not be loaded from storyboard 'Main' as 'SettingsViewController'.") }
+        if _R.storyboard.main().settingsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsTableViewController' could not be loaded from storyboard 'Main' as 'SettingsTableViewController'.") }
       }
       
       fileprivate init() {}

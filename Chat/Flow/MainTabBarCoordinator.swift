@@ -11,29 +11,45 @@ import RxSwift
 
 final class MainTabBarCoordinator: BaseCoordinator<Void> {
     
-    private let navigationController: UINavigationController
+    private let window: UIWindow
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(window: UIWindow) {
+        self.window = window
     }
     
     override func start() -> Observable<Void> {
         let tabBarController = MainTabBarController.create()
-        navigationController.present(tabBarController, animated: true)
-        
         let contactsNavigationController = UINavigationController()
         let messagesNavigationController = UINavigationController()
         let settingsNavigationController = UINavigationController()
         
-        tabBarController.setViewControllers([contactsNavigationController, messagesNavigationController, settingsNavigationController], animated: false)
+        tabBarController.setViewControllers([contactsNavigationController,
+                                             messagesNavigationController,
+                                             settingsNavigationController],
+                                            animated: false)
+        window.rootViewController = tabBarController
         
-        let contactsCoordinator = ContactsCoordinator(navigationController: contactsNavigationController)
-        let messagesCoordinator = MessagesCoordinator(navigationController: messagesNavigationController)
-        let settingsCoordinator = SettingsCoordinator(navigationController: settingsNavigationController)
-        
-        return coordinate(to: contactsCoordinator)
-            .concat(coordinate(to: messagesCoordinator))
-            .concat(coordinate(to: settingsCoordinator))
+        return Observable.merge(showChats(on: messagesNavigationController),
+                                showSettings(on: settingsNavigationController),
+                                showContacts(on: contactsNavigationController))
+            .take(1)
+            .do(onNext: { (_) in
+                tabBarController.dismiss(animated: true, completion: nil)
+            })
     }
 
+    private func showContacts(on navigationController: UINavigationController) -> Observable<Void> {
+        let contactsCoordinator = ContactsCoordinator(navigationController: navigationController)
+        return coordinate(to: contactsCoordinator)
+    }
+    
+    private func showChats(on navigationController: UINavigationController) -> Observable<Void> {
+        let messagesCoordinator = MessagesCoordinator(navigationController: navigationController)
+        return coordinate(to: messagesCoordinator)
+    }
+    
+    private func showSettings(on navigationController: UINavigationController) -> Observable<Void> {
+        let settingsCoordinator = SettingsCoordinator(navigationController: navigationController)
+        return coordinate(to: settingsCoordinator)
+    }
 }

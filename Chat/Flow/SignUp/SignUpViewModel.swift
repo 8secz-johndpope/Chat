@@ -50,7 +50,7 @@ class SignUpViewModel: ViewModelProtocol {
         
         signUpSubject.withLatestFrom(credentialsObservable)
             .flatMapLatest { (email, password) in
-                return Auth.auth().rx.createUser(withEmail: email, password: password)
+                return AuthenticationManager.shared.createUser(withEmail: email, password: password)
             }.flatMapLatest { [weak self] (authResult) -> Observable<Event<AuthDataResult>> in
                 guard let self = self else { return Observable.empty() }
                 return self.profileChangeRequest(authResult: authResult).materialize()
@@ -58,7 +58,7 @@ class SignUpViewModel: ViewModelProtocol {
             .subscribe(onNext: { [weak self] (event) in
                 switch event {
                 case .next(let authResult):
-                    Auth.auth().currentUser?.sendEmailVerification()
+                    AuthenticationManager.shared.user?.sendEmailVerification()
                     self?.resultSubject.onNext(authResult)
                 case .error(let error):
                     self?.errorsSubject.onNext(error)
@@ -70,18 +70,10 @@ class SignUpViewModel: ViewModelProtocol {
     }
     
     private func profileChangeRequest(authResult: AuthDataResult) -> Observable<AuthDataResult> {
-        return Observable.create({ (observer) -> Disposable in
-            let changeRequest = authResult.user.createProfileChangeRequest()
-            changeRequest.displayName = self.input.username.value
-            changeRequest.commitChanges(completion: { (error) in
-                if let error = error {
-                    observer.onError(error)
-                } else {
-                    observer.onNext(authResult)
-                    observer.onCompleted()
-                }
-            })
-            return Disposables.create()
+        let changeRequest = authResult.user.createProfileChangeRequest()
+        changeRequest.displayName = self.input.username.value.lowercased()
+        return changeRequest.rx.commitChanges().map({ (_) -> AuthDataResult in
+            return authResult
         })
     }
     

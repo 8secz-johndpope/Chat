@@ -12,7 +12,8 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        modalTransitionStyle = .coverVertical
     }
 
 }

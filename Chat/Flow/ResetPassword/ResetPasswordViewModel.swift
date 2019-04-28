@@ -8,8 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import FirebaseAuth
-import RxFirebase
 
 class ResetPasswordViewModel: ViewModelProtocol {
 
@@ -46,7 +44,7 @@ class ResetPasswordViewModel: ViewModelProtocol {
                              errorObservable: errorSubject.asObservable())
 
         resetSubject.withLatestFrom(emailSubject).flatMapLatest { email in
-                return Auth.auth().rx.sendPasswordReset(withEmail: email).materialize()
+                return AuthenticationManager.shared.sendPasswordReset(withEmail: email)
             }.subscribe(onNext: { [weak self] (event) in
                 switch event {
                 case .error(let error):
