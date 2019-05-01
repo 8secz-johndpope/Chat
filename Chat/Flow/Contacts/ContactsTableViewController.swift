@@ -25,10 +25,7 @@ class ContactsTableViewController: UITableViewController {
     }
     
     private func configureUI() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.red
-        self.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
     }
 
     private func configureViewModel() {
@@ -37,10 +34,6 @@ class ContactsTableViewController: UITableViewController {
             .disposed(by: disposeBag)
     }
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        tableView.reloadData()
-        refreshControl.endRefreshing()
-    }
 }
 
 extension ContactsTableViewController {

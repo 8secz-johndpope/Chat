@@ -23,7 +23,7 @@ class AuthenticationManager {
     
     static let shared = AuthenticationManager()
     
-    var user: User?
+    var user = Auth.auth().currentUser
     
     private init() {}
     

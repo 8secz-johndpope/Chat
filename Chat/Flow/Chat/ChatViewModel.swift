@@ -25,18 +25,18 @@ class ChatViewModel: ViewModelProtocol {
     let input: Input
     let output: Output
     
-    let sender: Sender
+    let currentUser: Sender
     let companion: UserInfo
     var chatId: String
     private var messages = BehaviorRelay<[Message]>(value: [])
     private var newMessageSubject = PublishSubject<Message>()
     private let firDatabase = FIRDatabaseManager()
     
-    init(companion: UserInfo) {
-        self.sender = Sender(id: Auth.auth().currentUser?.uid ?? "",
+    init(companion: UserInfo, chatId: String = "") {
+        self.currentUser = Sender(id: Auth.auth().currentUser?.uid ?? "",
                              displayName: Auth.auth().currentUser?.displayName ?? "")
         self.companion = companion
-        self.chatId = ""
+        self.chatId = chatId
         
         self.input = Input()
         self.output = Output(messagesObservable: messages.asObservable(),
@@ -47,18 +47,17 @@ class ChatViewModel: ViewModelProtocol {
     
     func sendMessage(_ message: Message) {
         messages.accept(messages.value + [message])
-        firDatabase.uploadMessage(message, from: sender, to: companion)
+        firDatabase.uploadMessage(message, from: currentUser, to: companion)
     }
     
     func fetchMessage(_ message: Message) {
-        let shouldRead = messages.value.map { $0.messageId }.contains(message.messageId)
-        if shouldRead {
-            firDatabase.readMessage(message, chatId: chatId, user: sender)
-        } else {
-            messages.accept(messages.value + [message])
-            newMessageSubject.onNext(message)
+        if !message.wasRead, message.sender.id != currentUser.id {
+            message.wasRead = true
+            firDatabase.readMessage(message, chatId: chatId, user: currentUser)
         }
         
+        messages.accept(messages.value + [message])
+        newMessageSubject.onNext(message)
     }
     
     func getMessagesCount() -> Int {
@@ -74,30 +73,22 @@ class ChatViewModel: ViewModelProtocol {
     }
     
     func fetchMessages() {
-        firDatabase.getChatId(sender: sender, recipient: companion) { [weak self] (id, error) in
-            guard let self = self else { return }
+        self.firDatabase.observeChatId(sender: currentUser,
+                                       recipient: companion,
+                                       completion: { [weak self] (id, error) in
             if let chatId = id {
-                self.chatId = chatId
-                self.firDatabase.fetchMessages(chatId: chatId, completion: { (messages) in
-                    for message in messages {
-                        self.fetchMessage(message)
-                    }
-                    self.observeMessages()
-                })
-            } else {
-                self.firDatabase.observeChatId(sender: self.sender, recipient: self.companion, completion: { (id, error) in
-                    if let chatId = id {
-                        self.chatId = chatId
-                        self.observeMessages()
-                    }
-                })
+                self?.chatId = chatId
+                self?.observeMessages()
             }
-        }
+        })
     }
     
     func observeMessages() {
-        firDatabase.observeMessages(chatId: chatId, sender: sender, recipient: companion) { [weak self] (message) in
-            self?.fetchMessage(message)
+        firDatabase.fetchMessages(chatId: chatId) { [weak self] (messages) in
+            self?.messages.accept([])
+            for message in messages {
+                self?.fetchMessage(message)
+            }
         }
     }
     

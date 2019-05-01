@@ -51,20 +51,15 @@ class ChatViewController: MessagesViewController {
     
     private func configureNavigationBarUI() {
         guard let navigationBarSize = navigationController?.navigationBar.frame.size else { return }
-        
-        let frame = CGRect(x: 0, y: 0, width: navigationBarSize.width * 0.5, height: navigationBarSize.height)
-        let title = viewModel.companion.username
-        let imageUrl = URL(string: viewModel.companion.imageUrl)
-        let imageView = UIImageView()
-        imageView.kf.setImage(with: imageUrl)
-        
-        chatTitleView = ChatTitleView(frame: frame,
-                                      profileImageView: imageView,
-                                      profileTitle: title,
-                                      status: "offline")
+
+        chatTitleView = ChatTitleView(frame: CGRect(x: 0,
+                                                    y: 0,
+                                                    width: navigationBarSize.width * 0.5,
+                                                    height: navigationBarSize.height))
+        chatTitleView.bind(to: ChatTitleViewModel(userId: viewModel.companion.userId))
         
         navigationItem.titleView = chatTitleView
-        navigationController?.navigationBar.topItem?.title = ""        
+        //navigationController?.navigationBar.topItem?.title = ""        
     }
     
     private func configureViewModel() {        
@@ -85,9 +80,9 @@ class ChatViewController: MessagesViewController {
 //                messagesCollectionView.reloadSections([messagesCount - 2])
 //            }
 //        }, completion: { [weak self] _ in
-//            if self?.isLastSectionVisible() == true {
-//                self?.messagesCollectionView.scrollToBottom(animated: true)
-//            }
+//        if self.isLastSectionVisible() == true {
+//            self.messagesCollectionView.scrollToBottom(animated: true)
+//        }
 //        })
     }
     
@@ -114,7 +109,7 @@ extension ChatViewController {
 extension ChatViewController: MessagesDataSource  {
     
     func currentSender() -> Sender {
-        return viewModel.sender
+        return viewModel.currentUser
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
@@ -136,27 +131,35 @@ extension ChatViewController: MessagesDataSource  {
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         let name = message.sender.displayName
-        return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+        return NSAttributedString(string: name,
+                                  attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
     }
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         
         let dateString = formatter.string(from: message.sentDate)
-        return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2)])
+        return NSAttributedString(string: dateString,
+                                  attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2)])
     }
 }
 
 extension ChatViewController: MessagesLayoutDelegate {
     
-    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+    func cellTopLabelHeight(for message: MessageType,
+                            at indexPath: IndexPath,
+                            in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 18
     }
     
-    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+    func messageTopLabelHeight(for message: MessageType,
+                               at indexPath: IndexPath,
+                               in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 20
     }
     
-    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+    func messageBottomLabelHeight(for message: MessageType,
+                                  at indexPath: IndexPath,
+                                  in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 16
     }
 }

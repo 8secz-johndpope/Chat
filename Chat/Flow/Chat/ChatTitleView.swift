@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol ChatTiteViewDelegate: class  {
     func profileImagePressed(_ view: ChatTitleView)
@@ -20,6 +22,19 @@ class ChatTitleView: UIView {
     private var contentView: UIView!
     
     weak var delegate: ChatTiteViewDelegate?
+    private var viewModel: ChatTitleViewModel!
+    private let disposeBag = DisposeBag()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.contentView = UIView()
+        self.profileImageView = UIImageView()
+        self.profileTitleLabel = UILabel()
+        self.bottomTextLabel = UILabel()
+        
+        commonInit()
+    }
     
     init(frame: CGRect, profileImageView: UIImageView?, profileTitle: String?, status: String?) {
         super.init(frame: frame)
@@ -29,16 +44,21 @@ class ChatTitleView: UIView {
         self.profileTitleLabel = UILabel()
         self.bottomTextLabel = UILabel()
         
+        self.profileTitleLabel.text = profileTitle
+        self.bottomTextLabel.text = status
+
+        commonInit()
+    }
+    
+    private func commonInit() {
         self.profileImageView.clipsToBounds = true
         self.profileImageView.layer.cornerRadius = 20
         self.profileImageView.layer.borderWidth = 1.0
         
-        self.profileTitleLabel.text = profileTitle
         self.profileTitleLabel.adjustsFontSizeToFitWidth = true
         self.profileTitleLabel.textAlignment = .center
         self.profileTitleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         
-        self.bottomTextLabel.text = status
         self.bottomTextLabel.adjustsFontSizeToFitWidth = true
         self.bottomTextLabel.textAlignment = .center
         self.bottomTextLabel.font = UIFont.systemFont(ofSize: 12)
@@ -82,5 +102,24 @@ class ChatTitleView: UIView {
         bottomTextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         bottomTextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         bottomTextLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.4).isActive = true
+    }
+    
+    func bind(to viewModel: ChatTitleViewModel) {
+        self.viewModel = viewModel
+        
+        self.viewModel.output
+            .imageUrl
+            .drive(profileImageView.rx.imageURL)
+            .disposed(by: disposeBag)
+        
+        self.viewModel.output
+            .username
+            .drive(profileTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        self.viewModel.output
+            .status
+            .drive(bottomTextLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 }

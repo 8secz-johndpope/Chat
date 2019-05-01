@@ -30,6 +30,9 @@ class FIRDatabaseManager {
         static let newMessages = "newMessages"
         static let messageId = "messageId"
         static let senderId = "senderId"
+        static let imageUrl = "imageUrl"
+        static let title = "title"
+        static let companionId = "companionId"
     }
     
     private let databaseRef = Database.database().reference().child("IOS_TEST")
@@ -93,8 +96,8 @@ class FIRDatabaseManager {
                     .child(Constants.info)
                     .setValue([
                         Constants.chatId: id,
-                        Constants.lastMessageId: messageId
-                        ])
+                        Constants.companionId: recipient.userId
+                    ])
                 
                 self?.usersRef.child(recipient.userId)
                     .child(Constants.chats)
@@ -102,8 +105,8 @@ class FIRDatabaseManager {
                     .child(Constants.info)
                     .setValue([
                         Constants.chatId: id,
-                        Constants.lastMessageId: messageId
-                        ])
+                        Constants.companionId: sender.id
+                    ])
                 
                 self?.usersRef.child(recipient.userId)
                     .child(Constants.newMessages)
@@ -115,11 +118,18 @@ class FIRDatabaseManager {
                         Constants.messageId: messageId,
                         Constants.chatId: id,
                         Constants.senderId: sender.id
-                        ])
+                    ])
                 
                 completion?(id, nil)
             }
         }
+    }
+    
+    func fetchUserInfo(userId: String, completion: @escaping (UserInfo) -> ()) {
+        usersRef.child(userId).child(Constants.info)
+            .observeSingleEvent(of: .value, with: { (userSnapshot) in
+                completion(UserInfo(data: userSnapshot.value!)!)
+        })
     }
     
     func getChatId(sender: Sender, recipient: UserInfo, completion: @escaping (String?, Error?) -> ()) {
@@ -152,7 +162,7 @@ class FIRDatabaseManager {
     func fetchMessages(chatId: String, completion: @escaping ([Message]) -> ()) {
         chatsRef.child(chatId)
             .child(Constants.messages)
-            .observeSingleEvent(of: .value) { (snapshot) in
+            .observe(.value) { (snapshot) in
                 var messages = [Message]()
                 if let values = snapshot.value as? [String: Any] {
                     for value in values {
@@ -165,7 +175,21 @@ class FIRDatabaseManager {
             }
     }
     
-    func observeMessages(chatId: String, sender: Sender, recipient: UserInfo, completion: @escaping (Message) -> ()) {
+    func fetchMessagesCount(chatId: String, user: User, completion: @escaping (UInt) -> ()) {
+        usersRef.child(user.uid)
+            .child(Constants.newMessages)
+            .child(Constants.chats)
+            .child(chatId)
+            .child(Constants.messages)
+            .observe(.value) { (snapshot) in
+                completion(snapshot.childrenCount)
+        }
+    }
+    
+    func observeMessages(chatId: String,
+                         sender: Sender,
+                         recipient: UserInfo,
+                         completion: @escaping (Message) -> ()) {
         usersRef.child(sender.id)
             .child(Constants.newMessages)
             .child(Constants.chats)
@@ -187,6 +211,34 @@ class FIRDatabaseManager {
             }
     }
     
+    func observeChats(user: User, completion: @escaping ([Chat]) -> ()) {
+        usersRef.child(user.uid)
+            .child(Constants.chats)
+            .observe(.value) { (snapshot) in
+                var chats = [Chat]()
+                if let values = snapshot.value as? [String: Any] {
+                    for value in values {
+                        let chat = Chat(data: value.value)!
+                        chats.append(chat)
+                    }
+                    completion(chats)
+                }
+        }
+    }
+    
+    func fetchLastMessage(chatId: String, completion: @escaping (Message) -> ()) {
+        chatsRef.child(chatId)
+            .child(Constants.messages)
+            .queryOrdered(byChild: "date")
+            .queryLimited(toLast: 1)
+            .observe(.value) { (snapshot) in
+                let messageSnapshot = (snapshot.value as? [String: Any])?.first
+                let messageId = messageSnapshot?.key ?? ""
+                let message = Message(data: messageSnapshot?.value, id: messageId)!
+                completion(message)
+        }
+    }
+        
     func readMessage(_ message: Message, chatId: String, user: Sender) {
         usersRef.child(user.id)
             .child(Constants.newMessages)
@@ -195,15 +247,24 @@ class FIRDatabaseManager {
             .child(Constants.messages)
             .child(message.messageId)
             .removeValue()
+        
+        chatsRef.child(chatId)
+            .child(Constants.messages)
+            .child(message.messageId)
+            .updateChildValues(["wasRead": true])
     }
     
     func removeObservers() {
         databaseRef.removeAllObservers()
     }
     
-    //    func fetchMessages(sender: UserInfo, recipient: User) -> Observable<Message> {
-    //        return chatsRef.rx.observeEvent(.value).flatMapLatest({ (snapshot) -> Message in
-    //
-    //        })
-    //    }
+    deinit {
+        removeObservers()
+    }
+    
+//        func fetchMessages(sender: UserInfo, recipient: User) -> Observable<Message> {
+//            return chatsRef.rx.observeEvent(.value).flatMapLatest({ (snapshot) -> Message in
+//
+//            })
+//        }
 }

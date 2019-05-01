@@ -13,16 +13,13 @@ import FirebaseAuth
 final class AppCoordinator: BaseCoordinator<Void> {
     
     var window: UIWindow
-    var navigationController: UINavigationController
     
     init(window: UIWindow) {
-        self.navigationController = UINavigationController(rootViewController: UIViewController())
         self.window = window
-        self.window.rootViewController = navigationController
     }
     
     override func start() -> Observable<Void> {
-        showStart(on: navigationController).subscribe(onNext: { [weak self] (result) in
+        showStart().subscribe(onNext: { [weak self] (result) in
             switch result {
             case .authorized:
                 self?.showAuthorizedState()
@@ -35,7 +32,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
     }
     
     private func showAuthorizedState() {
-        self.showMainTabBar(on: navigationController)
+        self.showMainTabBar()
             .subscribe(onNext: { [weak self] (_) in
                 self?.showNotAuthorizedState()
             })
@@ -43,24 +40,24 @@ final class AppCoordinator: BaseCoordinator<Void> {
     }
     
     private func showNotAuthorizedState() {
-        self.showHome(on: navigationController)
+        self.showHome()
             .subscribe(onNext: { [weak self] (user) in
                 self?.showAuthorizedState()
             })
             .disposed(by: disposeBag)
     }
     
-    private func showStart(on navigationController: UINavigationController) -> Observable<AuthResult> {
-        let startCoordinator = StartCoordinator(navigationController: navigationController)
+    private func showStart() -> Observable<AuthResult> {
+        let startCoordinator = StartCoordinator(window: window)
         return coordinate(to: startCoordinator)
     }
     
-    private func showHome(on navigationController: UINavigationController) -> Observable<AuthDataResult> {
+    private func showHome() -> Observable<AuthDataResult> {
         let homeCoordinator = HomeCoordinator(window: window)
         return coordinate(to: homeCoordinator)
     }
     
-    private func showMainTabBar(on navigationController: UINavigationController) -> Observable<Void> {
+    private func showMainTabBar() -> Observable<Void> {
         let mainTabBarCoordinator = MainTabBarCoordinator(window: window)
         return coordinate(to: mainTabBarCoordinator)
     }

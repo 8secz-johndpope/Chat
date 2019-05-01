@@ -57,14 +57,7 @@ class SignInViewController: UIViewController {
             .disposed(by: disposeBag)
         
         signInButton.rx.tap.asObservable().subscribe { [weak self] (_) in
-            guard let self = self else { return }
-            let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0,
-                                                                          y: 0,
-                                                                          width: 40,
-                                                                          height: 40),
-                                                            type: .circleStrokeSpin)
-            activityIndicator.startAnimating()
-            self.view.showToast(text: "loading...", view: activityIndicator)
+            self?.showLoadingToast()
         }.disposed(by: disposeBag)
         
         resetPasswordButton.rx.tap
@@ -86,6 +79,13 @@ class SignInViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
+    }
+    
+    private func showLoadingToast() {
+        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                        type: .circleStrokeSpin)
+        activityIndicator.startAnimating()
+        self.view.showToast(text: "loading...", view: activityIndicator)
     }
     
     private func configureTextFields() {

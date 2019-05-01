@@ -24,7 +24,7 @@ class SearchContactsViewController: UITableViewController {
     var searchBar: UISearchBar { return searchController.searchBar }
     
     var viewModel: SearchContactsViewModel!
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     private let cellIdentifier = R.reuseIdentifier.contactCell.identifier
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class SearchContactsViewController: UITableViewController {
         viewModel.output.usersInfoObservable
             .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: UITableViewCell.self)) { (element, userInfo, cell) in
                 cell.textLabel?.text = userInfo.username
-                cell.imageView?.kf.setImage(with: URL(string: userInfo.imageUrl)!,
+                cell.imageView?.kf.setImage(with: userInfo.imageUrl,
                                             placeholder: R.image.profile())
         }.disposed(by: disposeBag)
         

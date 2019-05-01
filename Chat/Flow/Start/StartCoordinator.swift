@@ -16,20 +16,21 @@ enum AuthResult {
 
 final class StartCoordinator: BaseCoordinator<AuthResult> {
     
-    private let navigationController: UINavigationController
+    private let window: UIWindow
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(window: UIWindow) {
+        self.window = window
     }
     
     override func start() -> Observable<AuthResult> {
         let viewModel = StartViewModel()
         let viewController = StartViewController.create(with: viewModel)
+        let navigationController = UINavigationController(rootViewController: viewController)
         
-        navigationController.pushViewController(viewController, animated: true)
+        window.rootViewController = navigationController
         
-        return viewModel.output.resultObservable.take(1).do(onNext: { [weak self] (_) in
-            self?.navigationController.popViewController(animated: false)
+        return viewModel.output.resultObservable.take(1).do(onNext: { (_) in
+            navigationController.popViewController(animated: false)
         })
     }
 }

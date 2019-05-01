@@ -87,10 +87,10 @@ struct R: Rswift.Validatable {
   
   /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
-    /// Reuse identifier `MessageCell`.
-    static let messageCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "MessageCell")
     /// Reuse identifier `cell`.
     static let cell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "cell")
+    /// Reuse identifier `chatCell`.
+    static let chatCell: Rswift.ReuseIdentifier<ChatCell> = Rswift.ReuseIdentifier(identifier: "chatCell")
     /// Reuse identifier `contactCell`.
     static let contactCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "contactCell")
     
@@ -253,7 +253,6 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "profile", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'profile' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "settings", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'settings' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
-          if UIKit.UIColor(named: "systemRedColor", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'systemRedColor' is used in storyboard 'Main', but couldn't be loaded.") }
         }
         if _R.storyboard.main().chatViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'chatViewController' could not be loaded from storyboard 'Main' as 'ChatViewController'.") }
         if _R.storyboard.main().contactsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'contactsTableViewController' could not be loaded from storyboard 'Main' as 'ContactsTableViewController'.") }

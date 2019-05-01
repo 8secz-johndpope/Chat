@@ -37,27 +37,34 @@ private struct ImageMediaItem: MediaItem {
     
 }
 
-struct Message: MessageType {
+class Message: MessageType {
     
     var sender: Sender
     var messageId: String
     var sentDate: Date
     var kind: MessageKind
     var text: String
+    var wasRead: Bool
     
-    private init(kind: MessageKind, text: String, sender: Sender, messageId: String, date: Date) {
+    private init(kind: MessageKind,
+                 text: String,
+                 sender: Sender,
+                 messageId: String,
+                 date: Date,
+                 wasRead: Bool = false) {
         self.kind = kind
         self.sender = sender
         self.messageId = messageId
         self.sentDate = date
         self.text = text
+        self.wasRead = wasRead
     }
     
 //    init(custom: Any?, sender: Sender, messageId: String, date: Date) {
 //        self.init(kind: .custom(custom), sender: sender, messageId: messageId, date: date)
 //    }
     
-    init(text: String, sender: Sender, messageId: String, date: Date) {
+    convenience init(text: String, sender: Sender, messageId: String, date: Date) {
         self.init(kind: .text(text), text: text, sender: sender, messageId: messageId, date: date)
     }
     
@@ -67,7 +74,8 @@ struct Message: MessageType {
             let senderUsername = value["senderUsername"] as? String,
             let text = value["text"] as? String,
             let dateStr = value["date"] as? String,
-            let dateSince1970 = TimeInterval(dateStr) else {
+            let dateSince1970 = TimeInterval(dateStr),
+            let wasRead = value["wasRead"] as? Bool else {
                 return nil
         }
         
@@ -76,6 +84,7 @@ struct Message: MessageType {
         self.kind = .text(text)
         self.sentDate = Date(timeIntervalSince1970: dateSince1970)
         self.messageId = id
+        self.wasRead = wasRead
     }
     
 //    init(attributedText: NSAttributedString, sender: Sender, messageId: String, date: Date) {
@@ -106,7 +115,8 @@ struct Message: MessageType {
             "date": String(sentDate.timeIntervalSince1970),
             "text": text,
             "senderId": sender.id,
-            "senderUsername": sender.displayName
+            "senderUsername": sender.displayName,
+            "wasRead": wasRead
         ]
     }
 }

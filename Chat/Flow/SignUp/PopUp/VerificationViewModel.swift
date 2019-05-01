@@ -82,7 +82,7 @@ class VerificatiobViewModel: ViewModelProtocol {
         let email = firUser.email ?? ""
         let userId = firUser.uid
         let username = firUser.displayName ?? ""
-        let imageUrl = Constants.Firebase.Storage.profilePlaceholder
+        let imageUrl = URL(string: Constants.Firebase.Storage.profilePlaceholder)!
         
         let user = UserInfo(email: email, imageUrl: imageUrl, userId: userId, username: username)
         firDatabase.uploadUser(user) { (error) in
