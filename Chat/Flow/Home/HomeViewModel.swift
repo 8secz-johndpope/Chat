@@ -12,29 +12,23 @@ class HomeViewModel: ViewModelProtocol {
     
     //MARK: Input-Output
     struct Input {
-        let signInDidTap: AnyObserver<Void>
-        let signUpDidTap: AnyObserver<Void>
+        let startMessaging: AnyObserver<Void>
     }
     
     struct Output {
-        let signInObservable: Observable<Void>
-        let signUpObservable: Observable<Void>
+        let startMessagingObservable: Observable<Void>
     }
     
     let input: Input
     let output: Output
     
     //MARK: Subjects
-    private let signInSubject = PublishSubject<Void>()
-    private let signUpSubject = PublishSubject<Void>()
+    private let startMessagingSubject = PublishSubject<Void>()
     
     //MARK: Init
     init() {
-        self.input = Input(signInDidTap: signInSubject.asObserver(),
-                           signUpDidTap: signUpSubject.asObserver())
-        
-        self.output = Output(signInObservable: signInSubject.asObservable(),
-                             signUpObservable: signUpSubject.asObservable())
+        self.input = Input(startMessaging: startMessagingSubject.asObserver())
+        self.output = Output(startMessagingObservable: startMessagingSubject.asObservable())
     }
     
 }

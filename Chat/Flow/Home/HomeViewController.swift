@@ -12,12 +12,12 @@ import RxSwift
 class HomeViewController: UIViewController {
     
     //MARK: UI
-    @IBOutlet var loginButton: UIButton!
-    @IBOutlet var signUpButton: UIButton!
+    @IBOutlet var startMessagingButton: UIButton!
     
     //MARK: Properties
     var viewModel: HomeViewModel!
     let displayCompletion = PublishSubject<Void>()
+    
     private let disposeBag = DisposeBag()
     
     //MARK: Lifecycle
@@ -34,12 +34,8 @@ class HomeViewController: UIViewController {
 
     //MARK: Methods
     private func configureViewModel() {
-        loginButton.rx.tap
-            .subscribe(viewModel.input.signInDidTap)
-            .disposed(by: disposeBag)
-        
-        signUpButton.rx.tap
-            .subscribe(viewModel.input.signUpDidTap)
+        startMessagingButton.rx.tap
+            .subscribe(viewModel.input.startMessaging)
             .disposed(by: disposeBag)
     }
 }

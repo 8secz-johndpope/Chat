@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		057845B35649202005699DF6 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE9240C32D8FCD51019154 /* Pods_Chat.framework */; };
 		DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03B6A0223AA0E100476C0C /* AppDelegate.swift */; };
-		DD03B6A3223AA0E100476C0C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03B6A2223AA0E100476C0C /* SignInViewController.swift */; };
 		DD03B6A8223AA0E200476C0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A7223AA0E200476C0C /* Assets.xcassets */; };
 		DD03B6AB223AA0E200476C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */; };
 		DD03B6B3223AAFE100476C0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */; };
@@ -33,19 +32,14 @@
 		DD338F272265C6F700DDE6DE /* FIRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */; };
 		DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */; };
 		DD6F5BCC226B289300FFCB71 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6F5BCB226B289300FFCB71 /* Constants.swift */; };
-		DD76F59B225A0A21007C9A30 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59A225A0A21007C9A30 /* VerificationViewController.swift */; };
 		DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59D225A197B007C9A30 /* PopUpView.swift */; };
 		DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59F225A33DE007C9A30 /* SystemColor.swift */; };
-		DD76F5A2225A54DC007C9A30 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F5A1225A54DC007C9A30 /* VerificationViewModel.swift */; };
-		DD76F5A4225A54EB007C9A30 /* VerificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F5A3225A54EB007C9A30 /* VerificationCoordinator.swift */; };
 		DD81D2C32269B25D004FCCEE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD81D2C22269B25D004FCCEE /* ChatViewController.swift */; };
 		DD81D2C52269B267004FCCEE /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD81D2C42269B267004FCCEE /* ChatViewModel.swift */; };
 		DD81D2C72269B272004FCCEE /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD81D2C62269B272004FCCEE /* ChatCoordinator.swift */; };
 		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
 		DD9AC7F92273AE86001FF7D1 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */; };
 		DDB86135224B6120007082F6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB86134224B6120007082F6 /* Toast.swift */; };
-		DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */; };
-		DDBC020D2240C3AD0046C70E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */; };
 		DDBC02112240EAE20046C70E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02102240EAE20046C70E /* UserInfo.swift */; };
 		DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02122240F0E00046C70E /* String+isValidEmail.swift */; };
 		DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC0218224131C30046C70E /* ViewModelProtocol.swift */; };
@@ -55,13 +49,7 @@
 		DDC7DCF522477B8D007F905B /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7DCF422477B8D007F905B /* HomeCoordinator.swift */; };
 		DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D422400EEF00676A59 /* Coordinator.swift */; };
 		DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D622400EFA00676A59 /* AppCoordinator.swift */; };
-		DDCA01DA224024F700676A59 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01D9224024F700676A59 /* SignInCoordinator.swift */; };
-		DDCA01DC2240250500676A59 /* ResetPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01DB2240250500676A59 /* ResetPasswordCoordinator.swift */; };
-		DDCA01DE2240251100676A59 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01DD2240251100676A59 /* SignUpCoordinator.swift */; };
-		DDCA01E02240317000676A59 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA01DF2240317000676A59 /* SignInViewModel.swift */; };
 		DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB79F6223D7A6400F22817 /* UIButton+layer.swift */; };
-		DDCB79FB223D9D3A00F22817 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */; };
-		DDCB79FD223D9D4500F22817 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB79FC223D9D4500F22817 /* ResetPasswordViewController.swift */; };
 		DDCCC2AF2277C56E00EC44EF /* Kingfisher+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCCC2AE2277C56E00EC44EF /* Kingfisher+rx.swift */; };
 		DDE6B4782275B7BA0024D993 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6B4772275B7BA0024D993 /* Chat.swift */; };
 		DDE6B47A2275ECAC0024D993 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6B4792275ECAC0024D993 /* ChatCell.swift */; };
@@ -77,7 +65,6 @@
 		DBFE9240C32D8FCD51019154 /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD03B69D223AA0E100476C0C /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD03B6A0223AA0E100476C0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DD03B6A2223AA0E100476C0C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DD03B6A7223AA0E200476C0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD03B6AA223AA0E200476C0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD03B6AC223AA0E200476C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,19 +90,14 @@
 		DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleView.swift; sourceTree = "<group>"; };
 		DD3ACAFB226CD796001E9E13 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DD6F5BCB226B289300FFCB71 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		DD76F59A225A0A21007C9A30 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		DD76F59D225A197B007C9A30 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		DD76F59F225A33DE007C9A30 /* SystemColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemColor.swift; sourceTree = "<group>"; };
-		DD76F5A1225A54DC007C9A30 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
-		DD76F5A3225A54EB007C9A30 /* VerificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCoordinator.swift; sourceTree = "<group>"; };
 		DD81D2C22269B25D004FCCEE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		DD81D2C42269B267004FCCEE /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		DD81D2C62269B272004FCCEE /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		DDB86134224B6120007082F6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
-		DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		DDBC02102240EAE20046C70E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DDBC02122240F0E00046C70E /* String+isValidEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidEmail.swift"; sourceTree = "<group>"; };
 		DDBC0218224131C30046C70E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -125,13 +107,7 @@
 		DDC7DCF422477B8D007F905B /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		DDCA01D422400EEF00676A59 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DDCA01D622400EFA00676A59 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		DDCA01D9224024F700676A59 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
-		DDCA01DB2240250500676A59 /* ResetPasswordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCoordinator.swift; sourceTree = "<group>"; };
-		DDCA01DD2240251100676A59 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
-		DDCA01DF2240317000676A59 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		DDCB79F6223D7A6400F22817 /* UIButton+layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+layer.swift"; sourceTree = "<group>"; };
-		DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		DDCB79FC223D9D4500F22817 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		DDCCC2AE2277C56E00EC44EF /* Kingfisher+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kingfisher+rx.swift"; sourceTree = "<group>"; };
 		DDE6B4772275B7BA0024D993 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		DDE6B4792275ECAC0024D993 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatCell.swift; path = ../../Views/ChatCell.swift; sourceTree = "<group>"; };
@@ -289,16 +265,6 @@
 			path = SearchContacts;
 			sourceTree = "<group>";
 		};
-		DD76F59C225A1371007C9A30 /* PopUp */ = {
-			isa = PBXGroup;
-			children = (
-				DD76F5A1225A54DC007C9A30 /* VerificationViewModel.swift */,
-				DD76F59A225A0A21007C9A30 /* VerificationViewController.swift */,
-				DD76F5A3225A54EB007C9A30 /* VerificationCoordinator.swift */,
-			);
-			path = PopUp;
-			sourceTree = "<group>";
-		};
 		DD81D2C12269B22B004FCCEE /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,42 +312,8 @@
 			children = (
 				DDE7E3C122745C7400F6FCE7 /* Start */,
 				DDC7DCF122477B70007F905B /* Home */,
-				DDBC022022413D080046C70E /* SignIn */,
-				DDBC022122413D660046C70E /* SignUp */,
-				DDBC022222413D7D0046C70E /* ResetPassword */,
 			);
 			name = Auth;
-			sourceTree = "<group>";
-		};
-		DDBC022022413D080046C70E /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-				DDCA01DF2240317000676A59 /* SignInViewModel.swift */,
-				DD03B6A2223AA0E100476C0C /* SignInViewController.swift */,
-				DDCA01D9224024F700676A59 /* SignInCoordinator.swift */,
-			);
-			path = SignIn;
-			sourceTree = "<group>";
-		};
-		DDBC022122413D660046C70E /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				DD76F59C225A1371007C9A30 /* PopUp */,
-				DDBC020C2240C3AD0046C70E /* SignUpViewModel.swift */,
-				DDCB79FA223D9D3A00F22817 /* SignUpViewController.swift */,
-				DDCA01DD2240251100676A59 /* SignUpCoordinator.swift */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		DDBC022222413D7D0046C70E /* ResetPassword */ = {
-			isa = PBXGroup;
-			children = (
-				DDBC020A2240C3A10046C70E /* ResetPasswordViewModel.swift */,
-				DDCB79FC223D9D4500F22817 /* ResetPasswordViewController.swift */,
-				DDCA01DB2240250500676A59 /* ResetPasswordCoordinator.swift */,
-			);
-			path = ResetPassword;
 			sourceTree = "<group>";
 		};
 		DDC7DCF122477B70007F905B /* Home */ = {
@@ -619,16 +551,13 @@
 				DD2BC0E62279F40D000F640A /* ChatTitleViewModel.swift in Sources */,
 				DDB86135224B6120007082F6 /* Toast.swift in Sources */,
 				DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */,
-				DD03B6A3223AA0E100476C0C /* SignInViewController.swift in Sources */,
 				DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */,
 				DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */,
-				DDCB79FD223D9D4500F22817 /* ResetPasswordViewController.swift in Sources */,
 				DDC7DCF522477B8D007F905B /* HomeCoordinator.swift in Sources */,
 				DDE6B47A2275ECAC0024D993 /* ChatCell.swift in Sources */,
 				DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */,
 				DDC7DCF322477B82007F905B /* HomeViewModel.swift in Sources */,
 				DDE7E3C522745C8D00F6FCE7 /* StartViewModel.swift in Sources */,
-				DD76F5A2225A54DC007C9A30 /* VerificationViewModel.swift in Sources */,
 				DDBC02112240EAE20046C70E /* UserInfo.swift in Sources */,
 				DD338F212265A1F400DDE6DE /* SearchContactsViewController.swift in Sources */,
 				DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */,
@@ -637,30 +566,21 @@
 				DDC7DCF022477974007F905B /* HomeViewController.swift in Sources */,
 				DDFF9CA6226A55B100CB54E6 /* Message.swift in Sources */,
 				DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */,
-				DDCB79FB223D9D3A00F22817 /* SignUpViewController.swift in Sources */,
-				DDBC020D2240C3AD0046C70E /* SignUpViewModel.swift in Sources */,
-				DDCA01DE2240251100676A59 /* SignUpCoordinator.swift in Sources */,
-				DDCA01DA224024F700676A59 /* SignInCoordinator.swift in Sources */,
 				DD19A947225552CE00CC14BB /* SettingsViewModel.swift in Sources */,
 				DD6F5BCC226B289300FFCB71 /* Constants.swift in Sources */,
-				DDCA01E02240317000676A59 /* SignInViewModel.swift in Sources */,
 				DD19A94B2255530E00CC14BB /* ContactsCoordinator.swift in Sources */,
 				DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */,
 				DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */,
 				DDE7E3C722745C9700F6FCE7 /* StartCoordinator.swift in Sources */,
 				DD81D2C72269B272004FCCEE /* ChatCoordinator.swift in Sources */,
-				DDBC020B2240C3A10046C70E /* ResetPasswordViewModel.swift in Sources */,
 				DDCCC2AF2277C56E00EC44EF /* Kingfisher+rx.swift in Sources */,
 				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,
 				DD064E0B224FAEA100992AD4 /* R.generated.swift in Sources */,
 				DD064E0F224FAFF500992AD4 /* MainTabBarController.swift in Sources */,
 				DD19A945225552BD00CC14BB /* ContactsViewModel.swift in Sources */,
-				DDCA01DC2240250500676A59 /* ResetPasswordCoordinator.swift in Sources */,
 				DD19A93C225540AE00CC14BB /* MessagesTableViewController.swift in Sources */,
 				DD338F272265C6F700DDE6DE /* FIRDatabaseManager.swift in Sources */,
 				DD19A941225547DD00CC14BB /* SettingsViewController.swift in Sources */,
-				DD76F5A4225A54EB007C9A30 /* VerificationCoordinator.swift in Sources */,
-				DD76F59B225A0A21007C9A30 /* VerificationViewController.swift in Sources */,
 				DD064E0D224FAF4600992AD4 /* MainTabBarCoordinator.swift in Sources */,
 				DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */,
 				DD81D2C32269B25D004FCCEE /* ChatViewController.swift in Sources */,

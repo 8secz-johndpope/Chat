@@ -153,34 +153,14 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let homeViewController = StoryboardViewControllerResource<HomeViewController>(identifier: "HomeViewController")
       let name = "Auth"
-      let resetPasswordViewController = StoryboardViewControllerResource<ResetPasswordViewController>(identifier: "ResetPasswordViewController")
-      let signInViewController = StoryboardViewControllerResource<SignInViewController>(identifier: "SignInViewController")
-      let signUpViewController = StoryboardViewControllerResource<SignUpViewController>(identifier: "SignUpViewController")
       let startViewController = StoryboardViewControllerResource<StartViewController>(identifier: "StartViewController")
-      let verificationViewController = StoryboardViewControllerResource<VerificationViewController>(identifier: "VerificationViewController")
       
       func homeViewController(_: Void = ()) -> HomeViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: homeViewController)
       }
       
-      func resetPasswordViewController(_: Void = ()) -> ResetPasswordViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: resetPasswordViewController)
-      }
-      
-      func signInViewController(_: Void = ()) -> SignInViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: signInViewController)
-      }
-      
-      func signUpViewController(_: Void = ()) -> SignUpViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: signUpViewController)
-      }
-      
       func startViewController(_: Void = ()) -> StartViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: startViewController)
-      }
-      
-      func verificationViewController(_: Void = ()) -> VerificationViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: verificationViewController)
       }
       
       static func validate() throws {
@@ -188,11 +168,7 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.auth().homeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Auth' as 'HomeViewController'.") }
-        if _R.storyboard.auth().resetPasswordViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'resetPasswordViewController' could not be loaded from storyboard 'Auth' as 'ResetPasswordViewController'.") }
-        if _R.storyboard.auth().signInViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signInViewController' could not be loaded from storyboard 'Auth' as 'SignInViewController'.") }
-        if _R.storyboard.auth().signUpViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signUpViewController' could not be loaded from storyboard 'Auth' as 'SignUpViewController'.") }
         if _R.storyboard.auth().startViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'startViewController' could not be loaded from storyboard 'Auth' as 'StartViewController'.") }
-        if _R.storyboard.auth().verificationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'verificationViewController' could not be loaded from storyboard 'Auth' as 'VerificationViewController'.") }
       }
       
       fileprivate init() {}
