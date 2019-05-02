@@ -153,10 +153,20 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let homeViewController = StoryboardViewControllerResource<HomeViewController>(identifier: "HomeViewController")
       let name = "Auth"
+      let phoneInputViewController = StoryboardViewControllerResource<PhoneInputViewController>(identifier: "PhoneInputViewController")
+      let phoneVerificationViewController = StoryboardViewControllerResource<PhoneVerificationViewController>(identifier: "PhoneVerificationViewController")
       let startViewController = StoryboardViewControllerResource<StartViewController>(identifier: "StartViewController")
       
       func homeViewController(_: Void = ()) -> HomeViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: homeViewController)
+      }
+      
+      func phoneInputViewController(_: Void = ()) -> PhoneInputViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: phoneInputViewController)
+      }
+      
+      func phoneVerificationViewController(_: Void = ()) -> PhoneVerificationViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: phoneVerificationViewController)
       }
       
       func startViewController(_: Void = ()) -> StartViewController? {
@@ -168,6 +178,8 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.auth().homeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Auth' as 'HomeViewController'.") }
+        if _R.storyboard.auth().phoneInputViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'phoneInputViewController' could not be loaded from storyboard 'Auth' as 'PhoneInputViewController'.") }
+        if _R.storyboard.auth().phoneVerificationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'phoneVerificationViewController' could not be loaded from storyboard 'Auth' as 'PhoneVerificationViewController'.") }
         if _R.storyboard.auth().startViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'startViewController' could not be loaded from storyboard 'Auth' as 'StartViewController'.") }
       }
       

@@ -64,6 +64,36 @@
             </objects>
             <point key="canvasLocation" x="-1414" y="752"/>
         </scene>
+        <!--Phone Input View Controller-->
+        <scene sceneID="x9b-MT-T1O">
+            <objects>
+                <viewController storyboardIdentifier="PhoneInputViewController" id="nw9-oz-PCa" customClass="PhoneInputViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Aja-Eb-3Rd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jB8-Vy-yC0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eoS-ZP-CKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-601" y="751"/>
+        </scene>
+        <!--Phone Verification View Controller-->
+        <scene sceneID="CMp-XR-ooZ">
+            <objects>
+                <viewController storyboardIdentifier="PhoneVerificationViewController" id="leK-Iy-iaU" customClass="PhoneVerificationViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t1Y-hF-sm1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fI6-m7-5l8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRs-58-Ppj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="200" y="751"/>
+        </scene>
         <!--Start View Controller-->
         <scene sceneID="PFr-tv-lqZ">
             <objects>

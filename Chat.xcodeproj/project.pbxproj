@@ -37,6 +37,12 @@
 		DD81D2C32269B25D004FCCEE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD81D2C22269B25D004FCCEE /* ChatViewController.swift */; };
 		DD81D2C52269B267004FCCEE /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD81D2C42269B267004FCCEE /* ChatViewModel.swift */; };
 		DD81D2C72269B272004FCCEE /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD81D2C62269B272004FCCEE /* ChatCoordinator.swift */; };
+		DD8D05F4227B6F3F0022AC30 /* PhoneInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05F3227B6F3F0022AC30 /* PhoneInputViewModel.swift */; };
+		DD8D05F6227B6F8C0022AC30 /* PhoneVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05F5227B6F8C0022AC30 /* PhoneVerificationViewModel.swift */; };
+		DD8D05F8227B6FAA0022AC30 /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05F7227B6FAA0022AC30 /* PhoneVerificationViewController.swift */; };
+		DD8D05FA227B6FBF0022AC30 /* PhoneVerificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05F9227B6FBF0022AC30 /* PhoneVerificationCoordinator.swift */; };
+		DD8D05FC227B6FE90022AC30 /* PhoneInputCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05FB227B6FE90022AC30 /* PhoneInputCoordinator.swift */; };
+		DD8D05FE227B70050022AC30 /* PhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05FD227B70050022AC30 /* PhoneInputViewController.swift */; };
 		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
 		DD9AC7F92273AE86001FF7D1 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */; };
 		DDB86135224B6120007082F6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB86134224B6120007082F6 /* Toast.swift */; };
@@ -95,6 +101,12 @@
 		DD81D2C22269B25D004FCCEE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		DD81D2C42269B267004FCCEE /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		DD81D2C62269B272004FCCEE /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
+		DD8D05F3227B6F3F0022AC30 /* PhoneInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputViewModel.swift; sourceTree = "<group>"; };
+		DD8D05F5227B6F8C0022AC30 /* PhoneVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewModel.swift; sourceTree = "<group>"; };
+		DD8D05F7227B6FAA0022AC30 /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
+		DD8D05F9227B6FBF0022AC30 /* PhoneVerificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationCoordinator.swift; sourceTree = "<group>"; };
+		DD8D05FB227B6FE90022AC30 /* PhoneInputCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputCoordinator.swift; sourceTree = "<group>"; };
+		DD8D05FD227B70050022AC30 /* PhoneInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputViewController.swift; sourceTree = "<group>"; };
 		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		DDB86134224B6120007082F6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -277,6 +289,26 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		DD8D05F1227B6E780022AC30 /* PhoneInput */ = {
+			isa = PBXGroup;
+			children = (
+				DD8D05F3227B6F3F0022AC30 /* PhoneInputViewModel.swift */,
+				DD8D05FD227B70050022AC30 /* PhoneInputViewController.swift */,
+				DD8D05FB227B6FE90022AC30 /* PhoneInputCoordinator.swift */,
+			);
+			path = PhoneInput;
+			sourceTree = "<group>";
+		};
+		DD8D05F2227B6F180022AC30 /* PhoneVerification */ = {
+			isa = PBXGroup;
+			children = (
+				DD8D05F5227B6F8C0022AC30 /* PhoneVerificationViewModel.swift */,
+				DD8D05F7227B6FAA0022AC30 /* PhoneVerificationViewController.swift */,
+				DD8D05F9227B6FBF0022AC30 /* PhoneVerificationCoordinator.swift */,
+			);
+			path = PhoneVerification;
+			sourceTree = "<group>";
+		};
 		DDBC021422411F310046C70E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +344,8 @@
 			children = (
 				DDE7E3C122745C7400F6FCE7 /* Start */,
 				DDC7DCF122477B70007F905B /* Home */,
+				DD8D05F1227B6E780022AC30 /* PhoneInput */,
+				DD8D05F2227B6F180022AC30 /* PhoneVerification */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -555,14 +589,17 @@
 				DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */,
 				DDC7DCF522477B8D007F905B /* HomeCoordinator.swift in Sources */,
 				DDE6B47A2275ECAC0024D993 /* ChatCell.swift in Sources */,
+				DD8D05FE227B70050022AC30 /* PhoneInputViewController.swift in Sources */,
 				DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */,
 				DDC7DCF322477B82007F905B /* HomeViewModel.swift in Sources */,
 				DDE7E3C522745C8D00F6FCE7 /* StartViewModel.swift in Sources */,
 				DDBC02112240EAE20046C70E /* UserInfo.swift in Sources */,
 				DD338F212265A1F400DDE6DE /* SearchContactsViewController.swift in Sources */,
+				DD8D05FA227B6FBF0022AC30 /* PhoneVerificationCoordinator.swift in Sources */,
 				DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */,
 				DDE6B47C227625B50024D993 /* ChatCellViewModel.swift in Sources */,
 				DDE6B4782275B7BA0024D993 /* Chat.swift in Sources */,
+				DD8D05FC227B6FE90022AC30 /* PhoneInputCoordinator.swift in Sources */,
 				DDC7DCF022477974007F905B /* HomeViewController.swift in Sources */,
 				DDFF9CA6226A55B100CB54E6 /* Message.swift in Sources */,
 				DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */,
@@ -572,12 +609,14 @@
 				DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */,
 				DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */,
 				DDE7E3C722745C9700F6FCE7 /* StartCoordinator.swift in Sources */,
+				DD8D05F8227B6FAA0022AC30 /* PhoneVerificationViewController.swift in Sources */,
 				DD81D2C72269B272004FCCEE /* ChatCoordinator.swift in Sources */,
 				DDCCC2AF2277C56E00EC44EF /* Kingfisher+rx.swift in Sources */,
 				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,
 				DD064E0B224FAEA100992AD4 /* R.generated.swift in Sources */,
 				DD064E0F224FAFF500992AD4 /* MainTabBarController.swift in Sources */,
 				DD19A945225552BD00CC14BB /* ContactsViewModel.swift in Sources */,
+				DD8D05F4227B6F3F0022AC30 /* PhoneInputViewModel.swift in Sources */,
 				DD19A93C225540AE00CC14BB /* MessagesTableViewController.swift in Sources */,
 				DD338F272265C6F700DDE6DE /* FIRDatabaseManager.swift in Sources */,
 				DD19A941225547DD00CC14BB /* SettingsViewController.swift in Sources */,
@@ -586,6 +625,7 @@
 				DD81D2C32269B25D004FCCEE /* ChatViewController.swift in Sources */,
 				DDE7E3C322745C8200F6FCE7 /* StartViewController.swift in Sources */,
 				DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */,
+				DD8D05F6227B6F8C0022AC30 /* PhoneVerificationViewModel.swift in Sources */,
 				DD19A943225547F600CC14BB /* ContactsTableViewController.swift in Sources */,
 				DD81D2C52269B267004FCCEE /* ChatViewModel.swift in Sources */,
 				DD338F252265A86400DDE6DE /* SearchContactsCoordinator.swift in Sources */,
