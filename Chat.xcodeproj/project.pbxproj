@@ -31,6 +31,9 @@
 		DD338F252265A86400DDE6DE /* SearchContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F242265A86400DDE6DE /* SearchContactsCoordinator.swift */; };
 		DD338F272265C6F700DDE6DE /* FIRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */; };
 		DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */; };
+		DD4AC1F3227CC6020084BBC9 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4AC1F2227CC6020084BBC9 /* CountriesViewModel.swift */; };
+		DD4AC1F5227CC6CF0084BBC9 /* CountriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4AC1F4227CC6CF0084BBC9 /* CountriesCoordinator.swift */; };
+		DD4AC1F7227CC6E10084BBC9 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4AC1F6227CC6E10084BBC9 /* CountriesViewController.swift */; };
 		DD6F5BCC226B289300FFCB71 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6F5BCB226B289300FFCB71 /* Constants.swift */; };
 		DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59D225A197B007C9A30 /* PopUpView.swift */; };
 		DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59F225A33DE007C9A30 /* SystemColor.swift */; };
@@ -95,6 +98,9 @@
 		DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRDatabaseManager.swift; sourceTree = "<group>"; };
 		DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleView.swift; sourceTree = "<group>"; };
 		DD3ACAFB226CD796001E9E13 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		DD4AC1F2227CC6020084BBC9 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
+		DD4AC1F4227CC6CF0084BBC9 /* CountriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCoordinator.swift; sourceTree = "<group>"; };
+		DD4AC1F6227CC6E10084BBC9 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
 		DD6F5BCB226B289300FFCB71 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD76F59D225A197B007C9A30 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		DD76F59F225A33DE007C9A30 /* SystemColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemColor.swift; sourceTree = "<group>"; };
@@ -277,6 +283,16 @@
 			path = SearchContacts;
 			sourceTree = "<group>";
 		};
+		DD4AC1F1227CC5D60084BBC9 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				DD4AC1F2227CC6020084BBC9 /* CountriesViewModel.swift */,
+				DD4AC1F6227CC6E10084BBC9 /* CountriesViewController.swift */,
+				DD4AC1F4227CC6CF0084BBC9 /* CountriesCoordinator.swift */,
+			);
+			path = Countries;
+			sourceTree = "<group>";
+		};
 		DD81D2C12269B22B004FCCEE /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +361,7 @@
 				DDE7E3C122745C7400F6FCE7 /* Start */,
 				DDC7DCF122477B70007F905B /* Home */,
 				DD8D05F1227B6E780022AC30 /* PhoneInput */,
+				DD4AC1F1227CC5D60084BBC9 /* Countries */,
 				DD8D05F2227B6F180022AC30 /* PhoneVerification */,
 			);
 			name = Auth;
@@ -583,6 +600,7 @@
 				DD9AC7F92273AE86001FF7D1 /* AuthenticationManager.swift in Sources */,
 				DD338F232265A7F400DDE6DE /* SearchContactsViewModel.swift in Sources */,
 				DD2BC0E62279F40D000F640A /* ChatTitleViewModel.swift in Sources */,
+				DD4AC1F7227CC6E10084BBC9 /* CountriesViewController.swift in Sources */,
 				DDB86135224B6120007082F6 /* Toast.swift in Sources */,
 				DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */,
 				DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */,
@@ -601,10 +619,12 @@
 				DDE6B4782275B7BA0024D993 /* Chat.swift in Sources */,
 				DD8D05FC227B6FE90022AC30 /* PhoneInputCoordinator.swift in Sources */,
 				DDC7DCF022477974007F905B /* HomeViewController.swift in Sources */,
+				DD4AC1F3227CC6020084BBC9 /* CountriesViewModel.swift in Sources */,
 				DDFF9CA6226A55B100CB54E6 /* Message.swift in Sources */,
 				DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */,
 				DD19A947225552CE00CC14BB /* SettingsViewModel.swift in Sources */,
 				DD6F5BCC226B289300FFCB71 /* Constants.swift in Sources */,
+				DD4AC1F5227CC6CF0084BBC9 /* CountriesCoordinator.swift in Sources */,
 				DD19A94B2255530E00CC14BB /* ContactsCoordinator.swift in Sources */,
 				DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */,
 				DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */,

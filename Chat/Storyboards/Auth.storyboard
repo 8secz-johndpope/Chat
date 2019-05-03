@@ -15,15 +15,15 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="1g7-VS-ucX" customClass="HomeViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CZY-71-2Un">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RUY-Yb-IIg">
-                                <rect key="frame" x="16" y="710" width="382" height="45"/>
+                                <rect key="frame" x="16" y="635.5" width="382" height="45"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdt-Sz-SfR">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="45"/>
-                                        <color key="backgroundColor" red="0.80912912439999995" green="0.3021077459" blue="0.41367123900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.4503400326" green="0.71733910379999999" blue="0.93762761350000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="1xB-zP-byg"/>
                                         </constraints>
@@ -40,7 +40,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSENGER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kt-4m-rrR">
-                                <rect key="frame" x="113.5" y="154" width="187.5" height="37"/>
+                                <rect key="frame" x="113.5" y="136.5" width="187.5" height="37"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                 <color key="textColor" red="0.45034003260000005" green="0.71733910377624832" blue="0.93762761350000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -56,6 +56,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JZ6-Zq-uQW"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="startMessagingButton" destination="Fdt-Sz-SfR" id="eSJ-PY-EC3"/>
                     </connections>
@@ -64,23 +65,16 @@
             </objects>
             <point key="canvasLocation" x="-1414" y="752"/>
         </scene>
-        <!--Phone Input View Controller-->
+        <!--Validate your phone-->
         <scene sceneID="x9b-MT-T1O">
             <objects>
                 <viewController storyboardIdentifier="PhoneInputViewController" id="nw9-oz-PCa" customClass="PhoneInputViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aja-Eb-3Rd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="belarus" translatesAutoresizingMaskIntoConstraints="NO" id="Hko-P2-h37">
-                                <rect key="frame" x="137" y="147" width="140" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="BPy-3X-KAy"/>
-                                    <constraint firstAttribute="width" secondItem="Hko-P2-h37" secondAttribute="height" multiplier="1:1" id="ziD-hb-vbB"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your country code and enter your phone number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO8-U6-e7q">
-                                <rect key="frame" x="68" y="323" width="278" height="41"/>
+                                <rect key="frame" x="68" y="279" width="278" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="278" id="EkC-Pk-3es"/>
                                 </constraints>
@@ -89,7 +83,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8b-YC-csc">
-                                <rect key="frame" x="-1" y="434" width="74" height="38"/>
+                                <rect key="frame" x="-1" y="368" width="74" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="4YD-ah-5mS"/>
                                 </constraints>
@@ -98,7 +92,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Your phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9YM-gx-nsr">
-                                <rect key="frame" x="72" y="434" width="343" height="38"/>
+                                <rect key="frame" x="72" y="368" width="343" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="IrQ-MW-Nl1"/>
                                     <constraint firstAttribute="height" constant="38" id="iOL-HV-AxH"/>
@@ -107,22 +101,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHL-73-YGw">
-                                <rect key="frame" x="24" y="68" width="24" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1T-Rc-hP9">
+                                <rect key="frame" x="137" y="68" width="140" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="lbK-ZT-Q3e"/>
-                                    <constraint firstAttribute="width" secondItem="eHL-73-YGw" secondAttribute="height" multiplier="1:1" id="uAa-7T-CXr"/>
+                                    <constraint firstAttribute="width" constant="140" id="Z4G-to-d6V"/>
+                                    <constraint firstAttribute="width" secondItem="T1T-Rc-hP9" secondAttribute="height" multiplier="1:1" id="s63-TF-mPg"/>
                                 </constraints>
-                                <state key="normal" image="cancel"/>
+                                <state key="normal" image="belarus"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Validate your phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvO-bV-DK6">
-                                <rect key="frame" x="117" y="67" width="180" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP4-4J-PWG">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="-1" y="730" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -133,24 +121,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bvO-bV-DK6" firstAttribute="centerY" secondItem="eHL-73-YGw" secondAttribute="centerY" id="1aw-iK-tye"/>
-                            <constraint firstItem="eHL-73-YGw" firstAttribute="top" secondItem="jB8-Vy-yC0" secondAttribute="top" constant="24" id="9wy-Rt-VPm"/>
                             <constraint firstItem="i8b-YC-csc" firstAttribute="leading" secondItem="jB8-Vy-yC0" secondAttribute="leading" constant="-1" id="BUB-E5-M3d"/>
+                            <constraint firstItem="T1T-Rc-hP9" firstAttribute="top" secondItem="jB8-Vy-yC0" secondAttribute="top" constant="68" id="Buq-nS-569"/>
                             <constraint firstItem="9YM-gx-nsr" firstAttribute="leading" secondItem="i8b-YC-csc" secondAttribute="trailing" constant="-1" id="JxW-Lh-Wp3"/>
                             <constraint firstItem="i8b-YC-csc" firstAttribute="centerY" secondItem="jB8-Vy-yC0" secondAttribute="centerY" id="KYd-uZ-evH"/>
+                            <constraint firstItem="BO8-U6-e7q" firstAttribute="top" secondItem="T1T-Rc-hP9" secondAttribute="bottom" constant="71" id="Mee-wu-pZB"/>
                             <constraint firstItem="BO8-U6-e7q" firstAttribute="centerX" secondItem="jB8-Vy-yC0" secondAttribute="centerX" id="ROn-eG-94O"/>
                             <constraint firstAttribute="trailing" secondItem="9YM-gx-nsr" secondAttribute="trailing" constant="-1" id="WAr-kE-9Em"/>
-                            <constraint firstItem="Hko-P2-h37" firstAttribute="centerX" secondItem="jB8-Vy-yC0" secondAttribute="centerX" id="g7K-FL-EiD"/>
-                            <constraint firstItem="Hko-P2-h37" firstAttribute="top" secondItem="jB8-Vy-yC0" secondAttribute="top" constant="103" id="nVq-ZV-uRU"/>
+                            <constraint firstItem="T1T-Rc-hP9" firstAttribute="centerX" secondItem="jB8-Vy-yC0" secondAttribute="centerX" id="bK2-AK-B9R"/>
                             <constraint firstItem="9YM-gx-nsr" firstAttribute="centerY" secondItem="jB8-Vy-yC0" secondAttribute="centerY" id="pNx-mP-1JO"/>
-                            <constraint firstItem="bvO-bV-DK6" firstAttribute="centerX" secondItem="jB8-Vy-yC0" secondAttribute="centerX" id="q78-Ek-6oz"/>
-                            <constraint firstItem="BO8-U6-e7q" firstAttribute="top" secondItem="Hko-P2-h37" secondAttribute="bottom" constant="36" id="tKO-tf-jQp"/>
-                            <constraint firstItem="eHL-73-YGw" firstAttribute="leading" secondItem="jB8-Vy-yC0" secondAttribute="leading" constant="24" id="z7F-Gr-jQs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jB8-Vy-yC0"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Validate your phone" id="SFb-Ue-sVv">
+                        <barButtonItem key="leftBarButtonItem" id="y8W-z8-aEe">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eHL-73-YGw">
+                                <rect key="frame" x="20" y="10" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="lbK-ZT-Q3e"/>
+                                    <constraint firstAttribute="width" secondItem="eHL-73-YGw" secondAttribute="height" multiplier="1:1" id="uAa-7T-CXr"/>
+                                </constraints>
+                                <state key="normal" image="cancel"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="cancelButton" destination="eHL-73-YGw" id="0Iy-YN-SSg"/>
+                        <outlet property="countryFlagButton" destination="T1T-Rc-hP9" id="DCe-eq-Bra"/>
                         <outlet property="phoneCodeTextField" destination="i8b-YC-csc" id="ef9-pq-trn"/>
                         <outlet property="phoneNumberTextField" destination="9YM-gx-nsr" id="EPx-rX-0x5"/>
                         <outlet property="verifyButton" destination="oP4-4J-PWG" id="lfX-Wf-ZSW"/>
@@ -160,16 +159,67 @@
             </objects>
             <point key="canvasLocation" x="-601.44927536231887" y="750.66964285714278"/>
         </scene>
-        <!--Phone Verification View Controller-->
+        <!--Search countries-->
+        <scene sceneID="nif-g9-cj2">
+            <objects>
+                <viewController storyboardIdentifier="CountriesViewController" id="sLx-HO-gVt" customClass="CountriesViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KZQ-gZ-cO9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e2i-ku-VI7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="e2i-ku-VI7" firstAttribute="leading" secondItem="zYu-g0-UIm" secondAttribute="leading" id="42l-Ux-CFD"/>
+                            <constraint firstItem="zYu-g0-UIm" firstAttribute="trailing" secondItem="e2i-ku-VI7" secondAttribute="trailing" id="Kq0-uG-d1i"/>
+                            <constraint firstItem="zYu-g0-UIm" firstAttribute="bottom" secondItem="e2i-ku-VI7" secondAttribute="bottom" id="Red-ra-nF5"/>
+                            <constraint firstItem="e2i-ku-VI7" firstAttribute="top" secondItem="zYu-g0-UIm" secondAttribute="top" id="h4j-6R-Avs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zYu-g0-UIm"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search countries" id="hp5-yU-MyK">
+                        <barButtonItem key="leftBarButtonItem" id="WRS-7D-gB7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t4m-gJ-Obl">
+                                <rect key="frame" x="20" y="7.5" width="24" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="backButton" destination="t4m-gJ-Obl" id="38b-Zh-nAu"/>
+                        <outlet property="tableView" destination="e2i-ku-VI7" id="OOk-kg-KCi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prp-ka-UDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-595" y="1391"/>
+        </scene>
+        <!--+375 33 332-24-03-->
         <scene sceneID="CMp-XR-ooZ">
             <objects>
                 <viewController storyboardIdentifier="PhoneVerificationViewController" id="leK-Iy-iaU" customClass="PhoneVerificationViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t1Y-hF-sm1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fI6-m7-5l8"/>
                     </view>
+                    <navigationItem key="navigationItem" title="+375 33 332-24-03" id="IVC-zj-jPk">
+                        <barButtonItem key="leftBarButtonItem" id="GTV-Cu-HCl">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZaZ-9d-TIO">
+                                <rect key="frame" x="20" y="7.5" width="24" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRs-58-Ppj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,6 +277,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back" width="17" height="29"/>
         <image name="belarus" width="512" height="512"/>
         <image name="cancel" width="24" height="24"/>
         <image name="chat" width="1280" height="1024"/>

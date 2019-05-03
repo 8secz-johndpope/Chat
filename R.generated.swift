@@ -30,7 +30,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 271 images.
+  /// This `R.image` struct is generated, and contains static references to 272 images.
   struct image {
     /// Image `abkhazia`.
     static let abkhazia = Rswift.ImageResource(bundle: R.hostingBundle, name: "abkhazia")
@@ -66,6 +66,8 @@ struct R: Rswift.Validatable {
     static let azerbaijan = Rswift.ImageResource(bundle: R.hostingBundle, name: "azerbaijan")
     /// Image `azores-islands`.
     static let azoresIslands = Rswift.ImageResource(bundle: R.hostingBundle, name: "azores-islands")
+    /// Image `back`.
+    static let back = Rswift.ImageResource(bundle: R.hostingBundle, name: "back")
     /// Image `bahamas`.
     static let bahamas = Rswift.ImageResource(bundle: R.hostingBundle, name: "bahamas")
     /// Image `bahrain`.
@@ -658,6 +660,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "azores-islands", bundle: ..., traitCollection: ...)`
     static func azoresIslands(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.azoresIslands, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "back", bundle: ..., traitCollection: ...)`
+    static func back(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.back, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "bahamas", bundle: ..., traitCollection: ...)`
@@ -1999,11 +2006,16 @@ struct _R: Rswift.Validatable {
     
     struct auth: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
+      let countriesViewController = StoryboardViewControllerResource<CountriesViewController>(identifier: "CountriesViewController")
       let homeViewController = StoryboardViewControllerResource<HomeViewController>(identifier: "HomeViewController")
       let name = "Auth"
       let phoneInputViewController = StoryboardViewControllerResource<PhoneInputViewController>(identifier: "PhoneInputViewController")
       let phoneVerificationViewController = StoryboardViewControllerResource<PhoneVerificationViewController>(identifier: "PhoneVerificationViewController")
       let startViewController = StoryboardViewControllerResource<StartViewController>(identifier: "StartViewController")
+      
+      func countriesViewController(_: Void = ()) -> CountriesViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: countriesViewController)
+      }
       
       func homeViewController(_: Void = ()) -> HomeViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: homeViewController)
@@ -2022,11 +2034,13 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "back", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back' is used in storyboard 'Auth', but couldn't be loaded.") }
         if UIKit.UIImage(named: "belarus", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'belarus' is used in storyboard 'Auth', but couldn't be loaded.") }
         if UIKit.UIImage(named: "cancel", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cancel' is used in storyboard 'Auth', but couldn't be loaded.") }
         if UIKit.UIImage(named: "chat", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'chat' is used in storyboard 'Auth', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.auth().countriesViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'countriesViewController' could not be loaded from storyboard 'Auth' as 'CountriesViewController'.") }
         if _R.storyboard.auth().homeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Auth' as 'HomeViewController'.") }
         if _R.storyboard.auth().phoneInputViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'phoneInputViewController' could not be loaded from storyboard 'Auth' as 'PhoneInputViewController'.") }
         if _R.storyboard.auth().phoneVerificationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'phoneVerificationViewController' could not be loaded from storyboard 'Auth' as 'PhoneVerificationViewController'.") }

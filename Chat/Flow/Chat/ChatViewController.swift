@@ -69,7 +69,7 @@ class ChatViewController: MessagesViewController {
     }
 
     private func insertMessage(_ message: Message) {
-        let messagesCount = viewModel.getMessagesCount()
+        //let messagesCount = viewModel.getMessagesCount()
 
         viewModel.sortMessages()
         messagesCollectionView.reloadData()

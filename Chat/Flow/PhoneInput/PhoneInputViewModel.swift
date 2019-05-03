@@ -14,11 +14,13 @@ class PhoneInputViewModel: ViewModelProtocol {
     struct Input {
         let cancelButtonDidTap: AnyObserver<Void>
         let verifyButtonDidTap: AnyObserver<Void>
+        let countryFlagButtonDidTap: AnyObserver<Void>
     }
     
     struct Output {
         let cancelButtonObservable: Driver<Void>
         let verifyButtonObservable: Driver<Void>
+        let countryFlagButtonObservable: Driver<Void>
     }
     
     let input: Input
@@ -26,12 +28,15 @@ class PhoneInputViewModel: ViewModelProtocol {
     
     private let cancelButtonSubject = PublishSubject<Void>()
     private let verifyButtonSubject = PublishSubject<Void>()
+    private let countryFlagButtonSubject = PublishSubject<Void>()
     private let disposeBag = DisposeBag()
     
     init() {
         self.input = Input(cancelButtonDidTap: cancelButtonSubject.asObserver(),
-                           verifyButtonDidTap: verifyButtonSubject.asObserver())
+                           verifyButtonDidTap: verifyButtonSubject.asObserver(),
+                           countryFlagButtonDidTap: countryFlagButtonSubject.asObserver())
         self.output = Output(cancelButtonObservable: cancelButtonSubject.asDriver(onErrorJustReturn: ()),
-                             verifyButtonObservable: verifyButtonSubject.asDriver(onErrorJustReturn: ()))
+                             verifyButtonObservable: verifyButtonSubject.asDriver(onErrorJustReturn: ()),
+                             countryFlagButtonObservable: countryFlagButtonSubject.asDriver(onErrorJustReturn: ()))
     }
 }

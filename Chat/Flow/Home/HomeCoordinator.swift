@@ -23,7 +23,9 @@ final class HomeCoordinator: BaseCoordinator<Void> {
         let viewController = HomeViewController.create(with: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         
-        navigationController.setNavigationBarHidden(true, animated: false)
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.isTranslucent = true
         window.rootViewController = navigationController
         
         let _ = viewModel.output.startMessagingObservable

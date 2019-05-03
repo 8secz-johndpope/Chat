@@ -15,7 +15,7 @@ class PhoneInputViewController: UIViewController {
     @IBOutlet var phoneNumberTextField: UITextField!
     @IBOutlet var verifyButton: UIButton!
     @IBOutlet var cancelButton: UIButton!
-    var buttonConstraint: NSLayoutConstraint!
+    @IBOutlet var countryFlagButton: UIButton!
     
     private var viewModel: PhoneInputViewModel!
     private let disposeBag = DisposeBag()
@@ -56,10 +56,10 @@ class PhoneInputViewController: UIViewController {
         verifyButton.rx.tap
             .subscribe(viewModel.input.verifyButtonDidTap)
             .disposed(by: disposeBag)
-    }
-    
-    private func configureConstraints() {
-        //verifyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        countryFlagButton.rx.tap
+            .subscribe(viewModel.input.countryFlagButtonDidTap)
+            .disposed(by: disposeBag)
     }
     
     private func registerNotifications() {
