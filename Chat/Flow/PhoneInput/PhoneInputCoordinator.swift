@@ -22,7 +22,13 @@ class PhoneInputCoordinator: BaseCoordinator<Void> {
         let viewController = PhoneInputViewController.create(with: viewModel)
         navigationController.pushViewController(viewController, animated: true)
         
-        return Observable.never()
+        let result = viewModel.output
+            .cancelButtonObservable
+            .asObservable()
+        
+        return result.do(onNext: { [weak self] (_) in
+            self?.navigationController.popViewController(animated: true)
+        })
     }
     
 }

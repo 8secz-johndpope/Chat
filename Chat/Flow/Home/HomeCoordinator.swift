@@ -23,15 +23,16 @@ final class HomeCoordinator: BaseCoordinator<Void> {
         let viewController = HomeViewController.create(with: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         
+        navigationController.setNavigationBarHidden(true, animated: false)
         window.rootViewController = navigationController
         
-        let result = viewModel.output.startMessagingObservable
+        let _ = viewModel.output.startMessagingObservable
             .flatMapLatest { [weak self] (_) -> Observable<Void> in
                 guard let self = self else { return Observable.empty() }
                 return self.showPhoneInput(on: navigationController)
-            }
+            }.subscribe()
         
-        return result
+        return Observable.never()
     }
     
     private func showPhoneInput(on navigationController: UINavigationController) -> Observable<Void> {
