@@ -8,11 +8,12 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import PhoneNumberKit
 
 class PhoneInputViewController: UIViewController {
     
-    @IBOutlet var phoneCodeTextField: UITextField!
-    @IBOutlet var phoneNumberTextField: UITextField!
+    @IBOutlet var phoneNumberTextField: PhoneNumberTextField!
     @IBOutlet var verifyButton: UIButton!
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var countryFlagButton: UIButton!
@@ -32,20 +33,20 @@ class PhoneInputViewController: UIViewController {
         configureUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
     
     private func configureUI() {
-        phoneCodeTextField.text = "+"
-        phoneCodeTextField.becomeFirstResponder()
-        phoneCodeTextField.delegate = self
+        phoneNumberTextField.text = "+"
+        phoneNumberTextField.becomeFirstResponder()
+        phoneNumberTextField.delegate = self
+        
+        phoneNumberTextField.clearButtonMode = .never
+        phoneNumberTextField.textAlignment = .center
+        phoneNumberTextField.font = UIFont.systemFont(ofSize: 22)
+
     }
     
     private func configureViewModel() {
@@ -59,6 +60,23 @@ class PhoneInputViewController: UIViewController {
         
         countryFlagButton.rx.tap
             .subscribe(viewModel.input.countryFlagButtonDidTap)
+            .disposed(by: disposeBag)
+        
+        viewModel.output
+            .countryFlag
+            .drive(countryFlagButton.rx.image(for: .normal))
+            .disposed(by: disposeBag)
+        
+        phoneNumberTextField.rx.controlEvent([.editingChanged])
+            .flatMap { _ -> Observable<String> in
+                return Observable.just(self.phoneNumberTextField.region)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
+        
+        phoneNumberTextField.rx.text.orEmpty
+            .flatMap { _ -> Observable<String> in Observable.just(self.phoneNumberTextField.region ) }
+            .subscribe(viewModel.input.region)
             .disposed(by: disposeBag)
     }
     
@@ -92,9 +110,7 @@ extension PhoneInputViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        if textField.text == "+" && string == "" { return false }
-        
-        return textField.text?.count ?? 0 < 4 || string == ""
+        return !(textField.text == "+" && string == "") && ((textField.text?.count ?? 0) < 18 || string == "")
     }
 }
 
@@ -108,3 +124,57 @@ extension PhoneInputViewController {
     }
     
 }
+
+extension PhoneNumberTextField {
+    var region: String {
+        get {
+            if (text?.count ?? 0) > 1 {
+                return (currentRegion == "US" && text?[1] != "1") ? "" : currentRegion
+            }
+            return ""
+        }
+    }
+}
+
+extension String {
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+}
+
+/*extension Reactive where Base: PhoneNumberTextField {
+ 
+ var currentRegion: ControlProperty<String> {
+ return base.rx.controlProperty(
+ editingEvents: UIControlEvents.valueChanged,
+ getter: { $0.currentRegion },
+ setter: { _,_ in  }
+ )
+ }
+ 
+ var nationalNumber: ControlProperty<String> {
+ return base.rx.controlProperty(
+ editingEvents: UIControlEvents.valueChanged,
+ getter: { $0.nationalNumber },
+ setter: { _,_ in }
+ )
+ }
+ 
+ var isValidNumber: ControlProperty<Bool> {
+ return base.rx.controlProperty(
+ editingEvents: UIControlEvents.valueChanged,
+ getter: { $0.isValidNumber },
+ setter: { _,_ in}
+ )
+ }
+ 
+ var region: ControlProperty<String> {
+ return base.rx.controlProperty(
+ editingEvents: UIControlEvents.valueChanged,
+ getter: { $0.region },
+ setter: { _,_ in}
+ )
+ }
+ }*/
+
+//class TextField: PhoneNumberTextField { }

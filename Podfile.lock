@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.1)
+  - Differentiator (3.1.0)
   - Firebase/Core (5.19.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
@@ -94,6 +95,12 @@ PODS:
   - NVActivityIndicatorView (4.6.1):
     - NVActivityIndicatorView/Presenter (= 4.6.1)
   - NVActivityIndicatorView/Presenter (4.6.1)
+  - PhoneNumberKit (2.6.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 2.6.0)
+    - PhoneNumberKit/UIKit (= 2.6.0)
+  - PhoneNumberKit/PhoneNumberKitCore (2.6.0)
+  - PhoneNumberKit/UIKit (2.6.0):
+    - PhoneNumberKit/PhoneNumberKitCore
   - R.swift (5.0.3):
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.0)
@@ -101,6 +108,10 @@ PODS:
   - RxAtomic (4.4.2)
   - RxCocoa (4.4.2):
     - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - RxFirebase/Auth (0.3.4):
     - RxFirebaseAuthentication (~> 0.3)
   - RxFirebase/Database (0.3.4):
@@ -132,8 +143,10 @@ DEPENDENCIES:
   - MessageKit
   - Moya
   - NVActivityIndicatorView
+  - PhoneNumberKit
   - R.swift
   - RxCocoa
+  - RxDataSources
   - RxFirebase/Auth
   - RxFirebase/Database
   - RxFirebase/Storage
@@ -142,6 +155,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Differentiator
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -162,11 +176,13 @@ SPEC REPOS:
     - Moya
     - nanopb
     - NVActivityIndicatorView
+    - PhoneNumberKit
     - R.swift
     - R.swift.Library
     - Result
     - RxAtomic
     - RxCocoa
+    - RxDataSources
     - RxFirebase
     - RxFirebaseAuthentication
     - RxFirebaseDatabase
@@ -175,6 +191,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAuth: cbb892a66baed025efc179372598941252acf853
@@ -195,17 +212,19 @@ SPEC CHECKSUMS:
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
+  PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
   RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxFirebase: 77493b62bfafe7d4dbb404bd06874756f29465ab
   RxFirebaseAuthentication: 9dc412659765fe6a873b996cfd042b745cb643b4
   RxFirebaseDatabase: c75bd954c983fdf134f13f8f46d75058e83eb822
   RxFirebaseStorage: fe6ec6aa4a2e4bc985f0dcd9fc4ea9ade4b8edf2
   RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
 
-PODFILE CHECKSUM: b2e80c23d7d151fd2a9e30008bf1b1c550cb7510
+PODFILE CHECKSUM: aa67a73e41e11f6ef6463354ec85b0cf0e59a5b1
 
 COCOAPODS: 1.6.1

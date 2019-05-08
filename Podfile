@@ -7,16 +7,15 @@ target 'Chat' do
     pod 'RxFirebase/Database'
     pod 'RxFirebase/Storage'
     pod 'RxFirebase/Auth'
-    pod 'MaterialComponents/TextFields'
     pod 'R.swift'
     pod 'RxSwift'
     pod 'RxCocoa'
-    pod 'Moya'
     pod 'Kingfisher'
-    pod 'Alamofire'
     pod 'MessageKit'
     pod 'MessageInputBar'
     pod 'NVActivityIndicatorView'
+    pod 'PhoneNumberKit'
+    pod 'RxDataSources'
 end
 
 

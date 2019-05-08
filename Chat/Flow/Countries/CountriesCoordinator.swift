@@ -8,7 +8,12 @@
 
 import RxSwift
 
-class CountriesCoordinator: BaseCoordinator<Void> {
+enum CountryCoordinatorResult {
+    case cancel
+    case country(Country)
+}
+
+class CountriesCoordinator: BaseCoordinator<CountryCoordinatorResult> {
     
     private let navigationController: UINavigationController
     
@@ -16,14 +21,22 @@ class CountriesCoordinator: BaseCoordinator<Void> {
         self.navigationController = navigationController
     }
     
-    override func start() -> Observable<Void> {
+    override func start() -> Observable<CountryCoordinatorResult> {
         let viewModel = CountriesViewModel()
         let viewController = CountriesViewController.create(with: viewModel)
         navigationController.pushViewController(viewController, animated: true)
         
-        let result = viewModel.output.backButtonObservable.asObservable()
+        let cancel = viewModel.output
+            .backButtonObservable
+            .asObservable()
+            .map { CountryCoordinatorResult.cancel }
         
-        return result.do(onNext: { [weak self] (_) in
+        let country = viewModel.output
+            .selectionObservable
+            .asObservable()
+            .map { CountryCoordinatorResult.country($0) }
+        
+        return Observable.merge(cancel, country).take(1).do(onNext: { [weak self] (_) in
             self?.navigationController.popViewController(animated: true)
         })
     }

@@ -27,11 +27,20 @@ class PhoneInputCoordinator: BaseCoordinator<Void> {
         viewModel.output
             .countryFlagButtonObservable
             .asObservable()
-            .flatMap { [weak self] (_) -> Observable<Void> in
+            .flatMap { [weak self] (_) -> Observable<CountryCoordinatorResult> in
                 guard let self = self else { return Observable.empty() }
                 return self.showCountries(on: self.navigationController)
+            }.map { result -> Country? in
+                switch result {
+                case .cancel:
+                    return nil
+                case .country(let country):
+                    return country
+                }
             }
-            .subscribe()
+            .filter { $0 != nil }
+            .map { $0!}
+            .bind(to: viewModel.input.countrySelection)
             .disposed(by: disposeBag)
         
         return result.do(onNext: { [weak self] (_) in
@@ -39,7 +48,7 @@ class PhoneInputCoordinator: BaseCoordinator<Void> {
         })
     }
     
-    private func showCountries(on navigationController: UINavigationController) -> Observable<Void> {
+    private func showCountries(on navigationController: UINavigationController) -> Observable<CountryCoordinatorResult> {
         let coordinator = CountriesCoordinator(navigationController: navigationController)
         return coordinate(to: coordinator)
     }
