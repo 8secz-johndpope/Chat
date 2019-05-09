@@ -4,6 +4,7 @@ import UIKit
 import PlaygroundSupport
 import PhoneNumberKit
 import Rswift
+
 /*
 class MyViewController : UIViewController {
     override func loadView() {
@@ -23,4 +24,5 @@ class MyViewController : UIViewController {
 PlaygroundPage.current.liveView = MyViewController()
 */
 
-Bundle.main.path(forResource: "info", ofType: "plist")
+let number = try! PhoneNumberKit().parse("+375 33 333-33-33")
+PhoneNumberKit().format(number, toType: .e164)

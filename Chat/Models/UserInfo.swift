@@ -10,14 +10,14 @@ import Foundation
 
 class UserInfo {
     
-    var email: String
+    var phoneNumber: String
     var imageUrl: URL
     var userId: String
     var username: String
     
     init?(data: Any) {
         guard let info = data as? [String: Any],
-            let email = info["email"] as? String,
+            let phoneNumber = info["phoneNumber"] as? String,
             let imageUrlString = info["imageUrl"] as? String,
             let imageUrl = URL(string: imageUrlString),
             let userId = info["userId"] as? String,
@@ -25,14 +25,14 @@ class UserInfo {
                 return nil
         }
         
-        self.email = email
+        self.phoneNumber = phoneNumber
         self.imageUrl = imageUrl
         self.userId = userId
         self.username = username
     }
     
-    init(email: String, imageUrl: URL, userId: String, username: String) {
-        self.email = email
+    init(phoneNumber: String, imageUrl: URL, userId: String, username: String) {
+        self.phoneNumber = phoneNumber
         self.imageUrl = imageUrl
         self.userId = userId
         self.username = username
@@ -40,8 +40,8 @@ class UserInfo {
     
     func toAny() -> Any {
         return [
-            "email": email,
-            "imageUrl": imageUrl,
+            "phoneNumber": phoneNumber,
+            "imageUrl": imageUrl.absoluteString,
             "userId": userId,
             "username": username
         ]

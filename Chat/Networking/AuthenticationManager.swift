@@ -16,7 +16,7 @@ struct Credential {
 }
 
 enum AuthError: Error {
-    case credentialsMissing
+    case unknownError
 }
 
 class AuthenticationManager {
@@ -27,52 +27,41 @@ class AuthenticationManager {
     
     private init() {}
     
-    private func saveCredentials(withEmail email: String, password: String) {
-        UserDefaults.standard.set(email, forKey: "email")
-        UserDefaults.standard.set(password, forKey: "password")
+    private func login() {
         UserDefaults.standard.set(true, forKey: "authorized")
     }
     
-    private func loadCredentials() -> Credential? {
-        guard let email = UserDefaults.standard.value(forKey: "email") as? String,
-            let password = UserDefaults.standard.value(forKey: "password") as? String else {
-                return nil
-        }
-        
-        return Credential(email: email, password: password)
-    }
-    
-    func wasAuthorized() -> Bool {
-        return UserDefaults.standard.value(forKey: "authorized") as? Bool == true
+    func userIsAuthorized() -> Bool {
+        return UserDefaults.standard.bool(forKey: "authorized")
     }
     
     func logout() {
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "password")
         UserDefaults.standard.set(false, forKey: "authorized")
     }
     
-    func signIn() -> Observable<Event<AuthDataResult>> {
-        guard let credential = loadCredentials() else {
-            return Observable.error(AuthError.credentialsMissing)
+    func sendCode(to phoneNumber: String, completion: @escaping (Result<String, Error>) -> Void) {
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
+                if let id = verificationID {
+                    UserDefaults.standard.set(id, forKey: "authVerificationID")
+                    completion(.success(id))
+                } else {
+                    completion(.failure(error ?? AuthError.unknownError))
+                }
+            }
+    }
+    
+    func verifyPhoneNumber(verificationId: String,
+                           verificationCode: String,
+                           completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId,
+                                                                 verificationCode: verificationCode)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authDataResult, error) in
+            if let authData = authDataResult {
+                completion(.success(authData))
+            } else {
+                completion(.failure(error ?? AuthError.unknownError))
+            }
         }
-        return signIn(withEmail: credential.email, password: credential.password)
-    }
-    
-    func signIn(withEmail email: String, password: String) -> Observable<Event<AuthDataResult>> {
-        return Auth.auth().rx
-            .signIn(withEmail: email, password: password)
-            .do(onNext: { [weak self] (authDataResult) in
-                self?.saveCredentials(withEmail: email, password: password)
-                self?.user = authDataResult.user
-            }).materialize()
-    }
-    
-    func createUser(withEmail email: String, password: String) -> Observable<AuthDataResult> {
-        return Auth.auth().rx.createUser(withEmail: email, password: password)
-    }
-    
-    func sendPasswordReset(withEmail email: String) -> Observable<Event<Void>> {
-        return Auth.auth().rx.sendPasswordReset(withEmail: email).materialize()
     }
 }

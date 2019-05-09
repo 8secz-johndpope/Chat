@@ -8,21 +8,39 @@
 
 import UIKit
 import RxSwift
+import FirebaseAuth
 
-class PhoneVerificationCoordinator: BaseCoordinator<Void> {
+enum PhoneVerificationResult {
+    case back
+    case verified(AuthDataResult)
+}
+
+final class PhoneVerificationCoordinator: BaseCoordinator<PhoneVerificationResult> {
     
     private let navigationController: UINavigationController
+    private let phoneNumber: String
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, phoneNumber: String) {
         self.navigationController = navigationController
+        self.phoneNumber = phoneNumber
     }
     
-    override func start() -> Observable<Void> {
-        let viewModel = PhoneVerificationViewModel()
+    override func start() -> Observable<PhoneVerificationResult> {
+        let viewModel = PhoneVerificationViewModel(phoneNumber: phoneNumber)
         let viewController = PhoneVerificationViewController.create(with: viewModel)
         navigationController.pushViewController(viewController, animated: true)
         
-        return Observable.never()
+        let backResult = viewModel.output.backButton
+            .asObservable()
+            .map { PhoneVerificationResult.back }
+        
+        let authResult = viewModel.output.authData
+            .asObservable()
+            .map { PhoneVerificationResult.verified($0) }
+        
+        return Observable.merge(backResult, authResult).do(onNext: { [weak self] (_) in
+            self?.navigationController.popViewController(animated: false)
+        })
     }
     
 }

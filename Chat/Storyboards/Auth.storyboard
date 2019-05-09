@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="-1414" y="752"/>
         </scene>
-        <!--Validate your phone-->
+        <!--Enter phone number-->
         <scene sceneID="x9b-MT-T1O">
             <objects>
                 <viewController storyboardIdentifier="PhoneInputViewController" id="nw9-oz-PCa" customClass="PhoneInputViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,16 +105,19 @@
                                 <rect key="frame" x="-1" y="730" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <state key="normal" title="VERIFY">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCw-6y-5Gd" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
-                                <rect key="frame" x="60" y="372" width="294" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCw-6y-5Gd" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                <rect key="frame" x="60" y="370.5" width="294" height="33"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nw9-oz-PCa" id="IlV-g1-gDB"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,7 +132,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jB8-Vy-yC0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Validate your phone" id="SFb-Ue-sVv">
+                    <navigationItem key="navigationItem" title="Enter phone number" id="SFb-Ue-sVv">
                         <barButtonItem key="leftBarButtonItem" id="y8W-z8-aEe">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eHL-73-YGw">
                                 <rect key="frame" x="20" y="10" width="24" height="24"/>
@@ -248,7 +251,118 @@
                     <view key="view" contentMode="scaleToFill" id="t1Y-hF-sm1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter verification code sent to your number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09K-5d-0zq">
+                                <rect key="frame" x="40" y="120" width="334" height="69.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="chT-eQ-bYw">
+                                <rect key="frame" x="62" y="279.5" width="290" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Y83-Xm-Muy">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="60"/>
+                                        <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="CJI-wW-PTk"/>
+                                            <constraint firstAttribute="height" constant="60" id="m80-vW-h3c"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="leK-Iy-iaU" id="ROH-bt-nmP"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Liq-zm-lH5">
+                                        <rect key="frame" x="50" y="0.0" width="40" height="60"/>
+                                        <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="eHH-T8-iuL"/>
+                                            <constraint firstAttribute="height" constant="60" id="gvc-sy-QTj"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="leK-Iy-iaU" id="VSb-em-gJg"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="4KR-pH-I2g">
+                                        <rect key="frame" x="100" y="0.0" width="40" height="60"/>
+                                        <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Zdg-S6-XeC"/>
+                                            <constraint firstAttribute="width" constant="40" id="qo6-kZ-Zrh"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="leK-Iy-iaU" id="CcB-7j-15Y"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="2AH-fR-ExK">
+                                        <rect key="frame" x="150" y="0.0" width="40" height="60"/>
+                                        <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="3wv-kp-TPG"/>
+                                            <constraint firstAttribute="height" constant="60" id="DyO-qc-vTW"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="leK-Iy-iaU" id="ldt-4u-HMa"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Q99-mu-a2q">
+                                        <rect key="frame" x="200" y="0.0" width="40" height="60"/>
+                                        <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="PLV-Fj-VGD"/>
+                                            <constraint firstAttribute="width" constant="40" id="h32-sI-dk8"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="leK-Iy-iaU" id="Hj2-JU-RSU"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="4zF-ET-O6I">
+                                        <rect key="frame" x="250" y="0.0" width="40" height="60"/>
+                                        <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="pfR-bD-jle"/>
+                                            <constraint firstAttribute="width" constant="40" id="xXV-se-jZf"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="leK-Iy-iaU" id="OZZ-Ig-U5x"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bc0-q0-jqh">
+                                <rect key="frame" x="159" y="756" width="97" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Resend Code">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="chT-eQ-bYw" firstAttribute="centerY" secondItem="fI6-m7-5l8" secondAttribute="bottom" multiplier="0.4" id="DeD-Yj-IBv"/>
+                            <constraint firstItem="09K-5d-0zq" firstAttribute="leading" secondItem="fI6-m7-5l8" secondAttribute="leading" constant="40" id="IPc-of-FxX"/>
+                            <constraint firstItem="09K-5d-0zq" firstAttribute="centerY" secondItem="fI6-m7-5l8" secondAttribute="bottom" multiplier="0.2" id="NhX-LR-SbW"/>
+                            <constraint firstItem="chT-eQ-bYw" firstAttribute="centerX" secondItem="fI6-m7-5l8" secondAttribute="centerX" id="ZSm-5Y-ueb"/>
+                            <constraint firstAttribute="trailing" secondItem="09K-5d-0zq" secondAttribute="trailing" constant="40" id="eKr-Kk-vqn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fI6-m7-5l8"/>
                     </view>
                     <navigationItem key="navigationItem" title="+375 33 332-24-03" id="IVC-zj-jPk">
@@ -261,10 +375,20 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="backButton" destination="ZaZ-9d-TIO" id="N5i-YT-8cm"/>
+                        <outlet property="resendCodeButton" destination="bc0-q0-jqh" id="ghx-gb-xVd"/>
+                        <outletCollection property="textFields" destination="Y83-Xm-Muy" collectionClass="NSMutableArray" id="sle-rj-GNM"/>
+                        <outletCollection property="textFields" destination="Liq-zm-lH5" collectionClass="NSMutableArray" id="mdc-xX-PoV"/>
+                        <outletCollection property="textFields" destination="4KR-pH-I2g" collectionClass="NSMutableArray" id="mXm-I6-LBt"/>
+                        <outletCollection property="textFields" destination="2AH-fR-ExK" collectionClass="NSMutableArray" id="vmP-lV-VP6"/>
+                        <outletCollection property="textFields" destination="Q99-mu-a2q" collectionClass="NSMutableArray" id="ive-4B-SYr"/>
+                        <outletCollection property="textFields" destination="4zF-ET-O6I" collectionClass="NSMutableArray" id="Vqe-Xi-dBd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRs-58-Ppj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="751"/>
+            <point key="canvasLocation" x="200.00000000000003" y="750.66964285714278"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="PFr-tv-lqZ">

@@ -30,7 +30,7 @@ class StartViewModel: ViewModelProtocol {
         self.input = Input(animationDidFinish: animationDidFinishSubject.asObserver())
         self.output = Output(resultObservable: resultSubject.asObservable())
         
-        let authorized = AuthenticationManager.shared.wasAuthorized()
+        let authorized = AuthenticationManager.shared.userIsAuthorized()
         
         animationDidFinishSubject.asObservable().subscribe(onNext: { [weak self] _ in
             self?.resultSubject.onNext(authorized ? .authorized : .notAuthorized)

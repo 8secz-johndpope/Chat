@@ -102,6 +102,7 @@
 		DD338F222265A7F400DDE6DE /* SearchContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContactsViewModel.swift; sourceTree = "<group>"; };
 		DD338F242265A86400DDE6DE /* SearchContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContactsCoordinator.swift; sourceTree = "<group>"; };
 		DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRDatabaseManager.swift; sourceTree = "<group>"; };
+		DD38E3E322839A740066BD73 /* Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat.entitlements; sourceTree = "<group>"; };
 		DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleView.swift; sourceTree = "<group>"; };
 		DD3ACAFB226CD796001E9E13 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DD4AC1F2227CC6020084BBC9 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 		DD03B69F223AA0E100476C0C /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				DD38E3E322839A740066BD73 /* Chat.entitlements */,
 				DD3ACAFB226CD796001E9E13 /* MyPlayground.playground */,
 				DD03B6AC223AA0E200476C0C /* Info.plist */,
 				DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */,
@@ -470,6 +472,14 @@
 				TargetAttributes = {
 					DD03B69C223AA0E100476C0C = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

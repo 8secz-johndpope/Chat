@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import PhoneNumberKit
 
-class CountriesViewModel: ViewModelProtocol {
+final class CountriesViewModel: ViewModelProtocol {
     
     struct Input {
         let backButtonDidTap: AnyObserver<Void>

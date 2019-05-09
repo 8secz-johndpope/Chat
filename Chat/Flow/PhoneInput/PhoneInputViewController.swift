@@ -33,20 +33,9 @@ class PhoneInputViewController: UIViewController {
         configureUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     private func configureUI() {
-        phoneNumberTextField.text = "+"
         phoneNumberTextField.becomeFirstResponder()
-        phoneNumberTextField.delegate = self
-        
-        phoneNumberTextField.clearButtonMode = .never
-        phoneNumberTextField.textAlignment = .center
-        phoneNumberTextField.font = UIFont.systemFont(ofSize: 22)
-
+        phoneNumberTextField.keyboardType = .numberPad
     }
     
     private func configureViewModel() {
@@ -62,21 +51,36 @@ class PhoneInputViewController: UIViewController {
             .subscribe(viewModel.input.countryFlagButtonDidTap)
             .disposed(by: disposeBag)
         
-        viewModel.output
-            .countryFlag
+        viewModel.output.countryFlag
             .drive(countryFlagButton.rx.image(for: .normal))
             .disposed(by: disposeBag)
         
+        (phoneNumberTextField.rx.text.orEmpty <-> viewModel.output.region).disposed(by: disposeBag)
+        
         phoneNumberTextField.rx.controlEvent([.editingChanged])
-            .flatMap { _ -> Observable<String> in
-                return Observable.just(self.phoneNumberTextField.region)
-            }
-            .subscribe()
+            .flatMap { [weak self] _ -> Observable<Bool> in
+                guard let self = self else { return Observable.empty() }
+                return Observable.just(self.phoneNumberTextField.isValidNumber ) }
+            .subscribe(viewModel.input.isValidNumber)
+            .disposed(by: disposeBag)
+        
+        phoneNumberTextField.rx.controlEvent([.editingChanged])
+            .flatMap { [weak self] _ -> Observable<String> in
+                guard let self = self else { return Observable.empty() }
+                return Observable.just(self.phoneNumberTextField.region ) }
+            .subscribe(viewModel.input.region)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.isValidNumber
+            .drive(verifyButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.verifyButtonColor
+            .bind(to: verifyButton.rx.backgroundColor)
             .disposed(by: disposeBag)
         
         phoneNumberTextField.rx.text.orEmpty
-            .flatMap { _ -> Observable<String> in Observable.just(self.phoneNumberTextField.region ) }
-            .subscribe(viewModel.input.region)
+            .bind(to: viewModel.input.phoneNumber)
             .disposed(by: disposeBag)
     }
     
@@ -96,13 +100,15 @@ class PhoneInputViewController: UIViewController {
                 verifyButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
                 verifyButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
                 verifyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -height).isActive = true
-                verifyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+                verifyButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
                 view.layoutIfNeeded()
             }
         }
-        
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension PhoneInputViewController: UITextFieldDelegate {
@@ -142,39 +148,18 @@ extension String {
     }
 }
 
-/*extension Reactive where Base: PhoneNumberTextField {
- 
- var currentRegion: ControlProperty<String> {
- return base.rx.controlProperty(
- editingEvents: UIControlEvents.valueChanged,
- getter: { $0.currentRegion },
- setter: { _,_ in  }
- )
- }
- 
- var nationalNumber: ControlProperty<String> {
- return base.rx.controlProperty(
- editingEvents: UIControlEvents.valueChanged,
- getter: { $0.nationalNumber },
- setter: { _,_ in }
- )
- }
- 
- var isValidNumber: ControlProperty<Bool> {
- return base.rx.controlProperty(
- editingEvents: UIControlEvents.valueChanged,
- getter: { $0.isValidNumber },
- setter: { _,_ in}
- )
- }
- 
- var region: ControlProperty<String> {
- return base.rx.controlProperty(
- editingEvents: UIControlEvents.valueChanged,
- getter: { $0.region },
- setter: { _,_ in}
- )
- }
- }*/
+infix operator <-> : DefaultPrecedence
+
+func <-> <T>(property: ControlProperty<T>, relay: BehaviorRelay<T>) -> Disposable {
+    let bindToUIDisposable = relay.bind(to: property)
+    let bindToRelay = property
+        .subscribe(onNext: { n in
+            relay.accept(n)
+        }, onCompleted:  {
+            bindToUIDisposable.dispose()
+        })
+    
+    return Disposables.create(bindToUIDisposable, bindToRelay)
+}
 
 //class TextField: PhoneNumberTextField { }

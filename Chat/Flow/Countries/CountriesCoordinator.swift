@@ -13,7 +13,7 @@ enum CountryCoordinatorResult {
     case country(Country)
 }
 
-class CountriesCoordinator: BaseCoordinator<CountryCoordinatorResult> {
+final class CountriesCoordinator: BaseCoordinator<CountryCoordinatorResult> {
     
     private let navigationController: UINavigationController
     

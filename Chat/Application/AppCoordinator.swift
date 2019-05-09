@@ -52,7 +52,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
         return coordinate(to: startCoordinator)
     }
     
-    private func showHome() -> Observable<Void> {
+    private func showHome() -> Observable<AuthDataResult> {
         let homeCoordinator = HomeCoordinator(window: window)
         return coordinate(to: homeCoordinator)
     }

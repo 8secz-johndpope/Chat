@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import FirebaseAuth
 
-final class HomeCoordinator: BaseCoordinator<Void> {
+final class HomeCoordinator: BaseCoordinator<AuthDataResult> {
     
     private let window: UIWindow
     
@@ -18,7 +18,7 @@ final class HomeCoordinator: BaseCoordinator<Void> {
         self.window = window
     }
     
-    override func start() -> Observable<Void> {
+    override func start() -> Observable<AuthDataResult> {
         let viewModel = HomeViewModel()
         let viewController = HomeViewController.create(with: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
@@ -28,16 +28,25 @@ final class HomeCoordinator: BaseCoordinator<Void> {
         navigationController.navigationBar.isTranslucent = true
         window.rootViewController = navigationController
         
-        let _ = viewModel.output.startMessagingObservable
-            .flatMapLatest { [weak self] (_) -> Observable<Void> in
+        let result = viewModel.output.startMessagingObservable
+            .flatMap { [weak self] (_) -> Observable<PhoneVerificationResult> in
                 guard let self = self else { return Observable.empty() }
                 return self.showPhoneInput(on: navigationController)
-            }.subscribe()
+            }.map { result -> AuthDataResult? in
+                switch result {
+                case .back:
+                    return nil
+                case .verified(let authData):
+                    return authData
+                }
+            }
+            .filter { $0 != nil }
+            .map { $0! }
         
-        return Observable.never()
+        return result
     }
     
-    private func showPhoneInput(on navigationController: UINavigationController) -> Observable<Void> {
+    private func showPhoneInput(on navigationController: UINavigationController) -> Observable<PhoneVerificationResult> {
         let coordinator = PhoneInputCoordinator(navigationController: navigationController)
         return coordinate(to: coordinator)
     }
