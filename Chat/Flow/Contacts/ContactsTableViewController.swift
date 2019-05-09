@@ -16,6 +16,7 @@ class ContactsTableViewController: UITableViewController {
     var viewModel: ContactsViewModel!
     
     private let disposeBag = DisposeBag()
+    private let cellIdentifier = R.reuseIdentifier.contactCell.identifier
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +27,24 @@ class ContactsTableViewController: UITableViewController {
     
     private func configureUI() {
         tableView.tableFooterView = UIView()
+        tableView.delegate = nil
+        tableView.dataSource = nil
     }
 
     private func configureViewModel() {
         addContactButton.rx.tap
             .subscribe(viewModel.input.addContactButtonDidTap)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.contacts
+            .drive(tableView.rx.items(cellIdentifier: cellIdentifier, cellType: UITableViewCell.self)) { (element, userInfo, cell) in
+                cell.textLabel?.text = userInfo.username
+                cell.imageView?.kf.setImage(with: userInfo.imageUrl,
+                                            placeholder: R.image.profile())
+            }.disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(UserInfo.self)
+            .bind(to: viewModel.input.selection)
             .disposed(by: disposeBag)
     }
     

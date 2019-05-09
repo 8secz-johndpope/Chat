@@ -50,6 +50,7 @@
 		DD8D05FE227B70050022AC30 /* PhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05FD227B70050022AC30 /* PhoneInputViewController.swift */; };
 		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
 		DD9AC7F92273AE86001FF7D1 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */; };
+		DD9DBA0C2284CD9700DF2F05 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9DBA0B2284CD9700DF2F05 /* Contact.swift */; };
 		DDB86135224B6120007082F6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB86134224B6120007082F6 /* Toast.swift */; };
 		DDBC02112240EAE20046C70E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02102240EAE20046C70E /* UserInfo.swift */; };
 		DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02122240F0E00046C70E /* String+isValidEmail.swift */; };
@@ -123,6 +124,7 @@
 		DD8D05FD227B70050022AC30 /* PhoneInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputViewController.swift; sourceTree = "<group>"; };
 		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		DD9DBA0B2284CD9700DF2F05 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		DDB86134224B6120007082F6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		DDBC02102240EAE20046C70E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DDBC02122240F0E00046C70E /* String+isValidEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidEmail.swift"; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				DDFF9CA5226A55B100CB54E6 /* Message.swift */,
 				DDE6B4772275B7BA0024D993 /* Chat.swift */,
 				DDF7CD0C227D628E00D721AE /* Country.swift */,
+				DD9DBA0B2284CD9700DF2F05 /* Contact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				DDE7E3C322745C8200F6FCE7 /* StartViewController.swift in Sources */,
 				DDBC02132240F0E00046C70E /* String+isValidEmail.swift in Sources */,
 				DD8D05F6227B6F8C0022AC30 /* PhoneVerificationViewModel.swift in Sources */,
+				DD9DBA0C2284CD9700DF2F05 /* Contact.swift in Sources */,
 				DD19A943225547F600CC14BB /* ContactsTableViewController.swift in Sources */,
 				DD81D2C52269B267004FCCEE /* ChatViewModel.swift in Sources */,
 				DD338F252265A86400DDE6DE /* SearchContactsCoordinator.swift in Sources */,

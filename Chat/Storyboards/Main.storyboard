@@ -219,10 +219,6 @@
                             </tableViewCell>
                         </prototypes>
                         <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="uxO-Ug-oaZ" id="Jhj-pR-ycZ"/>
-                            <outlet property="delegate" destination="uxO-Ug-oaZ" id="dp5-4H-o8E"/>
-                        </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Contacts" image="contacts" id="Bzx-2L-pdC"/>
                     <navigationItem key="navigationItem" title="Contacts" id="BNd-9k-NCc">

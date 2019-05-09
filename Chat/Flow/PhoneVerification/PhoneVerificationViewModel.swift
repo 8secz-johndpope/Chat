@@ -64,6 +64,7 @@ final class PhoneVerificationViewModel: ViewModelProtocol {
         
         FIRDatabaseManager().uploadUser(user) { [weak self] (error) in
             if error == nil {
+                AuthenticationManager.shared.login()
                 self?.authDataSubject.onNext(authData)
             }
         }

@@ -125,6 +125,22 @@ class FIRDatabaseManager {
         }
     }
     
+    func fetchUsers(completion: @escaping ([UserInfo]) -> ()) {
+        usersRef.observeSingleEvent(of: .value) { (userSnapshot) in
+            if let values = userSnapshot.value as? [String: Any] {
+                var users = [UserInfo]()
+                for userData in values.values {
+                    if let user = userData as? [String: Any],
+                        let info = user[Constants.info],
+                        let userInfo = UserInfo(data: info) {
+                        users.append(userInfo)
+                    }
+                }
+                completion(users)
+            }
+        }
+    }
+    
     func fetchUserInfo(userId: String, completion: @escaping (UserInfo) -> ()) {
         usersRef.child(userId).child(Constants.info)
             .observeSingleEvent(of: .value, with: { (userSnapshot) in

@@ -27,7 +27,7 @@ class AuthenticationManager {
     
     private init() {}
     
-    private func login() {
+    func login() {
         UserDefaults.standard.set(true, forKey: "authorized")
     }
     
