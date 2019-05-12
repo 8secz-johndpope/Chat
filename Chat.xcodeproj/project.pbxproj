@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		057845B35649202005699DF6 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE9240C32D8FCD51019154 /* Pods_Chat.framework */; };
+		DD038AE9228774450060A5B5 /* ContactResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD038AE8228774450060A5B5 /* ContactResultsTableController.swift */; };
+		DD038AEB2287747C0060A5B5 /* ContactResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD038AEA2287747C0060A5B5 /* ContactResultsViewModel.swift */; };
 		DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03B6A0223AA0E100476C0C /* AppDelegate.swift */; };
 		DD03B6AB223AA0E200476C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A9223AA0E200476C0C /* LaunchScreen.storyboard */; };
 		DD03B6B3223AAFE100476C0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6B2223AAFE100476C0C /* GoogleService-Info.plist */; };
@@ -26,9 +28,6 @@
 		DD19A94D2255533400CC14BB /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */; };
 		DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */; };
 		DD2BC0E62279F40D000F640A /* ChatTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2BC0E52279F40D000F640A /* ChatTitleViewModel.swift */; };
-		DD338F212265A1F400DDE6DE /* SearchContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F202265A1F400DDE6DE /* SearchContactsViewController.swift */; };
-		DD338F232265A7F400DDE6DE /* SearchContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F222265A7F400DDE6DE /* SearchContactsViewModel.swift */; };
-		DD338F252265A86400DDE6DE /* SearchContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F242265A86400DDE6DE /* SearchContactsCoordinator.swift */; };
 		DD338F272265C6F700DDE6DE /* FIRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */; };
 		DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */; };
 		DD4AC1F3227CC6020084BBC9 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4AC1F2227CC6020084BBC9 /* CountriesViewModel.swift */; };
@@ -72,12 +71,16 @@
 		DDF7CD09227D615200D721AE /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF7CD08227D615200D721AE /* CountryCell.swift */; };
 		DDF7CD0B227D624300D721AE /* CountryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF7CD0A227D624300D721AE /* CountryCellViewModel.swift */; };
 		DDF7CD0D227D628E00D721AE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF7CD0C227D628E00D721AE /* Country.swift */; };
+		DDFA6A9822881C5500735795 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFA6A9722881C5500735795 /* ContactCell.swift */; };
+		DDFA6A9A22881C6700735795 /* ContactCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFA6A9922881C6700735795 /* ContactCellViewModel.swift */; };
 		DDFF9CA6226A55B100CB54E6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFF9CA5226A55B100CB54E6 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D8BFD867A406A73780045E52 /* Pods-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 		DBFE9240C32D8FCD51019154 /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD038AE8228774450060A5B5 /* ContactResultsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactResultsTableController.swift; sourceTree = "<group>"; };
+		DD038AEA2287747C0060A5B5 /* ContactResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactResultsViewModel.swift; sourceTree = "<group>"; };
 		DD03B69D223AA0E100476C0C /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD03B6A0223AA0E100476C0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD03B6A7223AA0E200476C0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,9 +102,6 @@
 		DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		DD2BC0E52279F40D000F640A /* ChatTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleViewModel.swift; sourceTree = "<group>"; };
-		DD338F202265A1F400DDE6DE /* SearchContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContactsViewController.swift; sourceTree = "<group>"; };
-		DD338F222265A7F400DDE6DE /* SearchContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContactsViewModel.swift; sourceTree = "<group>"; };
-		DD338F242265A86400DDE6DE /* SearchContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContactsCoordinator.swift; sourceTree = "<group>"; };
 		DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRDatabaseManager.swift; sourceTree = "<group>"; };
 		DD38E3E322839A740066BD73 /* Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat.entitlements; sourceTree = "<group>"; };
 		DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleView.swift; sourceTree = "<group>"; };
@@ -146,6 +146,8 @@
 		DDF7CD08227D615200D721AE /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		DDF7CD0A227D624300D721AE /* CountryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellViewModel.swift; sourceTree = "<group>"; };
 		DDF7CD0C227D628E00D721AE /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		DDFA6A9722881C5500735795 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		DDFA6A9922881C6700735795 /* ContactCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellViewModel.swift; sourceTree = "<group>"; };
 		DDFF9CA5226A55B100CB54E6 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E88350B0D5E1586307BC5C40 /* Pods-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +179,15 @@
 				E88350B0D5E1586307BC5C40 /* Pods-Chat.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DD038AE7228773F70060A5B5 /* ResultsController */ = {
+			isa = PBXGroup;
+			children = (
+				DD038AEA2287747C0060A5B5 /* ContactResultsViewModel.swift */,
+				DD038AE8228774450060A5B5 /* ContactResultsTableController.swift */,
+			);
+			path = ResultsController;
 			sourceTree = "<group>";
 		};
 		DD03B694223AA0E100476C0C = {
@@ -283,21 +294,14 @@
 		DD19A93F225540C200CC14BB /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				DD038AE7228773F70060A5B5 /* ResultsController */,
 				DD19A944225552BD00CC14BB /* ContactsViewModel.swift */,
 				DD19A942225547F600CC14BB /* ContactsTableViewController.swift */,
 				DD19A94A2255530E00CC14BB /* ContactsCoordinator.swift */,
+				DDFA6A9722881C5500735795 /* ContactCell.swift */,
+				DDFA6A9922881C6700735795 /* ContactCellViewModel.swift */,
 			);
 			path = Contacts;
-			sourceTree = "<group>";
-		};
-		DD338F1F2265A18D00DDE6DE /* SearchContacts */ = {
-			isa = PBXGroup;
-			children = (
-				DD338F222265A7F400DDE6DE /* SearchContactsViewModel.swift */,
-				DD338F202265A1F400DDE6DE /* SearchContactsViewController.swift */,
-				DD338F242265A86400DDE6DE /* SearchContactsCoordinator.swift */,
-			);
-			path = SearchContacts;
 			sourceTree = "<group>";
 		};
 		DD4AC1F1227CC5D60084BBC9 /* Countries */ = {
@@ -411,7 +415,6 @@
 			children = (
 				DD064E0C224FAF4600992AD4 /* MainTabBarCoordinator.swift */,
 				DD064E0E224FAFF500992AD4 /* MainTabBarController.swift */,
-				DD338F1F2265A18D00DDE6DE /* SearchContacts */,
 				DD81D2C12269B22B004FCCEE /* Chat */,
 				DD19A93F225540C200CC14BB /* Contacts */,
 				DD19A93D225540B200CC14BB /* Messages */,
@@ -552,24 +555,20 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -577,24 +576,20 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -633,13 +628,13 @@
 				DD19A94D2255533400CC14BB /* MessagesCoordinator.swift in Sources */,
 				DD19A949225552E200CC14BB /* MessagesViewModel.swift in Sources */,
 				DD9AC7F92273AE86001FF7D1 /* AuthenticationManager.swift in Sources */,
-				DD338F232265A7F400DDE6DE /* SearchContactsViewModel.swift in Sources */,
 				DD2BC0E62279F40D000F640A /* ChatTitleViewModel.swift in Sources */,
 				DDF7CD0B227D624300D721AE /* CountryCellViewModel.swift in Sources */,
 				DD4AC1F7227CC6E10084BBC9 /* CountriesViewController.swift in Sources */,
 				DDF7CD0D227D628E00D721AE /* Country.swift in Sources */,
 				DDB86135224B6120007082F6 /* Toast.swift in Sources */,
 				DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */,
+				DDFA6A9A22881C6700735795 /* ContactCellViewModel.swift in Sources */,
 				DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */,
 				DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */,
 				DDC7DCF522477B8D007F905B /* HomeCoordinator.swift in Sources */,
@@ -649,7 +644,6 @@
 				DDC7DCF322477B82007F905B /* HomeViewModel.swift in Sources */,
 				DDE7E3C522745C8D00F6FCE7 /* StartViewModel.swift in Sources */,
 				DDBC02112240EAE20046C70E /* UserInfo.swift in Sources */,
-				DD338F212265A1F400DDE6DE /* SearchContactsViewController.swift in Sources */,
 				DD8D05FA227B6FBF0022AC30 /* PhoneVerificationCoordinator.swift in Sources */,
 				DD03B6A1223AA0E100476C0C /* AppDelegate.swift in Sources */,
 				DDE6B47C227625B50024D993 /* ChatCellViewModel.swift in Sources */,
@@ -663,9 +657,11 @@
 				DD6F5BCC226B289300FFCB71 /* Constants.swift in Sources */,
 				DD4AC1F5227CC6CF0084BBC9 /* CountriesCoordinator.swift in Sources */,
 				DD19A94B2255530E00CC14BB /* ContactsCoordinator.swift in Sources */,
+				DDFA6A9822881C5500735795 /* ContactCell.swift in Sources */,
 				DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */,
 				DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */,
 				DDE7E3C722745C9700F6FCE7 /* StartCoordinator.swift in Sources */,
+				DD038AEB2287747C0060A5B5 /* ContactResultsViewModel.swift in Sources */,
 				DD8D05F8227B6FAA0022AC30 /* PhoneVerificationViewController.swift in Sources */,
 				DD81D2C72269B272004FCCEE /* ChatCoordinator.swift in Sources */,
 				DDCCC2AF2277C56E00EC44EF /* Kingfisher+rx.swift in Sources */,
@@ -677,6 +673,7 @@
 				DD8D05F4227B6F3F0022AC30 /* PhoneInputViewModel.swift in Sources */,
 				DD19A93C225540AE00CC14BB /* MessagesTableViewController.swift in Sources */,
 				DD338F272265C6F700DDE6DE /* FIRDatabaseManager.swift in Sources */,
+				DD038AE9228774450060A5B5 /* ContactResultsTableController.swift in Sources */,
 				DD19A941225547DD00CC14BB /* SettingsViewController.swift in Sources */,
 				DD064E0D224FAF4600992AD4 /* MainTabBarCoordinator.swift in Sources */,
 				DDBC021B2241320D0046C70E /* ControllerType.swift in Sources */,
@@ -688,7 +685,6 @@
 				DD9DBA0C2284CD9700DF2F05 /* Contact.swift in Sources */,
 				DD19A943225547F600CC14BB /* ContactsTableViewController.swift in Sources */,
 				DD81D2C52269B267004FCCEE /* ChatViewModel.swift in Sources */,
-				DD338F252265A86400DDE6DE /* SearchContactsCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

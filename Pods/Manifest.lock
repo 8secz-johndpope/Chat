@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (4.8.1)
   - Differentiator (3.1.0)
   - Firebase/Core (5.19.0):
     - Firebase/CoreOnly
@@ -63,30 +62,11 @@ PODS:
   - GTMSessionFetcher/Core (1.2.1)
   - Kingfisher (5.2.0)
   - leveldb-library (1.20)
-  - MaterialComponents/AnimationTiming (79.3.0)
-  - MaterialComponents/Palettes (79.3.0)
-  - MaterialComponents/private/Application (79.3.0)
-  - MaterialComponents/private/Math (79.3.0)
-  - MaterialComponents/TextFields (79.3.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Palettes
-    - MaterialComponents/private/Math
-    - MaterialComponents/Typography
-    - MDFInternationalization
-  - MaterialComponents/Typography (79.3.0):
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Math
-  - MDFInternationalization (2.0.0)
   - MessageInputBar (0.4.1):
     - MessageInputBar/Core (= 0.4.1)
   - MessageInputBar/Core (0.4.1)
   - MessageKit (2.0.0):
     - MessageInputBar/Core
-  - Moya (12.0.1):
-    - Moya/Core (= 12.0.1)
-  - Moya/Core (12.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -104,7 +84,6 @@ PODS:
   - R.swift (5.0.3):
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.0)
-  - Result (4.1.0)
   - RxAtomic (4.4.2)
   - RxCocoa (4.4.2):
     - RxSwift (>= 4.4.2, ~> 4.4)
@@ -133,15 +112,13 @@ PODS:
     - RxSwift (~> 4)
   - RxSwift (4.4.2):
     - RxAtomic (>= 4.4.2, ~> 4.4)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
-  - Alamofire
   - Firebase/Core
   - Kingfisher
-  - MaterialComponents/TextFields
   - MessageInputBar
   - MessageKit
-  - Moya
   - NVActivityIndicatorView
   - PhoneNumberKit
   - R.swift
@@ -151,10 +128,10 @@ DEPENDENCIES:
   - RxFirebase/Database
   - RxFirebase/Storage
   - RxSwift
+  - SnapKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - Differentiator
     - Firebase
     - FirebaseAnalytics
@@ -169,17 +146,13 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Kingfisher
     - leveldb-library
-    - MaterialComponents
-    - MDFInternationalization
     - MessageInputBar
     - MessageKit
-    - Moya
     - nanopb
     - NVActivityIndicatorView
     - PhoneNumberKit
     - R.swift
     - R.swift.Library
-    - Result
     - RxAtomic
     - RxCocoa
     - RxDataSources
@@ -188,9 +161,9 @@ SPEC REPOS:
     - RxFirebaseDatabase
     - RxFirebaseStorage
     - RxSwift
+    - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
@@ -205,17 +178,13 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
-  MaterialComponents: b5069f73fccb7c71e1be8b54fd791cc99320f467
-  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
   RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
@@ -224,7 +193,8 @@ SPEC CHECKSUMS:
   RxFirebaseDatabase: c75bd954c983fdf134f13f8f46d75058e83eb822
   RxFirebaseStorage: fe6ec6aa4a2e4bc985f0dcd9fc4ea9ade4b8edf2
   RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: aa67a73e41e11f6ef6463354ec85b0cf0e59a5b1
+PODFILE CHECKSUM: 19ebba171614913288eaa44b44069bd973adb155
 
 COCOAPODS: 1.6.1

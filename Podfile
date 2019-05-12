@@ -16,6 +16,7 @@ target 'Chat' do
     pod 'NVActivityIndicatorView'
     pod 'PhoneNumberKit'
     pod 'RxDataSources'
+    pod 'SnapKit'
 end
 
 

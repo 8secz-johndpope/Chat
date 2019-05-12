@@ -21,10 +21,10 @@ class ContactsCoordinator: BaseCoordinator<Void> {
         let contactsViewController = ContactsTableViewController.create(with: contactsViewModel)
         navigationController.setViewControllers([contactsViewController], animated: false)
         
-        contactsViewModel.output.addContactButtonObservable
-            .flatMap({ [weak self] _ -> Observable<Void> in
+        contactsViewModel.output.contactSelected
+            .flatMap({ [weak self] userInfo -> Observable<Void> in
                 guard let self = self else { return Observable.empty() }
-                return self.showSearchContacts(on: self.navigationController)
+                return self.showMessages(on: self.navigationController, with: userInfo)
             })
             .subscribe()
             .disposed(by: disposeBag)
@@ -32,8 +32,9 @@ class ContactsCoordinator: BaseCoordinator<Void> {
         return Observable.never()
     }
     
-    private func showSearchContacts(on navigationController: UINavigationController) -> Observable<Void> {
-        let showSearchContactsCoordinator = SearchContactsCoordinator(navigationController: navigationController)
-        return coordinate(to: showSearchContactsCoordinator)
+    private func showMessages(on navigationController: UINavigationController, with user: UserInfo) -> Observable<Void> {
+        let chatCoordinator = ChatCoordinator(navigationController: navigationController,
+                                              companion: user)
+        return coordinate(to: chatCoordinator)
     }
 }

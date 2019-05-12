@@ -14,30 +14,30 @@ import PhoneNumberKit
 class ContactsViewModel: ViewModelProtocol {
     
     struct Input {
-        let addContactButtonDidTap: AnyObserver<Void>
         let selection: AnyObserver<UserInfo>
+        let searchBarText = BehaviorSubject<String>(value: "")
     }
     
     struct Output {
-        let addContactButtonObservable: Observable<Void>
         let contacts: Driver<[UserInfo]>
         let contactSelected: Observable<UserInfo>
     }
     
     let input: Input
     let output: Output
+    
     var contacts: [Contact] = []
-    private let firDatabase = FIRDatabaseManager()
+    private let disposeBag = DisposeBag()
+    private var firDatabase = FIRDatabaseManager()
+    private let searchBarTextSubject = PublishSubject<String>()
     private let selectionSubject = PublishSubject<UserInfo>()
     private let contactsSubject = PublishSubject<[UserInfo]>()
-    private let addContactButtonSubject = PublishSubject<Void>()
     
     init() {
-        self.input = Input(addContactButtonDidTap: addContactButtonSubject.asObserver(),
-                           selection: selectionSubject.asObserver())
-        self.output = Output(addContactButtonObservable: addContactButtonSubject.asObservable(),
-                             contacts: contactsSubject.asDriver(onErrorJustReturn: []),
+        self.input = Input(selection: selectionSubject.asObserver())
+        self.output = Output(contacts: contactsSubject.asDriver(onErrorJustReturn: []),
                              contactSelected: selectionSubject.asObservable())
+        
         self.loadContacts()
     }
     

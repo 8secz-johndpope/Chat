@@ -10,13 +10,21 @@ import UIKit
 import RxSwift
 
 class ContactsTableViewController: UITableViewController {
-
-    @IBOutlet var addContactButton: UIBarButtonItem!
+    
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: resultsTableController)
+        searchController.searchBar.placeholder = "Search contacts"
+        searchController.searchResultsUpdater = self
+        
+        return searchController
+    }()
+    
+    var searchBar: UISearchBar { return searchController.searchBar }
     
     var viewModel: ContactsViewModel!
-    
+    var resultsViewModel = ContactResultsViewModel()
+    lazy var resultsTableController = ContactResultsTableController.create(with: resultsViewModel)
     private let disposeBag = DisposeBag()
-    private let cellIdentifier = R.reuseIdentifier.contactCell.identifier
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +34,37 @@ class ContactsTableViewController: UITableViewController {
     }
     
     private func configureUI() {
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
         tableView.tableFooterView = UIView()
         tableView.delegate = nil
         tableView.dataSource = nil
+        tableView.register(ContactCell.self, forCellReuseIdentifier: ContactCell.identifier)
     }
 
     private func configureViewModel() {
-        addContactButton.rx.tap
-            .subscribe(viewModel.input.addContactButtonDidTap)
-            .disposed(by: disposeBag)
-        
         viewModel.output.contacts
-            .drive(tableView.rx.items(cellIdentifier: cellIdentifier, cellType: UITableViewCell.self)) { (element, userInfo, cell) in
-                cell.textLabel?.text = userInfo.username
-                cell.imageView?.kf.setImage(with: userInfo.imageUrl,
-                                            placeholder: R.image.profile())
+            .drive(tableView.rx.items(cellIdentifier: ContactCell.identifier, cellType: ContactCell.self)) { (element, userInfo, cell) in
+                let viewModel = ContactCellViewModel(contact: userInfo)
+                cell.bind(to: viewModel)
             }.disposed(by: disposeBag)
         
         tableView.rx.modelSelected(UserInfo.self)
             .bind(to: viewModel.input.selection)
             .disposed(by: disposeBag)
+        
+        searchBar.rx.text.orEmpty
+            .subscribe(resultsViewModel.input.searchBarText)
+            .disposed(by: disposeBag)
+    }
+    
+}
+
+extension ContactsTableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        resultsViewModel.clearPreviousResults()
     }
     
 }

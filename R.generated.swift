@@ -107,14 +107,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 4 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `cell`.
     static let cell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "cell")
     /// Reuse identifier `chatCell`.
     static let chatCell: Rswift.ReuseIdentifier<ChatCell> = Rswift.ReuseIdentifier(identifier: "chatCell")
-    /// Reuse identifier `contactCell`.
-    static let contactCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "contactCell")
     /// Reuse identifier `countryCell`.
     static let countryCell: Rswift.ReuseIdentifier<CountryCell> = Rswift.ReuseIdentifier(identifier: "countryCell")
     
@@ -241,7 +239,6 @@ struct _R: Rswift.Validatable {
       let mainTabBarController = StoryboardViewControllerResource<MainTabBarController>(identifier: "MainTabBarController")
       let messagesTableViewController = StoryboardViewControllerResource<MessagesTableViewController>(identifier: "MessagesTableViewController")
       let name = "Main"
-      let searchContactsViewController = StoryboardViewControllerResource<SearchContactsViewController>(identifier: "SearchContactsViewController")
       let settingsTableViewController = StoryboardViewControllerResource<SettingsTableViewController>(identifier: "SettingsTableViewController")
       
       func chatViewController(_: Void = ()) -> ChatViewController? {
@@ -260,10 +257,6 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: messagesTableViewController)
       }
       
-      func searchContactsViewController(_: Void = ()) -> SearchContactsViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchContactsViewController)
-      }
-      
       func settingsTableViewController(_: Void = ()) -> SettingsTableViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsTableViewController)
       }
@@ -279,7 +272,6 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().contactsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'contactsTableViewController' could not be loaded from storyboard 'Main' as 'ContactsTableViewController'.") }
         if _R.storyboard.main().mainTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainTabBarController' could not be loaded from storyboard 'Main' as 'MainTabBarController'.") }
         if _R.storyboard.main().messagesTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'messagesTableViewController' could not be loaded from storyboard 'Main' as 'MessagesTableViewController'.") }
-        if _R.storyboard.main().searchContactsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchContactsViewController' could not be loaded from storyboard 'Main' as 'SearchContactsViewController'.") }
         if _R.storyboard.main().settingsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsTableViewController' could not be loaded from storyboard 'Main' as 'SettingsTableViewController'.") }
       }
       

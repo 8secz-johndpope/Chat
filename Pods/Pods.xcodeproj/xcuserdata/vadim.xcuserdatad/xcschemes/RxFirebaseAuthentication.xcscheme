@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7B4FBA13AF02972E9F79C876EC759291"
+               BlueprintIdentifier = "1A63968DA1F9DB13C3D813000D1D2F21"
                BuildableName = "RxFirebaseAuthentication.framework"
                BlueprintName = "RxFirebaseAuthentication"
                ReferencedContainer = "container:Pods.xcodeproj">
