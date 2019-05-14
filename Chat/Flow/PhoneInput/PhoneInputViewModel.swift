@@ -28,7 +28,7 @@ final class PhoneInputViewModel: ViewModelProtocol {
         let countryFlagButtonObservable: Driver<Void>
         let countrySelection: Observable<Country>
         let countryFlag: Driver<UIImage>
-        let isValidNumber: Driver<Bool>
+        let isValidNumber = BehaviorRelay<Bool>(value: false)
         let verifyButtonColor = BehaviorRelay<UIColor>(value: .gray)
         let region = BehaviorRelay<String>(value: "+")
     }
@@ -63,13 +63,12 @@ final class PhoneInputViewModel: ViewModelProtocol {
             verifyNumber: verifyNumberSubject.asObservable(),
             countryFlagButtonObservable: countryFlagButtonSubject.asDriver(onErrorJustReturn: ()),
             countrySelection: countrySelectionsubject.asObservable(),
-            countryFlag: countryFlagSubject.asDriver(onErrorJustReturn: UIImage()),
-            isValidNumber: isValidNumberSubject.asDriver(onErrorJustReturn: false)
+            countryFlag: countryFlagSubject.asDriver(onErrorJustReturn: UIImage())
         )
         
         output.isValidNumber
             .map { isValid -> UIColor in return isValid ? .blue : .gray }
-            .drive(output.verifyButtonColor)
+            .bind(to: output.verifyButtonColor)
             .disposed(by: disposeBag)
         
         output.countrySelection

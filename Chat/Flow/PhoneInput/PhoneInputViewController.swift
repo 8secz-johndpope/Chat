@@ -14,7 +14,7 @@ import PhoneNumberKit
 class PhoneInputViewController: UIViewController {
     
     @IBOutlet var phoneNumberTextField: PhoneNumberTextField!
-    @IBOutlet var verifyButton: UIButton!
+    @IBOutlet var verifyButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var countryFlagButton: UIButton!
     
@@ -26,6 +26,12 @@ class PhoneInputViewController: UIViewController {
         
         registerNotifications()
         configureViewModel()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        countryFlagButton.layer.cornerRadius = countryFlagButton.frame.width / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +67,7 @@ class PhoneInputViewController: UIViewController {
             .flatMap { [weak self] _ -> Observable<Bool> in
                 guard let self = self else { return Observable.empty() }
                 return Observable.just(self.phoneNumberTextField.isValidNumber ) }
-            .subscribe(viewModel.input.isValidNumber)
+            .bind(to: viewModel.output.isValidNumber)
             .disposed(by: disposeBag)
         
         phoneNumberTextField.rx.controlEvent([.editingChanged])
@@ -72,11 +78,7 @@ class PhoneInputViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.output.isValidNumber
-            .drive(verifyButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-        
-        viewModel.output.verifyButtonColor
-            .bind(to: verifyButton.rx.backgroundColor)
+            .bind(to: verifyButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
         phoneNumberTextField.rx.text.orEmpty
@@ -95,13 +97,6 @@ class PhoneInputViewController: UIViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if view.frame.origin.y == 0 {
                 let height = keyboardSize.height
-                
-                verifyButton.translatesAutoresizingMaskIntoConstraints = false
-                verifyButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-                verifyButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-                verifyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -height).isActive = true
-                verifyButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-                view.layoutIfNeeded()
             }
         }
     }
