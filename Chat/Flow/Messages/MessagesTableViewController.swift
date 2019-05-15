@@ -67,6 +67,13 @@ class MessagesTableViewController: UITableViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.view.stopToast()
             }).disposed(by: disposeBag)
+
+        viewModel.output.chatsCountWithNewMessages
+            .subscribe(onNext: { [weak self] (count) in
+                self?.navigationController?.tabBarItem.badgeValue = count == 0 ? nil : String(count)
+                UIApplication.shared.applicationIconBadgeNumber = Int(count)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func showLoadingToast() {

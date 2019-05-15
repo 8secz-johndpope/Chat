@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import RxSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         appCoordinator = AppCoordinator(window: window!)
         appCoordinator.start().subscribe().disposed(by: disposeBag)
+        
+        UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]) { (_, _) in }
+        application.registerForRemoteNotifications()
         
         return true
     }

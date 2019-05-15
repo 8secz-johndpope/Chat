@@ -21,6 +21,7 @@ class MessagesViewModel: ViewModelProtocol {
         let selectionObservable: Observable<Chat>
         let chatsObservable: Observable<[Chat]>
         let fetchCompanionObservable: Observable<UserInfo>
+        let chatsCountWithNewMessages = BehaviorRelay<UInt>(value: 0)
     }
     
     let input: Input
@@ -51,6 +52,14 @@ class MessagesViewModel: ViewModelProtocol {
         output.selectionObservable.subscribe(onNext: { [weak self] (chat) in
             self?.fetchCompanion(with: chat.companionId)
         }).disposed(by: disposeBag)
+        
+        fetchNewMessaggesCount()
+    }
+    
+    private func fetchNewMessaggesCount() {
+        firDatabse.fetchNewMessagesCount(user: user) { [weak self] (chatsCount) in
+            self?.output.chatsCountWithNewMessages.accept(chatsCount)
+        }
     }
     
     private func fetchCompanion(with companionId: String) {

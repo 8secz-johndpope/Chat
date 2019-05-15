@@ -14,7 +14,7 @@ class ContactsTableViewController: UITableViewController {
     lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: resultsTableController)
         searchController.searchBar.placeholder = "Search contacts"
-        searchController.searchResultsUpdater = self
+        searchController.delegate = self
         
         return searchController
     }()
@@ -54,6 +54,10 @@ class ContactsTableViewController: UITableViewController {
             .bind(to: viewModel.input.selection)
             .disposed(by: disposeBag)
         
+        resultsViewModel.output.contactSelected
+            .bind(to: viewModel.input.selection)
+            .disposed(by: disposeBag)
+        
         searchBar.rx.text.orEmpty
             .subscribe(resultsViewModel.input.searchBarText)
             .disposed(by: disposeBag)
@@ -61,12 +65,11 @@ class ContactsTableViewController: UITableViewController {
     
 }
 
-extension ContactsTableViewController: UISearchResultsUpdating {
+extension ContactsTableViewController: UISearchControllerDelegate {
     
-    func updateSearchResults(for searchController: UISearchController) {
+    func didDismissSearchController(_ searchController: UISearchController) {
         resultsViewModel.clearPreviousResults()
     }
-    
 }
 
 extension ContactsTableViewController {

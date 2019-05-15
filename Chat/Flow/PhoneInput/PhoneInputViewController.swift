@@ -96,7 +96,7 @@ class PhoneInputViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if view.frame.origin.y == 0 {
-                let height = keyboardSize.height
+                let _ = keyboardSize.height
             }
         }
     }

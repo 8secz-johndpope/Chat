@@ -45,6 +45,7 @@ class ContactCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         accessoryType = .disclosureIndicator
+        selectionStyle = .none
         
         contentView.addSubview(containerView)
         containerView.addSubview(contactImageView)

@@ -18,7 +18,9 @@ final class MainTabBarCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
-        let tabBarController = MainTabBarController.create()
+        let viewModel = MainTabBarViewModel()
+        let tabBarController = MainTabBarController.create(with: viewModel)
+        
         let contactsNavigationController = UINavigationController()
         let messagesNavigationController = UINavigationController()
         let settingsNavigationController = UINavigationController()

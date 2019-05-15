@@ -73,8 +73,10 @@ class FIRDatabaseManager {
     }
     
     func uploadUser(_ user: UserInfo, completion: @escaping (Error?) -> ()) {
-        usersRef.child(user.userId).child(Constants.info).setValue(user.toAny()) { (error, reference) in
-            completion(error)
+        usersRef.child(user.userId)
+            .child(Constants.info)
+            .setValue(user.toAny()) { (error, reference) in
+                completion(error)
         }
     }
     
@@ -191,6 +193,16 @@ class FIRDatabaseManager {
             }
     }
     
+    func fetchNewMessagesCount(user: User, completion: @escaping (UInt) -> ()) {
+        usersRef.child(user.uid)
+            .child(Constants.newMessages)
+            .child(Constants.chats)
+            .observe(.value) { (chatsSnapshot) in
+                let chatsCount = chatsSnapshot.childrenCount
+                completion(chatsCount)
+        }
+    }
+    
     func fetchMessagesCount(chatId: String, user: User, completion: @escaping (UInt) -> ()) {
         usersRef.child(user.uid)
             .child(Constants.newMessages)
@@ -221,7 +233,9 @@ class FIRDatabaseManager {
                     .child(Constants.messages)
                     .child(messageId ?? "")
                     .observeSingleEvent(of: .value) { (snapshot) in
-                        let message = Message(data: snapshot.value, id: messageId ?? "")!
+                        let messageData = snapshot.value as Any
+                        let message = Message(data: messageData, id: messageId ?? "")!
+                        
                         completion(message)
                     }
             }
@@ -250,7 +264,8 @@ class FIRDatabaseManager {
             .observe(.value) { (snapshot) in
                 let messageSnapshot = (snapshot.value as? [String: Any])?.first
                 let messageId = messageSnapshot?.key ?? ""
-                let message = Message(data: messageSnapshot?.value, id: messageId)!
+                let messageData = messageSnapshot?.value as Any
+                let message = Message(data: messageData, id: messageId)!
                 completion(message)
         }
     }

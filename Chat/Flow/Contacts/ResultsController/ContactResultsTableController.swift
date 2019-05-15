@@ -24,6 +24,7 @@ class ContactResultsTableController: UITableViewController {
     }
     
     private func configureUI() {
+        tableView.keyboardDismissMode = .onDrag
         tableView.dataSource = nil
         tableView.delegate = nil
         tableView.register(ContactCell.self, forCellReuseIdentifier: ContactCell.identifier)

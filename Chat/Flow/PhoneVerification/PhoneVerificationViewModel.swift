@@ -55,7 +55,7 @@ final class PhoneVerificationViewModel: ViewModelProtocol {
         let firUser = authData.user
         let imageUrl = URL(string: Constants.Firebase.Storage.profilePlaceholder)!
         let userId = firUser.uid
-        let username = UIDevice.current.name
+        let username = UIDevice.current.name.lowercased()
         let phoneNumber = firUser.phoneNumber ?? ""
         let user = UserInfo(phoneNumber: phoneNumber,
                             imageUrl: imageUrl,

@@ -30,6 +30,7 @@
 		DD2BC0E62279F40D000F640A /* ChatTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2BC0E52279F40D000F640A /* ChatTitleViewModel.swift */; };
 		DD338F272265C6F700DDE6DE /* FIRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */; };
 		DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */; };
+		DD3AFBA0228B5DCB005EAE03 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3AFB9F228B5DCB005EAE03 /* MainTabBarViewModel.swift */; };
 		DD4AC1F3227CC6020084BBC9 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4AC1F2227CC6020084BBC9 /* CountriesViewModel.swift */; };
 		DD4AC1F5227CC6CF0084BBC9 /* CountriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4AC1F4227CC6CF0084BBC9 /* CountriesCoordinator.swift */; };
 		DD4AC1F7227CC6E10084BBC9 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4AC1F6227CC6E10084BBC9 /* CountriesViewController.swift */; };
@@ -106,6 +107,7 @@
 		DD38E3E322839A740066BD73 /* Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat.entitlements; sourceTree = "<group>"; };
 		DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleView.swift; sourceTree = "<group>"; };
 		DD3ACAFB226CD796001E9E13 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		DD3AFB9F228B5DCB005EAE03 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		DD4AC1F2227CC6020084BBC9 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
 		DD4AC1F4227CC6CF0084BBC9 /* CountriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCoordinator.swift; sourceTree = "<group>"; };
 		DD4AC1F6227CC6E10084BBC9 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 			children = (
 				DD064E0C224FAF4600992AD4 /* MainTabBarCoordinator.swift */,
 				DD064E0E224FAFF500992AD4 /* MainTabBarController.swift */,
+				DD3AFB9F228B5DCB005EAE03 /* MainTabBarViewModel.swift */,
 				DD81D2C12269B22B004FCCEE /* Chat */,
 				DD19A93F225540C200CC14BB /* Contacts */,
 				DD19A93D225540B200CC14BB /* Messages */,
@@ -667,6 +670,7 @@
 				DDCCC2AF2277C56E00EC44EF /* Kingfisher+rx.swift in Sources */,
 				DDF7CD09227D615200D721AE /* CountryCell.swift in Sources */,
 				DDCA01D722400EFA00676A59 /* AppCoordinator.swift in Sources */,
+				DD3AFBA0228B5DCB005EAE03 /* MainTabBarViewModel.swift in Sources */,
 				DD064E0B224FAEA100992AD4 /* R.generated.swift in Sources */,
 				DD064E0F224FAFF500992AD4 /* MainTabBarController.swift in Sources */,
 				DD19A945225552BD00CC14BB /* ContactsViewModel.swift in Sources */,
