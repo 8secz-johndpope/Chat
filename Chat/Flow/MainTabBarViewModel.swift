@@ -12,14 +12,18 @@ import RxCocoa
 class MainTabBarViewModel {
     
     let chatsCountWithNewMessages = BehaviorRelay<UInt>(value: 0)
-    private let user = AuthenticationManager.shared.user!
+    private let user = AuthService.shared.currentUser
     private let firDatabase = FIRDatabaseManager()
+    private let disposeBag = DisposeBag()
     
     init() {
-        fetchNewMessaggesCount()
+        user.subscribe(onNext: { [weak self] (user) in
+            guard let user = user else { return }
+            self?.fetchNewMessaggesCount(user: user)
+        }).disposed(by: disposeBag)
     }
     
-    private func fetchNewMessaggesCount() {
+    private func fetchNewMessaggesCount(user: UserInfo) {
         firDatabase.fetchNewMessagesCount(user: user) { [weak self] (chatsCount) in
             self?.chatsCountWithNewMessages.accept(chatsCount)
         }

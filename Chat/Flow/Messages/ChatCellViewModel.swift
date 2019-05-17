@@ -25,7 +25,6 @@ class ChatCellViewModel {
     
     let input: Input
     let output: Output
-    
     let chat: Chat
     
     private let lastMessageSubject = PublishSubject<Message>()
@@ -36,6 +35,7 @@ class ChatCellViewModel {
     private let usernameSubject = PublishSubject<String>()
     
     private let disposeBag = DisposeBag()
+    private let user = AuthService.shared.currentUser
     private let firDatabase = FIRDatabaseManager()
     
     init(with chat: Chat) {
@@ -50,19 +50,24 @@ class ChatCellViewModel {
             newMessagesCount: newMessagesCountSubject.asDriver(onErrorJustReturn: 0)
         )
         
-        fetchUserInfo()
-        fetchMessagesCount()
+        user.subscribe(onNext: { [weak self] (user) in
+            guard let user = user else { return }
+            
+            self?.fetchUserInfo(user: user)
+            self?.fetchMessagesCount(user: user)
+        }).disposed(by: disposeBag)
+        
         fetchLastMessage()
     }
     
-    private func fetchMessagesCount() {
+    private func fetchMessagesCount(user: UserInfo) {
         firDatabase.fetchMessagesCount(chatId: chat.id,
-                                       user: AuthenticationManager.shared.user!) { [weak self] (count) in
+                                       user: user) { [weak self] (count) in
             self?.newMessagesCountSubject.onNext(count)
         }
     }
     
-    private func fetchUserInfo() {
+    private func fetchUserInfo(user: UserInfo) {
         firDatabase.fetchUserInfo(userId: chat.companionId) { [weak self] (userInfo) in
             self?.usernameSubject.onNext(userInfo.username)
             self?.profileImageUrlSubject.onNext(userInfo.imageUrl)

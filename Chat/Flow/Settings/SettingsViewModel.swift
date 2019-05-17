@@ -30,7 +30,7 @@ class SettingsViewModel: ViewModelProtocol {
         self.output = Output(logoutObservable: logoutSubject.asObservable())
         
         output.logoutObservable.subscribe(onNext: { (_) in
-            AuthenticationManager.shared.logout()
+            AuthService.shared.logout()
         }).disposed(by: disposeBag)
     }
 }

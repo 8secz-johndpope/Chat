@@ -33,8 +33,8 @@ class ChatViewModel: ViewModelProtocol {
     private let firDatabase = FIRDatabaseManager()
     
     init(companion: UserInfo, chatId: String = "") {
-        self.currentUser = Sender(id: Auth.auth().currentUser?.uid ?? "",
-                             displayName: Auth.auth().currentUser?.displayName ?? "")
+        self.currentUser = Sender(id: AuthService.shared.user?.userId ?? "",
+                                  displayName: AuthService.shared.user?.username ?? "")
         self.companion = companion
         self.chatId = chatId
         

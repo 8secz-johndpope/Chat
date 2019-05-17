@@ -19,14 +19,14 @@ final class PhoneVerificationViewModel: ViewModelProtocol {
     struct Output {
         let backButton: Driver<Void>
         let verificationCode = BehaviorRelay<String>(value: "")
-        let authData: Observable<AuthDataResult>
+        let authData: Observable<UserInfo>
     }
     
     let input: Input
     let output: Output
     let phoneNumber: String
     
-    private let authDataSubject = PublishSubject<AuthDataResult>()
+    private let authDataSubject = PublishSubject<UserInfo>()
     private let backButtonSubject = PublishSubject<Void>()
     private let disposeBag = DisposeBag()
     
@@ -40,7 +40,7 @@ final class PhoneVerificationViewModel: ViewModelProtocol {
     
     func sendCode(_ code: String) {
         if let id = UserDefaults.standard.string(forKey: "authVerificationID") {
-            AuthenticationManager.shared.verifyPhoneNumber(verificationId: id, verificationCode: code) { [weak self] (result) in
+            FIRAuth.verifyPhoneNumber(verificationId: id, verificationCode: code) { [weak self] (result) in
                 switch result {
                 case .failure(let error):
                     print(error)
@@ -62,10 +62,13 @@ final class PhoneVerificationViewModel: ViewModelProtocol {
                             userId: userId,
                             username: username)
         
-        FIRDatabaseManager().uploadUser(user) { [weak self] (error) in
-            if error == nil {
-                AuthenticationManager.shared.login()
-                self?.authDataSubject.onNext(authData)
+        FIRDatabaseManager().uploadUser(user) { [weak self] (result) in
+            switch result {
+            case .success(let user):
+                AuthService.shared.login(userId: user.userId)
+                self?.authDataSubject.onNext(user)
+            case .failure(let error):
+                print(error)
             }
         }
     }

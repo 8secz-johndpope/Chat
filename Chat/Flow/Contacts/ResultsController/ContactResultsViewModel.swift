@@ -29,9 +29,9 @@ class ContactResultsViewModel: ViewModelProtocol {
     private let contactsSubject = PublishSubject<[UserInfo]>()
     private let disposeBag = DisposeBag()
     private let firDatabase = FIRDatabaseManager()
-    private let user = AuthenticationManager.shared.user!
+    private let user = AuthService.shared.currentUser
     
-    init() {        
+    init() {
         self.input = Input(selection: selectionSubject.asObserver())
         self.output = Output(contacts: contactsSubject.asDriver(onErrorJustReturn: []),
                              contactSelected: selectionSubject.asObservable())
@@ -48,7 +48,8 @@ class ContactResultsViewModel: ViewModelProtocol {
                     .catchErrorJustReturn([])
             }
             .subscribe(onNext: { [weak self] (usersInfo) in
-                let filteredContacts = usersInfo.filter { $0.userId != self?.user.uid }
+                guard let userId = self?.user.value?.userId else { return }
+                let filteredContacts = usersInfo.filter { $0.userId != userId }
                 self?.contactsSubject.onNext(filteredContacts)
             })
             .disposed(by: disposeBag)

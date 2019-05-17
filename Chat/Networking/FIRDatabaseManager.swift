@@ -72,11 +72,15 @@ class FIRDatabaseManager {
         })
     }
     
-    func uploadUser(_ user: UserInfo, completion: @escaping (Error?) -> ()) {
+    func uploadUser(_ user: UserInfo, completion: @escaping (Result<UserInfo, Error>) -> ()) {
         usersRef.child(user.userId)
             .child(Constants.info)
             .setValue(user.toAny()) { (error, reference) in
-                completion(error)
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(user))
+                }
         }
     }
     
@@ -193,8 +197,8 @@ class FIRDatabaseManager {
             }
     }
     
-    func fetchNewMessagesCount(user: User, completion: @escaping (UInt) -> ()) {
-        usersRef.child(user.uid)
+    func fetchNewMessagesCount(user: UserInfo, completion: @escaping (UInt) -> ()) {
+        usersRef.child(user.userId)
             .child(Constants.newMessages)
             .child(Constants.chats)
             .observe(.value) { (chatsSnapshot) in
@@ -203,8 +207,8 @@ class FIRDatabaseManager {
         }
     }
     
-    func fetchMessagesCount(chatId: String, user: User, completion: @escaping (UInt) -> ()) {
-        usersRef.child(user.uid)
+    func fetchMessagesCount(chatId: String, user: UserInfo, completion: @escaping (UInt) -> ()) {
+        usersRef.child(user.userId)
             .child(Constants.newMessages)
             .child(Constants.chats)
             .child(chatId)
@@ -241,8 +245,8 @@ class FIRDatabaseManager {
             }
     }
     
-    func observeChats(user: User, completion: @escaping ([Chat]) -> ()) {
-        usersRef.child(user.uid)
+    func observeChats(user: UserInfo, completion: @escaping ([Chat]) -> ()) {
+        usersRef.child(user.userId)
             .child(Constants.chats)
             .observe(.value) { (snapshot) in
                 var chats = [Chat]()

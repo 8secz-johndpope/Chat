@@ -8,10 +8,12 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet var logoutButton: UIButton!
+    @IBOutlet var profileHeaderView: ProfileHeaderView!
     
     var viewModel: SettingsViewModel!
     

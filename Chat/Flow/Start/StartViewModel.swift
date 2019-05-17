@@ -16,24 +16,22 @@ class StartViewModel: ViewModelProtocol {
     }
     
     struct Output {
-        let resultObservable: Observable<AuthResult>
+        let isUserAuthorized: Observable<Bool>
     }
     
     let input: Input
     let output: Output
     
-    private let resultSubject = PublishSubject<AuthResult>()
+    private let isUserAuthorizedSubject = PublishSubject<Bool>()
     private let animationDidFinishSubject = PublishSubject<Void>()
     private let disposeBag = DisposeBag()
     
     init() {
         self.input = Input(animationDidFinish: animationDidFinishSubject.asObserver())
-        self.output = Output(resultObservable: resultSubject.asObservable())
-        
-        let authorized = AuthenticationManager.shared.userIsAuthorized()
+        self.output = Output(isUserAuthorized: isUserAuthorizedSubject.asObservable())
         
         animationDidFinishSubject.asObservable().subscribe(onNext: { [weak self] _ in
-            self?.resultSubject.onNext(authorized ? .authorized : .notAuthorized)
+            self?.isUserAuthorizedSubject.onNext(AuthService.shared.isUserAuthorized())
         }).disposed(by: disposeBag)
     }
 }

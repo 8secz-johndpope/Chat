@@ -17,29 +17,16 @@ struct Credential {
 
 enum AuthError: Error {
     case unknownError
+    case userIdMissing
 }
 
-class AuthenticationManager {
+class FIRAuth {
     
-    static let shared = AuthenticationManager()
-    
-    var user = Auth.auth().currentUser
-    
-    private init() {}
-    
-    func login() {
-        UserDefaults.standard.set(true, forKey: "authorized")
+    static func logout() {
+        try? Auth.auth().signOut()
     }
     
-    func userIsAuthorized() -> Bool {
-        return UserDefaults.standard.bool(forKey: "authorized")
-    }
-    
-    func logout() {
-        UserDefaults.standard.set(false, forKey: "authorized")
-    }
-    
-    func sendCode(to phoneNumber: String, completion: @escaping (Result<String, Error>) -> Void) {
+    static func sendCode(to phoneNumber: String, completion: @escaping (Result<String, Error>) -> Void) {
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
                 if let id = verificationID {
@@ -51,7 +38,7 @@ class AuthenticationManager {
             }
     }
     
-    func verifyPhoneNumber(verificationId: String,
+    static func verifyPhoneNumber(verificationId: String,
                            verificationCode: String,
                            completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId,

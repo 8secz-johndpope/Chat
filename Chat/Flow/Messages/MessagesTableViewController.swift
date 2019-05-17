@@ -42,9 +42,7 @@ class MessagesTableViewController: UITableViewController {
         tableView.dataSource = nil
     }
     
-    private func configureViewModel() {
-        viewModel.input.fetchChats.onNext(())
-        
+    private func configureViewModel() {        
         viewModel.output.chatsObservable
             .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: ChatCell.self)) { (element, chat, cell) in
                 let viewModel = ChatCellViewModel(with: chat)

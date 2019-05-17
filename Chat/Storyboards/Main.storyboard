@@ -18,8 +18,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="A5i-dS-qcT" customClass="ProfileHeaderView" customModule="Chat" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="208"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bvl-9A-fGy">
+                                    <rect key="frame" x="0.0" y="12" width="375" height="196"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U7a-Ij-Oce">
+                                            <rect key="frame" x="119" y="0.0" width="137" height="137"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="U7a-Ij-Oce" secondAttribute="height" multiplier="1:1" id="rNs-v4-KU1"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Nickname" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irE-fF-y3k">
+                                            <rect key="frame" x="116.5" y="137" width="142.5" height="59"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="U7a-Ij-Oce" firstAttribute="height" secondItem="Bvl-9A-fGy" secondAttribute="height" multiplier="0.7" id="az2-dN-boz"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Bvl-9A-fGy" secondAttribute="trailing" id="0lh-29-8ml"/>
+                                <constraint firstItem="Bvl-9A-fGy" firstAttribute="top" secondItem="A5i-dS-qcT" secondAttribute="top" constant="12" id="jQ6-Wy-mEw"/>
+                                <constraint firstAttribute="bottom" secondItem="Bvl-9A-fGy" secondAttribute="bottom" id="swG-d4-caY"/>
+                                <constraint firstItem="Bvl-9A-fGy" firstAttribute="leading" secondItem="A5i-dS-qcT" secondAttribute="leading" id="ywI-En-wyT"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="profileImageView" destination="U7a-Ij-Oce" id="Azv-cq-GEt"/>
+                                <outlet property="profileTitleLabel" destination="irE-fF-y3k" id="LYq-fr-PkU"/>
+                            </connections>
+                        </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="4th-Gn-lSf">
-                            <rect key="frame" x="0.0" y="72" width="375" height="61"/>
+                            <rect key="frame" x="0.0" y="280" width="375" height="61"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3j-0Z-ZJ6">
@@ -49,7 +86,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="RqW-XN-Shq">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="236" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RqW-XN-Shq" id="ShU-Hl-uVU">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -68,6 +105,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="logoutButton" destination="h3j-0Z-ZJ6" id="rTx-aY-Sh9"/>
+                        <outlet property="profileHeaderView" destination="A5i-dS-qcT" id="pFa-rA-5Wr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKu-uq-BPK" userLabel="First Responder" sceneMemberID="firstResponder"/>

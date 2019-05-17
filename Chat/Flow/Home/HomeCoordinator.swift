@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import FirebaseAuth
 
-final class HomeCoordinator: BaseCoordinator<AuthDataResult> {
+final class HomeCoordinator: BaseCoordinator<UserInfo> {
     
     private let window: UIWindow
     
@@ -18,7 +18,7 @@ final class HomeCoordinator: BaseCoordinator<AuthDataResult> {
         self.window = window
     }
     
-    override func start() -> Observable<AuthDataResult> {
+    override func start() -> Observable<UserInfo> {
         let viewModel = HomeViewModel()
         let viewController = HomeViewController.create(with: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
@@ -32,12 +32,12 @@ final class HomeCoordinator: BaseCoordinator<AuthDataResult> {
             .flatMap { [weak self] (_) -> Observable<PhoneVerificationResult> in
                 guard let self = self else { return Observable.empty() }
                 return self.showPhoneInput(on: navigationController)
-            }.map { result -> AuthDataResult? in
+            }.map { result -> UserInfo? in
                 switch result {
                 case .back:
                     return nil
-                case .verified(let authData):
-                    return authData
+                case .verified(let user):
+                    return user
                 }
             }
             .filter { $0 != nil }

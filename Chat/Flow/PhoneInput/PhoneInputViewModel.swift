@@ -100,7 +100,7 @@ final class PhoneInputViewModel: ViewModelProtocol {
         guard let number = try? PhoneNumberKit().parse(phoneNumber) else { return }
         let phone = PhoneNumberKit().format(number, toType: .e164)
         
-        AuthenticationManager.shared.sendCode(to: phone) { [weak self] (result) in
+        FIRAuth.sendCode(to: phone) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print(error)

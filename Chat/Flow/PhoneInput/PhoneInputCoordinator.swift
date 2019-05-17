@@ -57,7 +57,7 @@ final class PhoneInputCoordinator: BaseCoordinator<PhoneVerificationResult> {
                 switch $0 {
                 case .back:
                     return false
-                case .verified(_):
+                case .verified:
                     return true
                 }
             }

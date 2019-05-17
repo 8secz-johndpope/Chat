@@ -13,7 +13,6 @@ class MessagesViewModel: ViewModelProtocol {
     
     struct Input {
         let searchBarText = BehaviorSubject<String>(value: "")
-        let fetchChats: AnyObserver<Void>
         let selection: AnyObserver<Chat>
     }
     
@@ -27,36 +26,37 @@ class MessagesViewModel: ViewModelProtocol {
     let input: Input
     let output: Output
     
-    private let user = AuthenticationManager.shared.user!
+    private let user = AuthService.shared.currentUser
     private let chats = BehaviorRelay<[Chat]>(value: [])
-    private let fetchChatsSubject = PublishSubject<Void>()
     private let selectionSubject = PublishSubject<Chat>()
     private let fetchCompanionSubject = PublishSubject<UserInfo>()
     private let firDatabse = FIRDatabaseManager()
     private let disposeBag = DisposeBag()
     
     init() {
-        self.input = Input(fetchChats: fetchChatsSubject.asObserver(),
-                           selection: selectionSubject.asObserver())
+        self.input = Input(selection: selectionSubject.asObserver())
         self.output = Output(selectionObservable: selectionSubject.asObservable(),
                              chatsObservable: chats.asObservable(),
                              fetchCompanionObservable: fetchCompanionSubject.asObservable())
         
-        fetchChatsSubject.asObservable().subscribe(onNext: { [weak self] (_) in
-            guard let self = self else { return }
-            self.firDatabse.observeChats(user: self.user, completion: { (chats) in
-                self.chats.accept(chats)
-            })
+        user.subscribe(onNext: { [weak self] (user) in
+            guard let user = user else { return }
+            self?.fethcChats(user: user)
+            self?.fetchNewMessaggesCount(user: user)
         }).disposed(by: disposeBag)
-        
+
         output.selectionObservable.subscribe(onNext: { [weak self] (chat) in
             self?.fetchCompanion(with: chat.companionId)
         }).disposed(by: disposeBag)
-        
-        fetchNewMessaggesCount()
     }
     
-    private func fetchNewMessaggesCount() {
+    private func fethcChats(user: UserInfo) {
+        self.firDatabse.observeChats(user: user, completion: { (chats) in
+            self.chats.accept(chats)
+        })
+    }
+    
+    private func fetchNewMessaggesCount(user: UserInfo) {
         firDatabse.fetchNewMessagesCount(user: user) { [weak self] (chatsCount) in
             self?.output.chatsCountWithNewMessages.accept(chatsCount)
         }

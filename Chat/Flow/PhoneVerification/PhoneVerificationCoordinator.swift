@@ -12,7 +12,7 @@ import FirebaseAuth
 
 enum PhoneVerificationResult {
     case back
-    case verified(AuthDataResult)
+    case verified(UserInfo)
 }
 
 final class PhoneVerificationCoordinator: BaseCoordinator<PhoneVerificationResult> {

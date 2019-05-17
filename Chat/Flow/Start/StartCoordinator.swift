@@ -29,7 +29,10 @@ final class StartCoordinator: BaseCoordinator<AuthResult> {
         
         window.rootViewController = navigationController
         
-        return viewModel.output.resultObservable.take(1).do(onNext: { (_) in
+        let result = viewModel.output.isUserAuthorized
+            .map { $0 == true ? AuthResult.authorized : AuthResult.notAuthorized}
+        
+        return result.take(1).do(onNext: { (_) in
             navigationController.popViewController(animated: false)
         })
     }

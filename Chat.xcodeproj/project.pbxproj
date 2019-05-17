@@ -27,6 +27,8 @@
 		DD19A94B2255530E00CC14BB /* ContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94A2255530E00CC14BB /* ContactsCoordinator.swift */; };
 		DD19A94D2255533400CC14BB /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */; };
 		DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */; };
+		DD1EADAA228CB50B00B56438 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EADA9228CB50B00B56438 /* ProfileHeaderView.swift */; };
+		DD1EADAC228CB5AF00B56438 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EADAB228CB5AF00B56438 /* ProfileHeaderViewModel.swift */; };
 		DD2BC0E62279F40D000F640A /* ChatTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2BC0E52279F40D000F640A /* ChatTitleViewModel.swift */; };
 		DD338F272265C6F700DDE6DE /* FIRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */; };
 		DD3ACAFA226C616C001E9E13 /* ChatTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3ACAF9226C616C001E9E13 /* ChatTitleView.swift */; };
@@ -36,6 +38,7 @@
 		DD4AC1F7227CC6E10084BBC9 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4AC1F6227CC6E10084BBC9 /* CountriesViewController.swift */; };
 		DD5D57CE2280473300A702B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD03B6A7223AA0E200476C0C /* Assets.xcassets */; };
 		DD5D57E922805FDC00A702B1 /* countries in Resources */ = {isa = PBXBuildFile; fileRef = DD5D57E822805FDC00A702B1 /* countries */; };
+		DD6CCED8228DD8F400CBE88B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CCED7228DD8F400CBE88B /* AuthService.swift */; };
 		DD6F5BCC226B289300FFCB71 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6F5BCB226B289300FFCB71 /* Constants.swift */; };
 		DD76F59E225A197C007C9A30 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59D225A197B007C9A30 /* PopUpView.swift */; };
 		DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76F59F225A33DE007C9A30 /* SystemColor.swift */; };
@@ -49,7 +52,7 @@
 		DD8D05FC227B6FE90022AC30 /* PhoneInputCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05FB227B6FE90022AC30 /* PhoneInputCoordinator.swift */; };
 		DD8D05FE227B70050022AC30 /* PhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D05FD227B70050022AC30 /* PhoneInputViewController.swift */; };
 		DD95151A223BBA3200ED4D0F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD951519223BBA3200ED4D0F /* Auth.storyboard */; };
-		DD9AC7F92273AE86001FF7D1 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */; };
+		DD9AC7F92273AE86001FF7D1 /* FIRAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9AC7F82273AE86001FF7D1 /* FIRAuth.swift */; };
 		DD9DBA0C2284CD9700DF2F05 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9DBA0B2284CD9700DF2F05 /* Contact.swift */; };
 		DDB86135224B6120007082F6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB86134224B6120007082F6 /* Toast.swift */; };
 		DDBC02112240EAE20046C70E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC02102240EAE20046C70E /* UserInfo.swift */; };
@@ -102,6 +105,8 @@
 		DD19A94A2255530E00CC14BB /* ContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCoordinator.swift; sourceTree = "<group>"; };
 		DD19A94C2255533400CC14BB /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		DD1EADA9228CB50B00B56438 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		DD1EADAB228CB5AF00B56438 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		DD2BC0E52279F40D000F640A /* ChatTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleViewModel.swift; sourceTree = "<group>"; };
 		DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRDatabaseManager.swift; sourceTree = "<group>"; };
 		DD38E3E322839A740066BD73 /* Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat.entitlements; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 		DD4AC1F4227CC6CF0084BBC9 /* CountriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCoordinator.swift; sourceTree = "<group>"; };
 		DD4AC1F6227CC6E10084BBC9 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
 		DD5D57E822805FDC00A702B1 /* countries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = countries; sourceTree = "<group>"; };
+		DD6CCED7228DD8F400CBE88B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		DD6F5BCB226B289300FFCB71 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD76F59D225A197B007C9A30 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		DD76F59F225A33DE007C9A30 /* SystemColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemColor.swift; sourceTree = "<group>"; };
@@ -125,7 +131,7 @@
 		DD8D05FB227B6FE90022AC30 /* PhoneInputCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputCoordinator.swift; sourceTree = "<group>"; };
 		DD8D05FD227B70050022AC30 /* PhoneInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputViewController.swift; sourceTree = "<group>"; };
 		DD951519223BBA3200ED4D0F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
-		DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		DD9AC7F82273AE86001FF7D1 /* FIRAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuth.swift; sourceTree = "<group>"; };
 		DD9DBA0B2284CD9700DF2F05 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		DDB86134224B6120007082F6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		DDBC02102240EAE20046C70E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -225,6 +231,7 @@
 				DD03B6B8223AB1B800476C0C /* Models */,
 				DDBC021E22413CF30046C70E /* Flow */,
 				DD03B6B9223AB1C000476C0C /* Networking */,
+				DD6CCED6228DD8D600CBE88B /* Services */,
 				DDBC0217224131AE0046C70E /* Helpers */,
 			);
 			path = Chat;
@@ -246,7 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				DD338F262265C6F700DDE6DE /* FIRDatabaseManager.swift */,
-				DD9AC7F82273AE86001FF7D1 /* AuthenticationManager.swift */,
+				DD9AC7F82273AE86001FF7D1 /* FIRAuth.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -289,6 +296,8 @@
 				DD19A946225552CE00CC14BB /* SettingsViewModel.swift */,
 				DD19A940225547DD00CC14BB /* SettingsViewController.swift */,
 				DD19A94E2255534A00CC14BB /* SettingsCoordinator.swift */,
+				DD1EADA9228CB50B00B56438 /* ProfileHeaderView.swift */,
+				DD1EADAB228CB5AF00B56438 /* ProfileHeaderViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -317,6 +326,14 @@
 				DD4AC1F4227CC6CF0084BBC9 /* CountriesCoordinator.swift */,
 			);
 			path = Countries;
+			sourceTree = "<group>";
+		};
+		DD6CCED6228DD8D600CBE88B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DD6CCED7228DD8F400CBE88B /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		DD81D2C12269B22B004FCCEE /* Chat */ = {
@@ -630,18 +647,20 @@
 			files = (
 				DD19A94D2255533400CC14BB /* MessagesCoordinator.swift in Sources */,
 				DD19A949225552E200CC14BB /* MessagesViewModel.swift in Sources */,
-				DD9AC7F92273AE86001FF7D1 /* AuthenticationManager.swift in Sources */,
+				DD9AC7F92273AE86001FF7D1 /* FIRAuth.swift in Sources */,
 				DD2BC0E62279F40D000F640A /* ChatTitleViewModel.swift in Sources */,
 				DDF7CD0B227D624300D721AE /* CountryCellViewModel.swift in Sources */,
 				DD4AC1F7227CC6E10084BBC9 /* CountriesViewController.swift in Sources */,
 				DDF7CD0D227D628E00D721AE /* Country.swift in Sources */,
 				DDB86135224B6120007082F6 /* Toast.swift in Sources */,
 				DDCB79F7223D7A6400F22817 /* UIButton+layer.swift in Sources */,
+				DD1EADAA228CB50B00B56438 /* ProfileHeaderView.swift in Sources */,
 				DDFA6A9A22881C6700735795 /* ContactCellViewModel.swift in Sources */,
 				DDCA01D522400EEF00676A59 /* Coordinator.swift in Sources */,
 				DDBC0219224131C30046C70E /* ViewModelProtocol.swift in Sources */,
 				DDC7DCF522477B8D007F905B /* HomeCoordinator.swift in Sources */,
 				DDE6B47A2275ECAC0024D993 /* ChatCell.swift in Sources */,
+				DD6CCED8228DD8F400CBE88B /* AuthService.swift in Sources */,
 				DD8D05FE227B70050022AC30 /* PhoneInputViewController.swift in Sources */,
 				DD76F5A0225A33DE007C9A30 /* SystemColor.swift in Sources */,
 				DDC7DCF322477B82007F905B /* HomeViewModel.swift in Sources */,
@@ -656,6 +675,7 @@
 				DD4AC1F3227CC6020084BBC9 /* CountriesViewModel.swift in Sources */,
 				DDFF9CA6226A55B100CB54E6 /* Message.swift in Sources */,
 				DD19A94F2255534A00CC14BB /* SettingsCoordinator.swift in Sources */,
+				DD1EADAC228CB5AF00B56438 /* ProfileHeaderViewModel.swift in Sources */,
 				DD19A947225552CE00CC14BB /* SettingsViewModel.swift in Sources */,
 				DD6F5BCC226B289300FFCB71 /* Constants.swift in Sources */,
 				DD4AC1F5227CC6CF0084BBC9 /* CountriesCoordinator.swift in Sources */,
