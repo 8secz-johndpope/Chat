@@ -29,7 +29,7 @@ final class Toast: UIView {
     
     init(text: String? = nil,
          view: UIView,
-         backgroundColor: UIColor = .lightGray,
+         backgroundColor: UIColor = UIColor.silver,
          textColor: UIColor = .black) {
         
         self.activityView = view
@@ -51,7 +51,7 @@ final class Toast: UIView {
         self.clipsToBounds = true
         self.layer.cornerRadius = 20
         self.backgroundColor = backgroundColor
-        self.alpha = 0.75
+        self.alpha = 0.9
         
         activityView.translatesAutoresizingMaskIntoConstraints = false
         textLabel.translatesAutoresizingMaskIntoConstraints = false
