@@ -24,7 +24,6 @@ class PhoneInputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerNotifications()
         configureViewModel()
     }
     
@@ -84,25 +83,18 @@ class PhoneInputViewController: UIViewController {
         phoneNumberTextField.rx.text.orEmpty
             .bind(to: viewModel.input.phoneNumber)
             .disposed(by: disposeBag)
-    }
-    
-    private func registerNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(notification:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
-                let _ = keyboardSize.height
-            }
-        }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        
+        viewModel.output.isUpdating
+            .subscribe(onNext: { [weak self] isUpdating in
+                isUpdating ? self?.showUpdatingToast() : self?.hideToast()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.output.isError
+            .subscribe(onNext: { [weak self] error in
+                self?.showErrorToast(error: error)
+            })
+            .disposed(by: disposeBag)
     }
 }
 

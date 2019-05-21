@@ -31,12 +31,16 @@ final class PhoneInputViewModel: ViewModelProtocol {
         let isValidNumber = BehaviorRelay<Bool>(value: false)
         let verifyButtonColor = BehaviorRelay<UIColor>(value: .gray)
         let region = BehaviorRelay<String>(value: "+")
+        let isUpdating: Observable<Bool>
+        let isError: Observable<Error>
     }
     
     let input: Input
     let output: Output
     
     let country = BehaviorRelay<Country?>(value: nil)
+    private let isUpdatingSubject = PublishSubject<Bool>()
+    private let isErrorSubject = PublishSubject<Error>()
     private let phoneNumberSubject = PublishSubject<String>()
     private let isValidNumberSubject = PublishSubject<Bool>()
     private let regionSubject = PublishSubject<String>()
@@ -63,7 +67,9 @@ final class PhoneInputViewModel: ViewModelProtocol {
             verifyNumber: verifyNumberSubject.asObservable(),
             countryFlagButtonObservable: countryFlagButtonSubject.asDriver(onErrorJustReturn: ()),
             countrySelection: countrySelectionsubject.asObservable(),
-            countryFlag: countryFlagSubject.asDriver(onErrorJustReturn: UIImage())
+            countryFlag: countryFlagSubject.asDriver(onErrorJustReturn: UIImage()),
+            isUpdating: isUpdatingSubject.asObservable(),
+            isError: isErrorSubject.asObservable()
         )
         
         output.isValidNumber
@@ -100,10 +106,13 @@ final class PhoneInputViewModel: ViewModelProtocol {
         guard let number = try? PhoneNumberKit().parse(phoneNumber) else { return }
         let phone = PhoneNumberKit().format(number, toType: .e164)
         
+        isUpdatingSubject.onNext(true)
         FIRAuth.sendCode(to: phone) { [weak self] (result) in
+            self?.isUpdatingSubject.onNext(false)
+            
             switch result {
             case .failure(let error):
-                print(error)
+                self?.isErrorSubject.onNext(error)
             case .success(_):
                 self?.verifyNumberSubject.onNext(phoneNumber)
             }

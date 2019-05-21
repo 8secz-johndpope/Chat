@@ -9,12 +9,23 @@
 import UIKit
 import NVActivityIndicatorView
 
-class Toast: UIView {
+final class Toast: UIView {
     
     private var activityView: UIView
-    private var textLabel: UILabel
     
-    private var indent: CGFloat = 8.0
+    private var textLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        
+        return label
+    }()
+    
+    private let prefferedWidth: CGFloat = 100.0
+    private let minimumWidth: CGFloat = 70.0
+    private let maxSize: CGSize = CGSize(width: 200.0, height: 300.0)
+    private let indent: CGFloat = 12.0
     
     init(text: String? = nil,
          view: UIView,
@@ -23,18 +34,24 @@ class Toast: UIView {
         
         self.activityView = view
         
-        self.textLabel = UILabel()
+        super.init(frame: CGRect(x: 0, y: 0, width: maxSize.width, height: maxSize.height))
         
-        super.init(frame: CGRect(x: 0, y: 0, width: 90, height: 110))
+        self.textLabel.text = text
+        self.textLabel.textColor = textColor
+        let textWidth = maxSize.width / textLabel.intrinsicContentSize.width < 0.5 ? maxSize.width : prefferedWidth
+        let fontSize: CGFloat = textLabel.intrinsicContentSize.width > 400 ? 12.0 : 14.0
+        self.textLabel.font = UIFont.systemFont(ofSize: fontSize)
+        self.textLabel.preferredMaxLayoutWidth = textWidth < minimumWidth ? minimumWidth : textWidth
+        
+        self.activityView.frame = CGRect(x: 0,
+                                         y: 0,
+                                         width: (textLabel.intrinsicContentSize.width + 20) / 2,
+                                         height: (textLabel.intrinsicContentSize.width + 20) / 2)
+        
         self.clipsToBounds = true
         self.layer.cornerRadius = 20
-        self.textLabel.text = text
-        self.textLabel.textAlignment = .center
-        self.textLabel.numberOfLines = 0
-        self.textLabel.textColor = textColor
-        self.textLabel.adjustsFontSizeToFitWidth = true
         self.backgroundColor = backgroundColor
-        self.alpha = 0.5
+        self.alpha = 0.75
         
         activityView.translatesAutoresizingMaskIntoConstraints = false
         textLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -43,30 +60,28 @@ class Toast: UIView {
         addSubview(textLabel)
         
         configureConstraints()
-        //activityView.sizeToFit()
-        //textLabel.sizeToFit()
     }
     
     private func configureConstraints() {
-        frame = CGRect(x: 0,
-                       y: 0,
-                       width: frame.width,
-                       height: activityView.frame.height + textLabel.intrinsicContentSize.height + 3 * indent)
+        let currentHeight = activityView.frame.height + textLabel.intrinsicContentSize.height + 3 * indent
+        let newHeight = currentHeight
+    
+        frame = CGRect(x: 0, y: 0, width: newHeight, height: newHeight)
         
         activityView.topAnchor.constraint(equalTo: topAnchor, constant: indent).isActive = true
         activityView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        activityView.trailingAnchor.constraint(greaterThanOrEqualTo: trailingAnchor, constant: indent).isActive = true
-        activityView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: -indent).isActive = true
+        activityView.widthAnchor.constraint(equalToConstant: activityView.frame.width).isActive = true
         activityView.heightAnchor.constraint(equalToConstant: activityView.frame.height).isActive = true
         
         textLabel.topAnchor.constraint(equalTo: activityView.bottomAnchor, constant: indent).isActive = true
         textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -indent).isActive = true
         textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: indent).isActive = true
         textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -indent).isActive = true
-        textLabel.preferredMaxLayoutWidth = frame.width - 2 * indent
+        
+        (activityView as? NVActivityIndicatorView)?.startAnimating()
     }
     
-    func show(on view: UIView, position: CGPoint, duration: Int?) {
+    func show(on view: UIView, position: CGPoint, duration: Double?) {
         center = position
         view.addSubview(self)
         transform = CGAffineTransform(scaleX: 0, y: 0)
@@ -77,11 +92,15 @@ class Toast: UIView {
                        initialSpringVelocity: 0.5,
                        options: [],
                        animations: {
-            self.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.transform = .identity
         }, completion: nil)
         
         if let duration = duration {
-            Timer.scheduledTimer(timeInterval: TimeInterval(duration), target: self, selector: #selector(stop), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: TimeInterval(duration),
+                                 target: self,
+                                 selector: #selector(stop),
+                                 userInfo: nil,
+                                 repeats: false)
         }
     }
     
@@ -113,7 +132,7 @@ extension UIView {
         }
     }
     
-    func showToast(text: String, view: UIView, duration: Int? = nil) {
+    func showToast(text: String, view: UIView, duration: Double? = nil) {
         if self.toast != nil { self.toast?.removeFromSuperview() }
         self.toast = Toast(text: text, view: view)
         guard let toast = toast else { return }
@@ -123,13 +142,19 @@ extension UIView {
         toast.center = center
         toast.transform = CGAffineTransform(scaleX: 0, y: 0)
         
+        let recognizer = UITapGestureRecognizer(target: self,
+                                                action: #selector(UIView.handleToastTapped(_:)))
+        toast.addGestureRecognizer(recognizer)
+        toast.isUserInteractionEnabled = true
+        toast.isExclusiveTouch = true
+        
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 0.5,
                        initialSpringVelocity: 0.5,
                        options: [],
                        animations: {
-            toast.transform = CGAffineTransform(scaleX: 1, y: 1)
+            toast.transform = .identity
         }, completion: nil)
         
         if let duration = duration {
@@ -146,9 +171,7 @@ extension UIView {
         self.toast?.removeFromSuperview()
     }
     
-//    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//        
-//        if toast != nil { toast?.removeFromSuperview() }
-//    }
+    @objc private func handleToastTapped(_ recognizer: UITapGestureRecognizer) {
+        stopToast()
+    }
 }

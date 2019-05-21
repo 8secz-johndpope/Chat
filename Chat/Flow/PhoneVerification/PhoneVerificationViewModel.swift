@@ -20,12 +20,16 @@ final class PhoneVerificationViewModel: ViewModelProtocol {
         let backButton: Driver<Void>
         let verificationCode = BehaviorRelay<String>(value: "")
         let authData: Observable<UserInfo>
+        let isUpdating: Observable<Bool>
+        let isError: Observable<Error>
     }
     
     let input: Input
     let output: Output
     let phoneNumber: String
     
+    private let isUpdatingSubject = PublishSubject<Bool>()
+    private let isErrorSubject = PublishSubject<Error>()
     private let authDataSubject = PublishSubject<UserInfo>()
     private let backButtonSubject = PublishSubject<Void>()
     private let disposeBag = DisposeBag()
@@ -35,15 +39,19 @@ final class PhoneVerificationViewModel: ViewModelProtocol {
         
         self.input = Input(backButtonDidTap: backButtonSubject.asObserver())
         self.output = Output(backButton: backButtonSubject.asDriver(onErrorJustReturn: ()),
-                             authData: authDataSubject.asObservable())
+                             authData: authDataSubject.asObservable(),
+                             isUpdating: isUpdatingSubject.asObservable(),
+                             isError: isErrorSubject.asObservable())
     }
     
     func sendCode(_ code: String) {
         if let id = UserDefaults.standard.string(forKey: "authVerificationID") {
+            self.isUpdatingSubject.onNext(true)
             FIRAuth.verifyPhoneNumber(verificationId: id, verificationCode: code) { [weak self] (result) in
                 switch result {
                 case .failure(let error):
-                    print(error)
+                    self?.isUpdatingSubject.onNext(false)
+                    self?.isErrorSubject.onNext(error)
                 case .success(let authData):
                     self?.uploadUser(authData: authData)
                 }
@@ -63,12 +71,14 @@ final class PhoneVerificationViewModel: ViewModelProtocol {
                             username: username)
         
         FIRDatabaseManager().uploadUser(user) { [weak self] (result) in
+            self?.isUpdatingSubject.onNext(false)
+            
             switch result {
             case .success(let user):
                 AuthService.shared.login(userId: user.userId)
                 self?.authDataSubject.onNext(user)
             case .failure(let error):
-                print(error)
+                self?.isErrorSubject.onNext(error)
             }
         }
     }

@@ -9,12 +9,14 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import NVActivityIndicatorView
 
 class PhoneVerificationViewController: UIViewController {
 
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet var backButton: UIButton!
     @IBOutlet var resendCodeButton: UIButton!
+    @IBOutlet var resendCodeButtonBottomAnchor: NSLayoutConstraint!
     
     private var viewModel: PhoneVerificationViewModel!
     private let disposeBag = DisposeBag()
@@ -22,26 +24,12 @@ class PhoneVerificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerNotifications()
         configureViewModel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureUI()
-    }
-    
-    private func registerNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(notification:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-    }
-    
-    private func configureViewModel() {
-        backButton.rx.tap
-            .subscribe(viewModel.input.backButtonDidTap)
-            .disposed(by: disposeBag)
     }
     
     private func configureUI() {
@@ -69,24 +57,32 @@ class PhoneVerificationViewController: UIViewController {
         }
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
-                let height = keyboardSize.height + 15.0
-                
-                resendCodeButton.translatesAutoresizingMaskIntoConstraints = false
-                resendCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-                resendCodeButton.widthAnchor.constraint(equalTo: resendCodeButton.titleLabel?.widthAnchor ?? NSLayoutDimension()).isActive = true
-                resendCodeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -height).isActive = true
-                resendCodeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-                view.layoutIfNeeded()
-            }
-        }
+    private func configureViewModel() {
+        backButton.rx.tap
+            .subscribe(viewModel.input.backButtonDidTap)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.isUpdating.subscribe(onNext: { [weak self] isUpdating in
+            isUpdating ? self?.showUpdatingToast() : self?.hideToast()
+        }).disposed(by: disposeBag)
+        
+        viewModel.output.isError.subscribe(onNext: { [weak self] error in
+            self?.showErrorToast(error: error)
+        }).disposed(by: disposeBag)
+        
+        keyboardHeight.subscribe(onNext: { [weak self] (keyboardHeight) in
+            let safeAreaBottomConstant = self?.view.safeAreaInsets.bottom ?? 0.0
+            let buttonIndent: CGFloat = 12.0
+            let isKeyboardWillShow = keyboardHeight > 0
+            let bottomHeightConstant = isKeyboardWillShow ?
+                keyboardHeight + buttonIndent :
+                safeAreaBottomConstant + buttonIndent
+            
+            self?.resendCodeButtonBottomAnchor.constant = bottomHeightConstant
+            //self?.view.layoutIfNeeded()
+        }).disposed(by: disposeBag)
     }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+    
 }
 
 extension PhoneVerificationViewController: UITextFieldDelegate {
