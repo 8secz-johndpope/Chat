@@ -77,8 +77,6 @@ final class Toast: UIView {
         textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -indent).isActive = true
         textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: indent).isActive = true
         textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -indent).isActive = true
-        
-        (activityView as? NVActivityIndicatorView)?.startAnimating()
     }
     
     func show(on view: UIView, position: CGPoint, duration: Double?) {

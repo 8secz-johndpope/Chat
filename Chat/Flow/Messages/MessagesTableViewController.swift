@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import NVActivityIndicatorView
 
 class MessagesTableViewController: UITableViewController {
     
@@ -55,7 +54,7 @@ class MessagesTableViewController: UITableViewController {
         
         tableView.rx.modelSelected(Chat.self)
             .do(onNext: { [weak self] (_) in
-                self?.showLoadingToast()
+                self?.showUpdatingToast()
             })
             .bind(to: viewModel.input.selection)
             .disposed(by: disposeBag)
@@ -63,7 +62,7 @@ class MessagesTableViewController: UITableViewController {
         viewModel.output
             .fetchCompanionObservable
             .subscribe(onNext: { [weak self] _ in
-                self?.view.stopToast()
+                self?.hideToast()
             }).disposed(by: disposeBag)
 
         viewModel.output.chatsCountWithNewMessages
@@ -72,13 +71,6 @@ class MessagesTableViewController: UITableViewController {
                 UIApplication.shared.applicationIconBadgeNumber = Int(count)
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func showLoadingToast() {
-        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-                                                        type: .circleStrokeSpin)
-        activityIndicator.startAnimating()
-        self.view.showToast(text: "loading...", view: activityIndicator)
     }
 }
 

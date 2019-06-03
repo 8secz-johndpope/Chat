@@ -43,9 +43,6 @@ class ContactResultsViewModel: ViewModelProtocol {
             .flatMapLatest { [weak self] (text) -> Observable<[UserInfo]> in
                 guard let self = self else { return Observable.empty() }
                 return self.firDatabase.fetchUsersInfo(with: text)
-                    .retry(3)
-                    .startWith([])
-                    .catchErrorJustReturn([])
             }
             .subscribe(onNext: { [weak self] (usersInfo) in
                 guard let userId = self?.user.value?.userId else { return }

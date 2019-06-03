@@ -30,6 +30,10 @@ class AuthService {
         }
     }
     
+    var isUserAuthorized: Bool {
+        return UserDefaults.standard.string(forKey: "userId") != nil
+    }
+    
     var userId: Observable<String?> {
         return UserDefaults.standard.rx.observe(String.self, "userId")
     }
@@ -54,10 +58,6 @@ class AuthService {
     
     func login(userId: String) {
         UserDefaults.standard.set(userId, forKey: "userId")
-    }
-    
-    func isUserAuthorized() -> Bool {
-        return UserDefaults.standard.string(forKey: "userId") != nil
     }
     
     func logout() {

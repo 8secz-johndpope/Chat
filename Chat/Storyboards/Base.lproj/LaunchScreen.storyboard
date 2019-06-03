@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="width" secondItem="b9Y-r6-efh" secondAttribute="height" multiplier="1:0.7" id="u98-A0-28T"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST MESSENGER IN THE WORLD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syg-ug-pKC">
-                                <rect key="frame" x="83" y="467.5" width="248" height="67"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Messenger" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syg-ug-pKC">
+                                <rect key="frame" x="83" y="491.5" width="248" height="67"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pZz-HE-9Le" secondAttribute="bottom" constant="20" id="43E-o8-GPL"/>
                             <constraint firstItem="pZz-HE-9Le" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="F4o-Kq-6AP"/>
-                            <constraint firstItem="syg-ug-pKC" firstAttribute="top" secondItem="b9Y-r6-efh" secondAttribute="bottom" constant="36" id="X9z-vH-SaL"/>
+                            <constraint firstItem="syg-ug-pKC" firstAttribute="top" secondItem="b9Y-r6-efh" secondAttribute="bottom" constant="60" id="X9z-vH-SaL"/>
                             <constraint firstItem="b9Y-r6-efh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="bottom" multiplier="0.4" id="ZBt-Ns-lcg"/>
                             <constraint firstItem="syg-ug-pKC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lTO-II-t5t"/>
                             <constraint firstItem="b9Y-r6-efh" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="rqZ-WH-bvk"/>
