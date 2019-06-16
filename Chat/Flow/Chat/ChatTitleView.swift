@@ -29,7 +29,7 @@ class ChatTitleView: UIView {
         super.init(frame: frame)
         
         self.contentView = UIView()
-        self.profileImageView = UIImageView(image: R.image.profile())
+        self.profileImageView = UIImageView()
         self.profileTitleLabel = UILabel()
         self.bottomTextLabel = UILabel()
         

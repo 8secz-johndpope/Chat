@@ -44,7 +44,7 @@ class ChatTitleViewModel: ViewModelProtocol {
     }
     
     private func observeUserStatus() {
-        self.statusSubject.accept("offline")
+        self.statusSubject.accept("loading...")
     }
     
     private func fetchUserInfo() {

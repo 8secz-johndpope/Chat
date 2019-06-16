@@ -150,9 +150,7 @@ class FIRDatabaseManager {
     func fetchUserInfo(userId: String, completion: @escaping (UserInfo) -> ()) {
         usersRef.child(userId).child(Constants.info)
             .observeSingleEvent(of: .value, with: { (userSnapshot) in
-                if let user = userSnapshot.value {
-                    completion(UserInfo(data: user)!)
-                }
+                completion(UserInfo(data: userSnapshot.value!)!)
         })
     }
     
@@ -218,6 +216,33 @@ class FIRDatabaseManager {
             .observe(.value) { (snapshot) in
                 completion(snapshot.childrenCount)
         }
+    }
+    
+    func observeMessages(chatId: String,
+                         sender: Sender,
+                         recipient: UserInfo,
+                         completion: @escaping (Message) -> ()) {
+        usersRef.child(sender.id)
+            .child(Constants.newMessages)
+            .child(Constants.chats)
+            .child(chatId)
+            .child(Constants.messages)
+            .observe(.childAdded) { (snapshot) in
+                let value = snapshot.value as? [String: Any]
+                let chatId = value?[Constants.chatId] as? String
+                let messageId = value?[Constants.messageId] as? String
+                //let senderId = value?[Constants.senderId] as? String
+                
+                self.chatsRef.child(chatId ?? "")
+                    .child(Constants.messages)
+                    .child(messageId ?? "")
+                    .observeSingleEvent(of: .value) { (snapshot) in
+                        let messageData = snapshot.value as Any
+                        let message = Message(data: messageData, id: messageId ?? "")!
+                        
+                        completion(message)
+                    }
+            }
     }
     
     func observeChats(user: UserInfo, completion: @escaping ([Chat]) -> ()) {

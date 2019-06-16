@@ -215,7 +215,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Messages" image="messages" id="zty-q9-RWq"/>
-                    <navigationItem key="navigationItem" title="Messages" id="ce9-wo-uok"/>
+                    <navigationItem key="navigationItem" title="Messages" id="ce9-wo-uok">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="nob-SX-2o7"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

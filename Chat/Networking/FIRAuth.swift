@@ -47,8 +47,7 @@ class FIRAuth {
             if let authData = authDataResult {
                 completion(.success(authData))
             } else {
-                let error = error ?? AuthError.unknownError
-                completion(.failure(error))
+                completion(.failure(error ?? AuthError.unknownError))
             }
         }
     }

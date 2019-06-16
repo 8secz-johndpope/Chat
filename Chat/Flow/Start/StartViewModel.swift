@@ -31,7 +31,7 @@ class StartViewModel: ViewModelProtocol {
         self.output = Output(isUserAuthorized: isUserAuthorizedSubject.asObservable())
         
         animationDidFinishSubject.asObservable().subscribe(onNext: { [weak self] _ in
-            self?.isUserAuthorizedSubject.onNext(AuthService.shared.isUserAuthorized)
+            self?.isUserAuthorizedSubject.onNext(AuthService.shared.isUserAuthorized())
         }).disposed(by: disposeBag)
     }
 }

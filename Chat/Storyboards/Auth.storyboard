@@ -405,8 +405,8 @@
                                     <constraint firstAttribute="width" secondItem="lxl-Po-Ksm" secondAttribute="height" multiplier="1:0.7" id="7M2-Uj-TWR"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Messenger" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqJ-Ih-V8j">
-                                <rect key="frame" x="83" y="491.5" width="248" height="67"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST MESSENGER IN THE WORLD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqJ-Ih-V8j">
+                                <rect key="frame" x="83" y="467.5" width="248" height="67"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -421,7 +421,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rqJ-Ih-V8j" firstAttribute="width" secondItem="lxl-Po-Ksm" secondAttribute="width" id="1KP-d3-gpl"/>
-                            <constraint firstItem="rqJ-Ih-V8j" firstAttribute="top" secondItem="lxl-Po-Ksm" secondAttribute="bottom" constant="60" id="8bC-f0-Xxb"/>
+                            <constraint firstItem="rqJ-Ih-V8j" firstAttribute="top" secondItem="lxl-Po-Ksm" secondAttribute="bottom" constant="36" id="8bC-f0-Xxb"/>
                             <constraint firstItem="rqJ-Ih-V8j" firstAttribute="centerX" secondItem="phH-vA-7iQ" secondAttribute="centerX" id="Sni-bL-LsB"/>
                             <constraint firstItem="xgW-XO-8gn" firstAttribute="centerX" secondItem="phH-vA-7iQ" secondAttribute="centerX" id="anY-Ah-W3n"/>
                             <constraint firstItem="phH-vA-7iQ" firstAttribute="bottom" secondItem="xgW-XO-8gn" secondAttribute="bottom" constant="20" id="bFm-C4-ftj"/>

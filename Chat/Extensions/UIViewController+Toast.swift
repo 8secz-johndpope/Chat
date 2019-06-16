@@ -19,9 +19,8 @@ extension UIViewController {
     }
     
     func showUpdatingToast() {
-        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 70, height: 70),
+        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30),
                                                         type: .circleStrokeSpin)
-        activityIndicator.startAnimating()
         self.view.showToast(text: "loading...", view: activityIndicator)
     }
     
